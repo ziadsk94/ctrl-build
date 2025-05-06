@@ -1,17 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   useEffect(() => {
     const header = document.querySelector("header");
     const firstSection = document.querySelector(".first-section");
 
     const handleScroll = () => {
       const firstSectionBottom = firstSection.getBoundingClientRect().bottom;
-      // Hide header if scrolled past the first section
       if (firstSectionBottom < header.offsetHeight) {
         header.style.opacity = "0";
-        header.style.pointerEvents = "none"; // Disable interactions
+        header.style.pointerEvents = "none";
       } else {
         header.style.opacity = "1";
         header.style.pointerEvents = "auto";
@@ -19,29 +24,44 @@ function App() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll); // Cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div className="App">
       <header>
         <div className="logo">CTRL+Build</div>
-        <nav>
+        <nav className={isMenuOpen ? "open" : ""}>
+          <button className="hamburger" onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <ul>
             <li>
-              <a href="#home">HOME</a>
+              <a href="#home" onClick={() => setIsMenuOpen(false)}>
+                HOME
+              </a>
             </li>
             <li>
-              <a href="#about">ABOUT</a>
+              <a href="#about" onClick={() => setIsMenuOpen(false)}>
+                ABOUT
+              </a>
             </li>
             <li>
-              <a href="#projects">PROJECTS</a>
+              <a href="#projects" onClick={() => setIsMenuOpen(false)}>
+                PROJECTS
+              </a>
             </li>
             <li>
-              <a href="#services">SERVICES</a>
+              <a href="#services" onClick={() => setIsMenuOpen(false)}>
+                SERVICES
+              </a>
             </li>
             <li>
-              <a href="#contacts">CONTACT</a>
+              <a href="#contacts" onClick={() => setIsMenuOpen(false)}>
+                CONTACT
+              </a>
             </li>
           </ul>
         </nav>
