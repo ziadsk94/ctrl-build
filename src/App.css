@@ -6,9 +6,9 @@ html {
 
 .App {
   background-color: #ffffff;
-  height: 100vh;
+  min-height: 100vh;
   font-family: "Bodoni Moda", serif;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 header {
@@ -18,7 +18,11 @@ header {
   padding: 20px 40px;
   background-color: #ffffff;
   z-index: 1000;
+  position: fixed;
+  width: 100%;
+  top: 0;
   transition: opacity 0.3s ease;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -50,7 +54,8 @@ nav ul li a {
   transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a.active {
   color: #3b3b3b;
 }
 
@@ -68,7 +73,7 @@ nav ul li a:hover {
 
 .hamburger .top-line {
   width: 100%;
-  height: 2px;
+  height: 4px;
   background-color: #3b3b3b;
 }
 
@@ -112,17 +117,22 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding-top: 84px; /* Adjust for fixed header height */
 }
 
-.first-section {
-  height: calc(100vh - 64px);
+.first-section,
+.about-section,
+.projects-section,
+.services-section,
+.contact-section {
+  min-height: calc(100vh - 84px);
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   border-bottom: 1px solid #d7d7d7;
   box-sizing: border-box;
-  overflow: hidden;
+  width: 100%;
 }
 
 .landing-content {
@@ -189,6 +199,90 @@ main {
   min-width: 250px;
 }
 
+.about-content,
+.projects-content,
+.services-content,
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-content h2,
+.projects-content h2,
+.services-content h2,
+.contact-content h2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #3b3b3b;
+  margin: 0;
+}
+
+.about-content p,
+.projects-content p,
+.services-content p,
+.contact-content p {
+  font-size: 19px;
+  color: #3b3b3b;
+  margin: 0;
+  text-align: center;
+}
+
+.contact-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 16px;
+  color: #3b3b3b;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: "Bodoni Moda", serif;
+  font-size: 16px;
+  color: #3b3b3b;
+  padding: 10px;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  background-color: #ffffff;
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3b3b3b;
+}
+
+.contact-content button {
+  font-family: "Bodoni Moda", serif;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #3b3b3b;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-content button:hover {
+  background-color: #d7d7d7;
+}
+
 /* Tablet (≤1024px) */
 @media (max-width: 1024px) {
   header {
@@ -207,9 +301,17 @@ main {
     font-size: 14px;
   }
 
-  .first-section {
+  main {
+    padding-top: 76px; /* Adjust for fixed header height */
+  }
+
+  .first-section,
+  .about-section,
+  .projects-section,
+  .services-section,
+  .contact-section {
     padding: 15px 30px;
-    height: calc(100vh - 56px);
+    min-height: calc(100vh - 76px);
   }
 
   .landing-content {
@@ -242,6 +344,27 @@ main {
   .additional-content p {
     font-size: 16px;
     min-width: 200px;
+  }
+
+  .about-content h2,
+  .projects-content h2,
+  .services-content h2,
+  .contact-content h2 {
+    font-size: 36px;
+  }
+
+  .about-content p,
+  .projects-content p,
+  .services-content p,
+  .contact-content p {
+    font-size: 16px;
+  }
+
+  .form-group label,
+  .form-group input,
+  .form-group textarea,
+  .contact-content button {
+    font-size: 14px;
   }
 }
 
@@ -292,13 +415,22 @@ main {
     color: #3b3b3b;
   }
 
-  nav ul li a:hover {
+  nav ul li a:hover,
+  nav ul li a.active {
     color: #d7d7d7;
   }
 
-  .first-section {
+  main {
+    padding-top: 68px; /* Adjust for fixed header height */
+  }
+
+  .first-section,
+  .about-section,
+  .projects-section,
+  .services-section,
+  .contact-section {
     padding: 10px 20px;
-    height: calc(100vh - 48px);
+    min-height: calc(100vh - 68px);
   }
 
   .landing-content {
@@ -339,5 +471,37 @@ main {
     font-size: 14px;
     min-width: 0;
     text-align: center;
+  }
+
+  .about-content,
+  .projects-content,
+  .services-content,
+  .contact-content {
+    gap: 15px;
+  }
+
+  .about-content h2,
+  .projects-content h2,
+  .services-content h2,
+  .contact-content h2 {
+    font-size: 28px;
+  }
+
+  .about-content p,
+  .projects-content p,
+  .services-content p,
+  .contact-content p {
+    font-size: 14px;
+  }
+
+  .form-group label,
+  .form-group input,
+  .form-group textarea,
+  .contact-content button {
+    font-size: 12px;
+  }
+
+  .form-group textarea {
+    rows: 4;
   }
 }
