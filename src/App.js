@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [selectedService, setSelectedService] = useState(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -12,19 +13,55 @@ function App() {
   const handleNavClick = (section) => {
     setActiveSection(section);
     setIsMenuOpen(false);
+    setSelectedService(null); // Reset selected service when switching sections
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const services = [
+    {
+      id: "web-development",
+      title: "Web Development",
+      description:
+        "We build responsive, high-performance websites using modern frameworks like React and Next.js, ensuring fast load times and seamless cross-device experiences. Our solutions are optimized for SEO and accessibility, driving user engagement and business growth.",
+    },
+    {
+      id: "ui-ux-design",
+      title: "UI/UX Design",
+      description:
+        "Our user-centric designs blend stunning visuals with intuitive navigation, crafted using tools like Figma and Adobe XD. We conduct user testing to ensure interfaces enhance engagement, accessibility, and conversion rates for your brand.",
+    },
+    {
+      id: "backend-solutions",
+      title: "Backend Solutions",
+      description:
+        "We develop secure, scalable server-side systems with Node.js, Python, and AWS, delivering robust APIs and efficient data management. Our solutions ensure high availability and performance, supporting your application’s growth and reliability.",
+    },
+    {
+      id: "mobile-app-development",
+      title: "Mobile App Development",
+      description:
+        "We create native and cross-platform mobile apps using React Native and Swift, delivering seamless performance on iOS and Android. Our apps prioritize user experience, integrating features like push notifications and offline capabilities to boost engagement.",
+    },
+    {
+      id: "cloud-solutions",
+      title: "Cloud Solutions",
+      description:
+        "Our cloud architecture services leverage AWS, Azure, and Google Cloud to ensure scalability, security, and cost-efficiency. We implement serverless solutions and CI/CD pipelines, enabling rapid deployment and reliable application performance.",
+    },
+  ];
+
+  const toggleService = (serviceId) => {
+    setSelectedService(selectedService === serviceId ? null : serviceId);
   };
 
   useEffect(() => {
     const header = document.querySelector("header");
 
-    // Ensure header is always visible initially
     header.style.opacity = "1";
     header.style.pointerEvents = "auto";
 
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      // Show header when at the top, hide when scrolled down
       if (scrollPosition > 50) {
         header.style.opacity = "0";
         header.style.pointerEvents = "none";
@@ -158,11 +195,33 @@ function App() {
         {activeSection === "services" && (
           <section className="services-section" id="services">
             <div className="services-content">
-              <h2>Our Services</h2>
-              <p>
-                We offer a range of services including web development, UI/UX
-                design, and backend solutions.
-              </p>
+              <div className="services-header">
+                <h2>WHY WORK WITH US</h2>
+                <p className="catchy-paragraph">
+                  Transform your vision into reality with our cutting-edge
+                  solutions. We deliver unparalleled quality and innovation,
+                  tailored to drive your success.
+                </p>
+              </div>
+              <ul className="services-list">
+                {services.map((service) => (
+                  <li
+                    key={service.id}
+                    className={selectedService === service.id ? "active" : ""}
+                  >
+                    <button onClick={() => toggleService(service.id)}>
+                      {service.title}
+                    </button>
+                    <div
+                      className={`service-details ${
+                        selectedService === service.id ? "visible" : ""
+                      }`}
+                    >
+                      <p>{service.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </section>
         )}

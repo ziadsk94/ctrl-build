@@ -117,7 +117,7 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 84px; /* Adjust for fixed header height */
+  padding-top: 84px;
 }
 
 .first-section,
@@ -129,7 +129,7 @@ main {
   padding: 20px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-bottom: 1px solid #d7d7d7;
   box-sizing: border-box;
   width: 100%;
@@ -223,11 +223,103 @@ main {
 
 .about-content p,
 .projects-content p,
-.services-content p,
 .contact-content p {
   font-size: 19px;
   color: #3b3b3b;
   margin: 0;
+  text-align: center;
+}
+
+.services-content {
+  align-items: flex-start;
+  max-width: none;
+  gap: 0;
+}
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.services-header h2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #3b3b3b;
+  margin: 0;
+  text-align: left;
+}
+
+.services-header .catchy-paragraph {
+  font-size: 19px;
+  color: #3b3b3b;
+  max-width: 400px;
+  text-align: right;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.services-list li {
+  border-top: 1px solid #d7d7d7;
+  width: 100%;
+}
+
+.services-list li:last-child {
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.services-list li button {
+  font-family: "Bodoni Moda", serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #3b3b3b;
+  background: none;
+  border: none;
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.services-list li button:hover {
+  color: #d7d7d7;
+}
+
+.services-list li.active button {
+  color: #d7d7d7;
+}
+
+.service-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0;
+}
+
+.service-details.visible {
+  max-height: 300px;
+  padding: 10px 0 20px;
+}
+
+.service-details p {
+  font-size: 19px;
+  color: #3b3b3b;
+  margin: 0;
+  line-height: 1.5;
   text-align: center;
 }
 
@@ -302,7 +394,7 @@ main {
   }
 
   main {
-    padding-top: 76px; /* Adjust for fixed header height */
+    padding-top: 76px;
   }
 
   .first-section,
@@ -355,9 +447,40 @@ main {
 
   .about-content p,
   .projects-content p,
-  .services-content p,
   .contact-content p {
     font-size: 16px;
+  }
+
+  .services-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .services-header h2 {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .services-header .catchy-paragraph {
+    font-size: 16px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .services-list li button {
+    font-size: 28px;
+    padding: 15px 0;
+  }
+
+  .service-details p {
+    font-size: 16px;
+  }
+
+  .service-details.visible {
+    max-height: 200px;
+    padding: 10px 0 15px;
   }
 
   .form-group label,
@@ -421,7 +544,7 @@ main {
   }
 
   main {
-    padding-top: 68px; /* Adjust for fixed header height */
+    padding-top: 68px;
   }
 
   .first-section,
@@ -489,9 +612,40 @@ main {
 
   .about-content p,
   .projects-content p,
-  .services-content p,
   .contact-content p {
     font-size: 14px;
+  }
+
+  .services-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .services-header h2 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .services-header .catchy-paragraph {
+    font-size: 14px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .services-list li button {
+    font-size: 24px;
+    padding: 10px 0;
+  }
+
+  .service-details p {
+    font-size: 14px;
+  }
+
+  .service-details.visible {
+    max-height: 150px;
+    padding: 5px 0 10px;
   }
 
   .form-group label,
