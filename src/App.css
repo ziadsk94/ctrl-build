@@ -68,7 +68,7 @@ nav ul li a:hover {
 
 .hamburger .top-line {
   width: 100%;
-  height: 4px;
+  height: 2px;
   background-color: #3b3b3b;
 }
 
@@ -259,7 +259,7 @@ main {
     display: flex;
   }
 
-  .close-menu {
+  nav.open .close-menu {
     display: block;
   }
 
