@@ -1,38 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
 .App {
-  text-align: center;
+  background-color: #ffffff;
+  height: 100vh;
+  font-family: "Bodoni Moda", serif;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3b3b3b;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #d7d7d7;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #3b3b3b;
+}
+
+main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-.App-link {
-  color: #61dafb;
+.first-section {
+  height: calc(100vh - 64px);
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #d7d7d7;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.landing-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
+.title span {
+  font-size: 140px;
+  font-weight: 700;
+  color: #3b3b3b;
+  line-height: 1.1;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+.description p {
+  font-size: 19px;
+  color: #3b3b3b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.description .line1 {
+  margin-left: 0;
+}
+
+.description .line2 {
+  margin-left: 147px;
+}
+
+.description .line3 {
+  margin-left: 147px;
+  color: #d7d7d7;
+}
+
+.description .line4 {
+  margin-left: 147px;
+  color: #d7d7d7;
+}
+
+.additional-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-top: 0;
+  max-width: 1400px;
+}
+
+.additional-content p {
+  font-size: 19px;
+  color: #3b3b3b;
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+  min-width: 250px;
 }
