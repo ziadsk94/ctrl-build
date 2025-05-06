@@ -33,7 +33,10 @@ function App() {
         <div className="logo">CTRL+Build</div>
         <nav className={isMenuOpen ? "open" : ""}>
           <button className="hamburger" onClick={toggleMenu}>
-            <span></span>
+            <span className="top-line"></span>
+            <span className="bottom-line"></span>
+          </button>
+          <button className="close-menu" onClick={toggleMenu}>
             <span></span>
             <span></span>
           </button>
