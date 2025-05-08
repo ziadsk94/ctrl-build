@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import logo from "./assets/images/logo.png";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -96,7 +97,9 @@ function App() {
   return (
     <div className="App">
       <header>
-        <div className="logo">CTRL+Build</div>
+        <div className="logo">
+          <img src={logo} alt="CTRL+Build Logo" />
+        </div>
         <nav className={isMenuOpen ? "open" : ""}>
           <button className="hamburger" onClick={toggleMenu}>
             <span className="top-line"></span>

@@ -26,9 +26,13 @@ header {
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: 700;
-  color: #3b3b3b;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 64px; /* Matches original font-size for consistency */
+  width: auto;
 }
 
 nav {
@@ -391,8 +395,8 @@ main {
     padding: 15px 30px;
   }
 
-  .logo {
-    font-size: 20px;
+  .logo img {
+    height: 20px; /* Matches original font-size for tablet */
   }
 
   nav ul {
@@ -516,8 +520,8 @@ main {
     padding: 10px 20px;
   }
 
-  .logo {
-    font-size: 18px;
+  .logo img {
+    height: 18px; /* Matches original font-size for mobile */
   }
 
   .hamburger {
