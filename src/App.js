@@ -14,8 +14,26 @@ function App() {
     setActiveSection(section);
     setIsMenuOpen(false);
     setSelectedService(null);
+    window.location.hash = section; // Update URL hash
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  // Set active section based on URL hash on initial load or hash change
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const hash = window.location.hash.replace("#", "") || "home";
+      if (["home", "about", "projects", "services", "contact"].includes(hash)) {
+        setActiveSection(hash);
+      } else {
+        setActiveSection("home");
+      }
+    };
+
+    updateActiveSection(); // Run on initial load
+    window.addEventListener("hashchange", updateActiveSection); // Listen for hash changes
+
+    return () => window.removeEventListener("hashchange", updateActiveSection);
+  }, []);
 
   const services = [
     {
