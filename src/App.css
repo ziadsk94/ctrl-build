@@ -396,7 +396,7 @@ main {
   }
 
   .logo img {
-    height: 20px; /* Matches original font-size for tablet */
+    height: 48px; /* Matches original font-size for tablet */
   }
 
   nav ul {
@@ -521,7 +521,7 @@ main {
   }
 
   .logo img {
-    height: 18px; /* Matches original font-size for mobile */
+    height: 40px; /* Matches original font-size for mobile */
   }
 
   .hamburger {
