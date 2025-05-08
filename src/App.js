@@ -13,7 +13,7 @@ function App() {
   const handleNavClick = (section) => {
     setActiveSection(section);
     setIsMenuOpen(false);
-    setSelectedService(null); // Reset selected service when switching sections
+    setSelectedService(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
