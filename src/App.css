@@ -31,7 +31,7 @@ header {
 }
 
 .logo img {
-  height: 64px; /* Matches original font-size for consistency */
+  height: 64px;
   width: auto;
 }
 
@@ -131,10 +131,104 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom: 1px solid #d7d7d7;
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
+}
+
+.intro-section {
+  min-height: calc(100vh - 84px);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 0 20px;
+  gap: 100px;
+}
+
+.intro-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3b3b3b;
+  margin: 0;
+  margin-left: -20px;
+  text-align: left;
+}
+
+.intro-paragraph {
+  font-size: 48px;
+  font-weight: 400;
+  color: #3b3b3b;
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
+  max-width: 800px;
+  align-self: center;
+}
+
+.intro-paragraph .highlight {
+  color: #d3541e;
+}
+
+.metrics-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -20px;
+}
+
+.metrics-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #3b3b3b;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
+.metrics-list {
+  display: flex;
+  gap: 220px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+.metric:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 60%;
+  width: 1px;
+  background-color: #d7d7d7;
+}
+
+.metric-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #3b3b3b;
+}
+
+.metric-label {
+  font-size: 16px;
+  color: #3b3b3b;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .about-section,
@@ -396,7 +490,7 @@ main {
   }
 
   .logo img {
-    height: 48px; /* Matches original font-size for tablet */
+    height: 48px;
   }
 
   nav ul {
@@ -415,14 +509,61 @@ main {
     height: calc(100vh - 76px);
     min-height: 500px;
     padding: 15px 30px;
+    box-sizing: border-box;
+  }
+
+  .intro-section {
+    min-height: calc(100vh - 76px);
+    padding: 30px;
+    box-sizing: border-box;
+  }
+
+  .intro-content {
+    padding: 0 15px;
+    gap: 60px;
+  }
+
+  .intro-title {
+    font-size: 20px;
+    margin-left: 15px;
+  }
+
+  .intro-paragraph {
+    font-size: 36px;
+  }
+
+  .metrics-container {
+    margin-left: 15px;
+  }
+
+  .metrics-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .metrics-list {
+    gap: 15px;
+  }
+
+  .metric {
+    padding: 0 15px;
+  }
+
+  .metric-value {
+    font-size: 28px;
+  }
+
+  .metric-label {
+    font-size: 14px;
   }
 
   .about-section,
   .projects-section,
   .services-section,
   .contact-section {
-    padding: 15px 30px;
     min-height: calc(100vh - 76px);
+    padding: 15px 30px;
+    box-sizing: border-box;
   }
 
   .landing-content {
@@ -451,6 +592,7 @@ main {
   .additional-content {
     gap: 30px;
     margin-top: 15px;
+    max-width: 1000px;
   }
 
   .additional-content p {
@@ -521,7 +663,7 @@ main {
   }
 
   .logo img {
-    height: 40px; /* Matches original font-size for mobile */
+    height: 40px;
   }
 
   .hamburger {
@@ -574,6 +716,60 @@ main {
     height: calc(100vh - 68px);
     min-height: 400px;
     padding: 10px 20px;
+    box-sizing: border-box;
+  }
+
+  .intro-section {
+    min-height: calc(100vh - 68px);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .intro-content {
+    padding: 0 10px;
+    gap: 40px;
+  }
+
+  .intro-title {
+    font-size: 16px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .intro-paragraph {
+    font-size: 24px;
+  }
+
+  .metrics-container {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .metrics-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .metrics-list {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .metric {
+    padding: 10px 0;
+  }
+
+  .metric:not(:last-child)::after {
+    display: none;
+  }
+
+  .metric-value {
+    font-size: 24px;
+  }
+
+  .metric-label {
+    font-size: 12px;
   }
 
   .about-section,
@@ -582,6 +778,7 @@ main {
   .contact-section {
     padding: 10px 20px;
     min-height: calc(100vh - 68px);
+    box-sizing: border-box;
   }
 
   .landing-content {

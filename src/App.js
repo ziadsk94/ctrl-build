@@ -15,11 +15,10 @@ function App() {
     setActiveSection(section);
     setIsMenuOpen(false);
     setSelectedService(null);
-    window.location.hash = section; // Update URL hash
+    window.location.hash = section;
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Set active section based on URL hash on initial load or hash change
   useEffect(() => {
     const updateActiveSection = () => {
       const hash = window.location.hash.replace("#", "") || "home";
@@ -30,8 +29,8 @@ function App() {
       }
     };
 
-    updateActiveSection(); // Run on initial load
-    window.addEventListener("hashchange", updateActiveSection); // Listen for hash changes
+    updateActiveSection();
+    window.addEventListener("hashchange", updateActiveSection);
 
     return () => window.removeEventListener("hashchange", updateActiveSection);
   }, []);
@@ -140,7 +139,7 @@ function App() {
             <li>
               <a
                 href="#services"
-                className={activeSection === "services" ? "active" : ""}
+                className={activeSection === "services" ? "active教師" : ""}
                 onClick={() => handleNavClick("services")}
               >
                 SERVICES
@@ -160,36 +159,71 @@ function App() {
       </header>
       <main>
         {activeSection === "home" && (
-          <section className="first-section" id="home">
-            <div className="landing-content">
-              <div className="title">
-                <span>CTRL+</span>
-                <span>Build</span>
+          <>
+            <section className="first-section" id="home">
+              <div className="landing-content">
+                <div className="title">
+                  <span>CTRL+</span>
+                  <span>Build</span>
+                </div>
+                <div className="description">
+                  <p className="line1">is your partner for cutting-edge</p>
+                  <p className="line2">web development and design,</p>
+                  <p className="line3">crafted for businesses that demand</p>
+                  <p className="line4">
+                    performance, scalability, and innovation
+                  </p>
+                </div>
               </div>
-              <div className="description">
-                <p className="line1">is your partner for cutting-edge</p>
-                <p className="line2">web development and design,</p>
-                <p className="line3">crafted for businesses that demand</p>
-                <p className="line4">
-                  performance, scalability, and innovation
+              <div className="additional-content">
+                <p>
+                  We deliver bespoke websites and applications tailored to your
+                  vision
                 </p>
+                <p>
+                  Our full-stack expertise ensures seamless, high-performance
+                  solutions
+                </p>
+                <p>
+                  From UI/UX design to robust backend systems, we build it all
+                </p>
+                <p>Partner with us to transform ideas into digital success</p>
               </div>
-            </div>
-            <div className="additional-content">
-              <p>
-                We deliver bespoke websites and applications tailored to your
-                vision
-              </p>
-              <p>
-                Our full-stack expertise ensures seamless, high-performance
-                solutions
-              </p>
-              <p>
-                From UI/UX design to robust backend systems, we build it all
-              </p>
-              <p>Partner with us to transform ideas into digital success</p>
-            </div>
-          </section>
+            </section>
+            <section className="intro-section">
+              <div className="intro-content">
+                <h2 className="intro-title">WHO WE ARE AND WHAT WE DO</h2>
+                <p className="intro-paragraph">
+                  We are a <span className="highlight">creative</span> agency
+                  specializing in <span className="highlight">innovative</span>{" "}
+                  design and <span className="highlight">strategic</span>{" "}
+                  solutions to <span className="highlight">empower</span> your{" "}
+                  <span className="highlight">brand</span>.
+                </p>
+                <div className="metrics-container">
+                  <h3 className="metrics-title">OUR KEY METRICS</h3>
+                  <div className="metrics-list">
+                    <div className="metric">
+                      <span className="metric-value">50+</span>
+                      <span className="metric-label">Projects Completed</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">98%</span>
+                      <span className="metric-label">Client Satisfaction</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">10+</span>
+                      <span className="metric-label">Years Experience</span>
+                    </div>
+                    <div className="metric">
+                      <span className="metric-value">100%</span>
+                      <span className="metric-label">On-Time Delivery</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
         )}
         {activeSection === "about" && (
           <section className="about-section" id="about">
