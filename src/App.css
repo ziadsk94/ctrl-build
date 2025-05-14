@@ -1,38 +1,391 @@
+@import url("https://fonts.googleapis.com/css2?family=Cousine:wght@400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cousine", "Courier New", Courier, monospace;
+  font-weight: 400;
+  overflow-x: hidden;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #fcfaf7;
+  color: #020202;
+}
+
+/* === App Container === */
 .App {
-  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* === Scroll Snapping Container === */
+.scroll-container {
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Each scrollable section */
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Combine Header + Hero into one full-page section */
+.header-hero-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background-color: #fcfaf7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: #020202;
+  font-weight: 700;
+  font-family: "Cousine", "Courier New", Courier, monospace;
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 2.5rem;
+}
+
+.logo-bold {
+  font-weight: 800;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-button {
+  background-color: #020202;
+  color: #fcfaf7;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 20px;
+  position: relative;
+  z-index: 20;
+  font-weight: 700;
+  line-height: 1.4;
+  transition: background-color 0.3s, transform 0.2s;
+  min-height: 44px;
+  font-family: inherit;
+}
+
+.menu-button:hover {
+  transform: scale(1.05);
+}
+
+.menu-button-open {
+  background-color: #fac6db;
+  color: #020202;
+}
+
+/* Navigation */
+.nav {
+  display: none;
+  position: absolute;
+  top: -0.5rem;
+  right: -1rem;
+  background-color: #020202;
+  padding: 2.5rem 1rem 2rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav li {
+  margin: 1rem 0;
+}
+
+.nav a {
+  color: #fcfaf7;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  font-family: inherit;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.header-hero-section .hero {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+.hero h1 {
+  font-size: 3.5rem;
+  color: #020202;
+  font-weight: 800;
+  max-width: 90%;
+  text-align: center;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  font-family: inherit;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.hero h3 {
+  font-size: 2rem;
+  color: #020202;
+  font-weight: 500;
+  max-width: 90%;
+  text-align: center;
+  letter-spacing: 0.03em;
+  line-height: 1.8;
+  margin-top: 1rem;
+  font-family: inherit;
+}
+
+.get-started-button {
+  background-color: #020202;
+  color: #fcfaf7;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  border: 2px solid #020202;
+  text-decoration: none;
+  margin-top: 2rem;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  min-height: 44px;
+  line-height: 1.4;
+  font-family: inherit;
+}
+
+.get-started-button:hover {
+  background-color: #3c8669;
+  color: #fcfaf7;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* About Section */
+.about {
+  background-color: #fcfaf7;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+  width: 100%;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  color: #3c8669;
+  text-decoration: underline;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  font-family: inherit;
+}
+
+.about p {
+  font-size: 1.125rem;
+  color: #020202;
+  line-height: 1.6;
+  margin-top: 1rem;
+  letter-spacing: 0.015em;
+  max-width: 600px;
+  font-family: inherit;
+}
+
+.about-button {
+  background-color: #020202;
+  color: #fcfaf7;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  border: 2px solid #020202;
+  text-decoration: none;
+  margin-top: 2rem;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  line-height: 1.4;
+  cursor: pointer;
+  min-height: 44px;
+  font-family: inherit;
+}
+
+.about-button:hover {
+  background-color: #3c8669;
+  color: #fcfaf7;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Cursor */
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, background-color 0.3s;
+  mix-blend-mode: difference;
+}
+
+.cursor:hover {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Scrollbar hidden for aesthetic */
+.scroll-container::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.scroll-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 2.8rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .hero h3 {
+    font-size: 1.5rem;
+  }
+
+  .about h2 {
+    font-size: 2.2rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    flex-wrap: nowrap;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .logo-image {
+    height: 1.2rem;
+    margin-right: 0.4rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h3 {
+    font-size: 1.2rem;
+  }
+
+  .menu-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .get-started-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .about h2 {
+    font-size: 1.8rem;
+  }
+
+  .about p {
+    font-size: 0.9rem;
+  }
+
+  .about-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.25rem;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 5rem;
+    border-radius: 0;
+    text-align: center;
+  }
+
+  .nav li {
+    margin: 2rem 0;
+  }
+
+  .nav a {
+    font-size: 1.2rem;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .scroll-container {
+    scroll-snap-type: none;
+    height: auto;
+  }
+
+  .snap-section {
+    height: auto;
   }
 }
