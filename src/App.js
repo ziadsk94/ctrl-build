@@ -24,7 +24,7 @@ function App() {
     const cursor = cursorRef.current;
 
     const handleMouseMove = (e) => {
-      targetPositionRef.current = { x: e.clientX - 50, y: e.clientY - 50 }; // Adjust for larger image cursor
+      targetPositionRef.current = { x: e.clientX - 50, y: e.clientY - 50 };
     };
 
     const animate = () => {
@@ -269,6 +269,37 @@ function App() {
           </li>
         </ul>
       </section>
+
+      <footer className="footer snap-section">
+        <div className="footer-content">
+          <div className="footer-logo">
+            <img src={logo} alt="CTRL+Build Logo" className="logo-image" />
+            <span className="logo-bold">CTRL</span>+Build
+          </div>
+          <nav className="footer-nav">
+            <ul>
+              <li>
+                <a href="#home">Home</a>
+              </li>
+              <li>
+                <a href="#portfolio">Portfolio</a>
+              </li>
+              <li>
+                <a href="#services">Services</a>
+              </li>
+              <li>
+                <a href="#about">About</a>
+              </li>
+            </ul>
+          </nav>
+          <div className="footer-contact">
+            <a href="mailto:contact@ctrl-build.com">contact@ctrl-build.com</a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2025 CTRL+Build. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
