@@ -105,7 +105,7 @@ function App() {
         </header>
         <div className="hero">
           <h1>Master Your Digital Craft with CTRL+Build</h1>
-          <h3>Crafting Innovative Web Solutions with Precision</h3>
+          <h3>Crafting Innovative Web Solutions with Precision.</h3>
           <a href="#get-started" className="get-started-button">
             Get Started
           </a>
