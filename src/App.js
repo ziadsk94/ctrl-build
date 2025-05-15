@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import logo from "./assets/images/logo.png";
+import brnchImage from "./assets/images/brnch.png";
+import aligneImage from "./assets/images/aligne.png";
+import frostAndFoundImage from "./assets/images/frost-and-found.png";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredPartner, setHoveredPartner] = useState(null);
   const cursorRef = useRef(null);
   const targetPositionRef = useRef({ x: 0, y: 0 });
   const currentPositionRef = useRef({ x: 0, y: 0 });
@@ -20,7 +24,7 @@ function App() {
     const cursor = cursorRef.current;
 
     const handleMouseMove = (e) => {
-      targetPositionRef.current = { x: e.clientX - 10, y: e.clientY - 10 };
+      targetPositionRef.current = { x: e.clientX - 50, y: e.clientY - 50 }; // Adjust for larger image cursor
     };
 
     const animate = () => {
@@ -123,7 +127,93 @@ function App() {
         <button className="about-button">Our Approach</button>
       </section>
 
-      <div className="cursor" ref={cursorRef}></div>
+      <section className="snap-section partners">
+        <div className="partners-header">
+          <h2>Selected Partners</h2>
+          <span className="partners-year">2025 ©</span>
+        </div>
+        <div className="partners-content">
+          <ul className="partners-list">
+            <li
+              onMouseEnter={() => setHoveredPartner("BRNCH")}
+              onMouseLeave={() => setHoveredPartner(null)}
+            >
+              <a
+                href="https://brnch-5eaa3.firebaseapp.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="partner-link"
+              >
+                {Array.from("BRNCH").map((letter, index) => (
+                  <span key={index} className="partner-letter">
+                    {letter}
+                  </span>
+                ))}
+              </a>
+            </li>
+            <li
+              onMouseEnter={() => setHoveredPartner("ALIGNÉ STUDIO")}
+              onMouseLeave={() => setHoveredPartner(null)}
+            >
+              <a
+                href="https://aligne-pilates.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="partner-link"
+              >
+                {Array.from("ALIGNÉ STUDIO").map((letter, index) => (
+                  <span key={index} className="partner-letter">
+                    {letter}
+                  </span>
+                ))}
+              </a>
+            </li>
+            <li
+              onMouseEnter={() => setHoveredPartner("FROST & FOUND")}
+              onMouseLeave={() => setHoveredPartner(null)}
+            >
+              <a
+                href="https://frost-and-found.web.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="partner-link"
+              >
+                {Array.from("FROST & FOUND").map((letter, index) => (
+                  <span key={index} className="partner-letter">
+                    {letter}
+                  </span>
+                ))}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div
+          className={`cursor ${hoveredPartner ? "cursor-image" : ""}`}
+          ref={cursorRef}
+        >
+          {hoveredPartner === "BRNCH" && (
+            <img
+              src={brnchImage}
+              alt="BRNCH"
+              className="cursor-partner-image"
+            />
+          )}
+          {hoveredPartner === "ALIGNÉ STUDIO" && (
+            <img
+              src={aligneImage}
+              alt="Aligné Studio"
+              className="cursor-partner-image"
+            />
+          )}
+          {hoveredPartner === "FROST & FOUND" && (
+            <img
+              src={frostAndFoundImage}
+              alt="Frost & Found"
+              className="cursor-partner-image"
+            />
+          )}
+        </div>
+      </section>
     </div>
   );
 }

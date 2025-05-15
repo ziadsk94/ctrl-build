@@ -205,7 +205,7 @@ body {
 /* About Section */
 .about {
   background-color: #fcfaf7;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -217,9 +217,8 @@ body {
 }
 
 .about h2 {
-  font-size: 2.5rem;
+  font-size: 1rem;
   color: #3c8669;
-  text-decoration: underline;
   font-weight: 700;
   letter-spacing: 0.03em;
   line-height: 1.4;
@@ -260,6 +259,133 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Partners Section */
+.partners {
+  background-color: #fcfaf7;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+  width: 100%;
+}
+
+.partners-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.partners-header h2 {
+  font-size: 1rem;
+  color: #3c8669;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  font-family: inherit;
+}
+
+.partners-year {
+  font-size: 1rem;
+  color: #808080;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.partners-content {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.partners-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.partners-list li {
+  margin: 1.5rem 0;
+}
+
+.partner-link {
+  font-size: 2.75rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: inherit;
+  display: inline-block;
+  letter-spacing: 0.03;
+}
+
+.partner-letter {
+  color: #808080;
+  display: inline-block;
+  transition: color 0.15s ease-in-out;
+}
+
+.partner-link:hover .partner-letter:nth-child(1) {
+  transition-delay: 0s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(2) {
+  transition-delay: 0.05s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(3) {
+  transition-delay: 0.1s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(4) {
+  transition-delay: 0.15s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(5) {
+  transition-delay: 0.2s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(6) {
+  transition-delay: 0.25s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(7) {
+  transition-delay: 0.3s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(8) {
+  transition-delay: 0.35s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(9) {
+  transition-delay: 0.4s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(10) {
+  transition-delay: 0.45s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(11) {
+  transition-delay: 0.5s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(12) {
+  transition-delay: 0.55s;
+  color: #3c8669;
+}
+.partner-link:hover .partner-letter:nth-child(13) {
+  transition-delay: 0.6s;
+  color: #3c8669;
+}
+
 /* Cursor */
 .cursor {
   position: fixed;
@@ -270,12 +396,33 @@ body {
   pointer-events: none;
   z-index: 1000;
   transform: translate(-50%, -50%);
-  transition: transform 0.2s ease, background-color 0.3s;
+  transition: transform 0.2s ease, opacity 0.3s ease;
   mix-blend-mode: difference;
 }
 
-.cursor:hover {
-  transform: translate(-50%, -50%) scale(1.5);
+.cursor-image {
+  width: 90px;
+  height: 90px;
+  transform: translate(-50%, -50%) scale(1.05);
+  transition: transform 0.3s ease-in-out;
+  pointer-events: none;
+  background-color: transparent;
+  border-radius: 0;
+  mix-blend-mode: normal;
+}
+
+.cursor-partner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 /* Scrollbar hidden for aesthetic */
@@ -305,6 +452,19 @@ body {
 
   .about p {
     font-size: 1rem;
+  }
+
+  .partners-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .partner-link {
+    font-size: 2.5rem;
+  }
+
+  .cursor-image {
+    width: 80px;
+    height: 80px;
   }
 }
 
@@ -343,9 +503,13 @@ body {
     font-size: 1rem;
     padding: 0.75rem 1.5rem;
   }
+  .about {
+    padding: 4rem 1rem;
+    gap: 2rem;
+  }
 
   .about h2 {
-    font-size: 1.8rem;
+    font-size: 1rem;
   }
 
   .about p {
@@ -356,6 +520,26 @@ body {
     font-size: 0.9rem;
     padding: 0.5rem 1.25rem;
   }
+  .partners {
+    padding: 4rem 1rem;
+    gap: 2rem;
+  }
+
+  .partners-header h2 {
+    font-size: 1rem;
+  }
+
+  .partners-year {
+    font-size: 0.9rem;
+  }
+
+  .partner-link {
+    font-size: 2rem;
+  }
+
+  .partners-list {
+    margin-top: 1.5rem;
+  }
 
   .nav {
     position: fixed;
@@ -363,7 +547,7 @@ body {
     right: 0;
     width: 100vw;
     height: 100vh;
-    padding-top: 5rem;
+    padding: 5rem 1rem;
     border-radius: 0;
     text-align: center;
   }
