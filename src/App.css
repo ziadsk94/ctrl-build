@@ -16,7 +16,6 @@ body {
   color: #020202;
 }
 
-/* === App Container === */
 .App {
   width: 100%;
   max-width: 100%;
@@ -459,7 +458,7 @@ body {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  min-width: 0; /* Prevent overflow on small screens */
+  min-width: 0;
 }
 
 .service-content h3 {
@@ -469,9 +468,9 @@ body {
   font-family: inherit;
   letter-spacing: 0.02em;
   text-align: left;
-  margin-left: 2rem; /* Shift h3 to the right */
-  flex-shrink: 1; /* Allow h3 to shrink if needed */
-  min-width: 0; /* Prevent overflow */
+  margin-left: 2rem;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .service-link {
@@ -482,7 +481,7 @@ body {
   font-family: inherit;
   transition: color 0.2s ease;
   white-space: nowrap;
-  flex-shrink: 0; /* Prevent link from shrinking */
+  flex-shrink: 0;
 }
 
 .service-link:hover {
@@ -692,7 +691,7 @@ body {
 
   .service-content h3 {
     font-size: 1.5rem;
-    margin-left: 1.5rem; /* Adjust for smaller screens */
+    margin-left: 1.5rem;
   }
 
   .service-link {
@@ -843,7 +842,7 @@ body {
 
   .service-content h3 {
     font-size: 1.2rem;
-    margin-left: 1rem; /* Further adjust for mobile */
+    margin-left: 1rem;
   }
 
   .service-link {

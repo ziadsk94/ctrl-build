@@ -24,7 +24,7 @@ function App() {
     const cursor = cursorRef.current;
 
     const handleMouseMove = (e) => {
-      targetPositionRef.current = { x: e.clientX - 50, y: e.clientY - 50 };
+      targetPositionRef.current = { x: e.clientX - 0, y: e.clientY - 0 };
     };
 
     const animate = () => {
