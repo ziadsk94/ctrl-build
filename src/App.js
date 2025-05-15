@@ -214,6 +214,61 @@ function App() {
           )}
         </div>
       </section>
+
+      <section className="snap-section services">
+        <h2>Services</h2>
+        <p>
+          Discover our tailored digital solutions designed to elevate your brand
+          and spark innovation. Explore each service to see how we can transform
+          your vision into reality.
+        </p>
+        <ul className="services-list">
+          <li>
+            <span className="service-number">01</span>
+            <div className="service-content">
+              <div className="service-title-wrapper">
+                <h3>Web Development</h3>
+                <a href="#service1" className="service-link">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span className="service-number">02</span>
+            <div className="service-content">
+              <div className="service-title-wrapper">
+                <h3>UI/UX Design</h3>
+                <a href="#service2" className="service-link">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span className="service-number">03</span>
+            <div className="service-content">
+              <div className="service-title-wrapper">
+                <h3>Digital Strategy</h3>
+                <a href="#service3" className="service-link">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span className="service-number">04</span>
+            <div className="service-content">
+              <div className="service-title-wrapper">
+                <h3>Maintenance & Support</h3>
+                <a href="#service4" className="service-link">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
     </div>
   );
 }
