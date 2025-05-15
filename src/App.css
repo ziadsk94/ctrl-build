@@ -540,8 +540,8 @@ body {
   scrollbar-width: none;
 }
 .footer {
-  background-color: #020202;
-  color: #fcfaf7;
+  background-color: #fac6db;
+  color: #020202;
   padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
@@ -568,7 +568,7 @@ body {
   font-family: "Cousine", "Courier New", Courier, monospace;
   display: flex;
   align-items: center;
-  color: #fcfaf7;
+  color: #020202;
 }
 
 .footer-logo .logo-image {
@@ -593,7 +593,7 @@ body {
 }
 
 .footer-nav a {
-  color: #fcfaf7;
+  color: #020202;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
