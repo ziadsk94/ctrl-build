@@ -301,27 +301,25 @@ body {
   justify-content: flex-start;
 }
 
-.partners-list {
-  list-style: none;
-  padding: 0;
+.partner-section {
   margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  align-items: flex-start;
 }
 
-.partners-list li {
-  margin: 1.5rem 0;
+.partner-main {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
 .partner-link {
-  font-size: 2.75rem;
+  font-size: 5rem;
   text-decoration: none;
   font-weight: 600;
   font-family: inherit;
   display: inline-block;
   letter-spacing: 0.03;
+  position: relative;
 }
 
 .partner-letter {
@@ -350,37 +348,52 @@ body {
   transition-delay: 0.2s;
   color: #3c8669;
 }
-.partner-link:hover .partner-letter:nth-child(6) {
-  transition-delay: 0.25s;
-  color: #3c8669;
+
+.partner-info {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+  max-width: 400px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  padding-right: 2rem;
 }
-.partner-link:hover .partner-letter:nth-child(7) {
-  transition-delay: 0.3s;
-  color: #3c8669;
+
+.partner-link:hover + .partner-info {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }
-.partner-link:hover .partner-letter:nth-child(8) {
-  transition-delay: 0.35s;
+
+.partner-info h3 {
+  font-size: 1.5rem;
   color: #3c8669;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
-.partner-link:hover .partner-letter:nth-child(9) {
-  transition-delay: 0.4s;
-  color: #3c8669;
+
+.partner-info p {
+  font-size: 1.125rem;
+  color: #020202;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
-.partner-link:hover .partner-letter:nth-child(10) {
-  transition-delay: 0.45s;
-  color: #3c8669;
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
-.partner-link:hover .partner-letter:nth-child(11) {
-  transition-delay: 0.5s;
-  color: #3c8669;
-}
-.partner-link:hover .partner-letter:nth-child(12) {
-  transition-delay: 0.55s;
-  color: #3c8669;
-}
-.partner-link:hover .partner-letter:nth-child(13) {
-  transition-delay: 0.6s;
-  color: #3c8669;
+
+.tech-stack span {
+  background-color: #3c8669;
+  color: #fcfaf7;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* Services Section */
@@ -668,8 +681,25 @@ body {
     font-size: 2.2rem;
   }
 
+  .partner-main {
+    gap: 1.5rem;
+  }
+
   .partner-link {
     font-size: 2.5rem;
+  }
+
+  .partner-info {
+    max-width: 350px;
+    left: 40%;
+  }
+
+  .partner-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .partner-info p {
+    font-size: 1rem;
   }
 
   .services h2 {
@@ -794,23 +824,41 @@ body {
 
   .partners {
     padding: 4rem 1rem;
-    gap: 2rem;
   }
 
-  .partners-header h2 {
-    font-size: 1rem;
-  }
-
-  .partners-year {
-    font-size: 0.9rem;
+  .partner-main {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .partner-link {
     font-size: 2rem;
   }
 
-  .partners-list {
-    margin-top: 1.5rem;
+  .partner-info {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    max-width: 100%;
+    transform: translateY(-10px);
+    padding-right: 0;
+  }
+
+  .partner-link:hover + .partner-info {
+    transform: translateY(0);
+  }
+
+  .partner-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .partner-info p {
+    font-size: 0.9rem;
+  }
+
+  .tech-stack span {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
   }
 
   .services {

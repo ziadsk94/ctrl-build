@@ -131,16 +131,15 @@ function App() {
           <span className="partners-year">2025 ©</span>
         </div>
         <div className="partners-content">
-          <ul className="partners-list">
-            <li
-              onMouseEnter={() => setHoveredPartner("TEREN")}
-              onMouseLeave={() => setHoveredPartner(null)}
-            >
+          <div className="partner-section">
+            <div className="partner-main">
               <a
                 href="https://teren-1.onrender.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="partner-link"
+                onMouseEnter={() => setHoveredPartner("TEREN")}
+                onMouseLeave={() => setHoveredPartner(null)}
               >
                 {Array.from("TEREN").map((letter, index) => (
                   <span key={index} className="partner-letter">
@@ -148,8 +147,26 @@ function App() {
                   </span>
                 ))}
               </a>
-            </li>
-          </ul>
+              <div className="partner-info">
+                <h3>Football Game Finder</h3>
+                <p>
+                  A comprehensive platform connecting football enthusiasts with
+                  local games. Features include a user-friendly frontend for
+                  game discovery and booking, a powerful backend system for
+                  real-time updates, and a dedicated venue management dashboard.
+                  Users can create, join, or organize games, while venue
+                  managers can efficiently handle bookings and facility
+                  management.
+                </p>
+                <div className="tech-stack">
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>MongoDB</span>
+                  <span>Express</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div
           className={`cursor ${hoveredPartner ? "cursor-image" : ""}`}
