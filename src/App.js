@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import logo from "./assets/images/logo.png";
-import brnchImage from "./assets/images/brnch.png";
-import aligneImage from "./assets/images/aligne.png";
-import frostAndFoundImage from "./assets/images/frost-and-found.png";
+import terenImage from "./assets/images/teren.png";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -135,50 +133,16 @@ function App() {
         <div className="partners-content">
           <ul className="partners-list">
             <li
-              onMouseEnter={() => setHoveredPartner("BRNCH")}
+              onMouseEnter={() => setHoveredPartner("TEREN")}
               onMouseLeave={() => setHoveredPartner(null)}
             >
               <a
-                href="https://brnch-5eaa3.firebaseapp.com"
+                href="https://teren-1.onrender.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="partner-link"
               >
-                {Array.from("BRNCH").map((letter, index) => (
-                  <span key={index} className="partner-letter">
-                    {letter}
-                  </span>
-                ))}
-              </a>
-            </li>
-            <li
-              onMouseEnter={() => setHoveredPartner("ALIGNÉ STUDIO")}
-              onMouseLeave={() => setHoveredPartner(null)}
-            >
-              <a
-                href="https://aligne-pilates.web.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="partner-link"
-              >
-                {Array.from("ALIGNÉ STUDIO").map((letter, index) => (
-                  <span key={index} className="partner-letter">
-                    {letter}
-                  </span>
-                ))}
-              </a>
-            </li>
-            <li
-              onMouseEnter={() => setHoveredPartner("FROST & FOUND")}
-              onMouseLeave={() => setHoveredPartner(null)}
-            >
-              <a
-                href="https://frost-and-found.web.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="partner-link"
-              >
-                {Array.from("FROST & FOUND").map((letter, index) => (
+                {Array.from("TEREN").map((letter, index) => (
                   <span key={index} className="partner-letter">
                     {letter}
                   </span>
@@ -191,24 +155,10 @@ function App() {
           className={`cursor ${hoveredPartner ? "cursor-image" : ""}`}
           ref={cursorRef}
         >
-          {hoveredPartner === "BRNCH" && (
+          {hoveredPartner === "TEREN" && (
             <img
-              src={brnchImage}
-              alt="BRNCH"
-              className="cursor-partner-image"
-            />
-          )}
-          {hoveredPartner === "ALIGNÉ STUDIO" && (
-            <img
-              src={aligneImage}
-              alt="Aligné Studio"
-              className="cursor-partner-image"
-            />
-          )}
-          {hoveredPartner === "FROST & FOUND" && (
-            <img
-              src={frostAndFoundImage}
-              alt="Frost & Found"
+              src={terenImage}
+              alt="TEREN"
               className="cursor-partner-image"
             />
           )}
