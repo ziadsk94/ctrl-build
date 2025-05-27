@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import terenScreenshot1 from "../assets/images/teren-screenshot-1.png";
 import terenScreenshot2 from "../assets/images/teren-screenshot-2.png";
@@ -6,6 +6,10 @@ import terenScreenshot3 from "../assets/images/teren-screenshot-3.png";
 import logo from "../assets/images/logo.png";
 
 const TerenCaseStudy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="case-study">
       <div className="case-study-header">
