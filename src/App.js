@@ -265,11 +265,13 @@ function AppContent() {
                     </div>
                   </div>
                 </div>
-                <Link to="/portfolio" className="portfolio-button">
-                  View All Projects
-                </Link>
               </div>
             </div>
+          </div>
+          <div className="portfolio-cta">
+            <Link to="/portfolio" className="cta-button">
+              <span>View All Projects</span>
+            </Link>
           </div>
         </section>
 
