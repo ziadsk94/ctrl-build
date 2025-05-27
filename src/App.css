@@ -29,6 +29,13 @@ body {
   mix-blend-mode: difference;
 }
 
+/* Hide custom cursor on mobile devices */
+@media (max-width: 768px) {
+  .cursor {
+    display: none;
+  }
+}
+
 /* Text hover effect */
 a:hover ~ .cursor,
 p:hover ~ .cursor,

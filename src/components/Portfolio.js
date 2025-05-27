@@ -110,9 +110,9 @@ function Portfolio() {
                   >
                     View Live →
                   </a>
-                  <a href="#" className="project-link project-link-secondary">
+                  <button className="project-link project-link-secondary">
                     Case Study →
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
