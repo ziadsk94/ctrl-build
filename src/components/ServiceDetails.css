@@ -100,26 +100,27 @@
   font-weight: 500;
 }
 
-.service-cta {
-  margin-top: 2rem;
-  text-align: center;
-}
-
 .contact-button {
   display: inline-block;
-  background-color: #020202;
-  color: #fcfaf7;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
+  color: #020202;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
   border: 2px solid #020202;
+  font-family: inherit;
+  background: none;
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .contact-button:hover {
   background-color: #3c8669;
-  transform: scale(1.05);
+  color: #fcfaf7;
+  transform: translateY(-2px);
+  border-color: #020202;
 }
 
 @media (max-width: 768px) {

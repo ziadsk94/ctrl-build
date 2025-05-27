@@ -93,11 +93,9 @@ function ServiceDetails({ service, onClose }) {
             </div>
           </div>
 
-          <div className="service-cta">
-            <a href="mailto:contact@ctrl-build.com" className="contact-button">
-              Get Started
-            </a>
-          </div>
+          <a href="mailto:contact@ctrl-build.com" className="contact-button">
+            Get Started
+          </a>
         </div>
       </div>
     </div>
