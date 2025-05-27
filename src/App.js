@@ -270,56 +270,70 @@ function AppContent() {
           </div>
         </section>
 
-        <section id="services" className="snap-section services">
-          <div className="services-header">
-            <h2>Our Services</h2>
-          </div>
-          <div className="services-list">
+        <section className="snap-section services" id="services">
+          <h2>Our Services</h2>
+          <div className="services-grid">
             <div className="service-item">
               <div className="service-content">
-                <h3>01</h3>
-                <div className="service-details">
-                  <h4>Web Development</h4>
-                  <p>Custom web applications built with modern technologies.</p>
-                </div>
+                <h3>Web Development</h3>
+                <p>
+                  Custom websites and web applications built with modern
+                  technologies and best practices.
+                </p>
               </div>
               <button
-                className="service-link"
-                onClick={() => handleServiceClick("web-development")}
+                className="service-arrow"
+                onClick={() => {
+                  window.location.href = "/services";
+                  setTimeout(() => {
+                    handleServiceClick("web-development");
+                  }, 100);
+                }}
+                aria-label="View Web Development details"
               >
-                →
+                Read More
               </button>
             </div>
             <div className="service-item">
               <div className="service-content">
-                <h3>02</h3>
-                <div className="service-details">
-                  <h4>UI/UX Design</h4>
-                  <p>
-                    Beautiful and intuitive user interfaces that engage users.
-                  </p>
-                </div>
+                <h3>Mobile Development</h3>
+                <p>
+                  Native and cross-platform mobile applications for iOS and
+                  Android devices.
+                </p>
               </div>
               <button
-                className="service-link"
-                onClick={() => handleServiceClick("ui-ux-design")}
+                className="service-arrow"
+                onClick={() => {
+                  window.location.href = "/services";
+                  setTimeout(() => {
+                    handleServiceClick("mobile-development");
+                  }, 100);
+                }}
+                aria-label="View Mobile Development details"
               >
-                →
+                Read More
               </button>
             </div>
             <div className="service-item">
               <div className="service-content">
-                <h3>03</h3>
-                <div className="service-details">
-                  <h4>Digital Strategy</h4>
-                  <p>Strategic planning to help your business grow online.</p>
-                </div>
+                <h3>UI/UX Design</h3>
+                <p>
+                  User-centered design solutions that create engaging and
+                  intuitive digital experiences.
+                </p>
               </div>
               <button
-                className="service-link"
-                onClick={() => handleServiceClick("digital-strategy")}
+                className="service-arrow"
+                onClick={() => {
+                  window.location.href = "/services";
+                  setTimeout(() => {
+                    handleServiceClick("ui-ux-design");
+                  }, 100);
+                }}
+                aria-label="View UI/UX Design details"
               >
-                →
+                Read More
               </button>
             </div>
           </div>
