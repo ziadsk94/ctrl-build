@@ -268,11 +268,6 @@ function AppContent() {
               </div>
             </div>
           </div>
-          <div className="portfolio-cta">
-            <Link to="/portfolio" className="cta-button">
-              <span>View All Projects</span>
-            </Link>
-          </div>
         </section>
 
         <section id="services" className="snap-section services">
