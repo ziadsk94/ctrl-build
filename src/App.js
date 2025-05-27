@@ -137,12 +137,6 @@ function AppContent() {
   }, []);
 
   const renderContent = () => {
-    if (location.pathname === "/about") {
-      return <About />;
-    }
-    if (location.pathname === "/services") {
-      return <Services />;
-    }
     if (location.pathname === "/portfolio") {
       return <Portfolio />;
     }
@@ -402,6 +396,8 @@ function App() {
         <Route path="/" element={<AppContent />} />
         <Route path="/case-study/teren" element={<TerenCaseStudy />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
       </Routes>
     </Router>
   );
