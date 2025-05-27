@@ -1,0 +1,152 @@
+.service-details-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.service-details-modal {
+  background-color: #fcfaf7;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 3rem;
+  border-radius: 2px;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #020202;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.close-button:hover {
+  transform: rotate(90deg);
+}
+
+.service-details-content h2 {
+  font-size: 2rem;
+  color: #020202;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.service-description {
+  font-size: 1.2rem;
+  color: #808080;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.service-features h3,
+.service-technologies h3 {
+  font-size: 1.2rem;
+  color: #3c8669;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.service-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.service-features li {
+  font-size: 1rem;
+  color: #020202;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.service-features li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #3c8669;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.tech-tag {
+  background-color: #f9f4ee;
+  color: #020202;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.service-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.contact-button {
+  display: inline-block;
+  background-color: #020202;
+  color: #fcfaf7;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid #020202;
+}
+
+.contact-button:hover {
+  background-color: #3c8669;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .service-details-modal {
+    padding: 2rem;
+    width: 95%;
+  }
+
+  .service-details-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .service-description {
+    font-size: 1.1rem;
+  }
+
+  .service-features h3,
+  .service-technologies h3 {
+    font-size: 1.1rem;
+  }
+
+  .service-features li {
+    font-size: 0.9rem;
+  }
+
+  .tech-tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
