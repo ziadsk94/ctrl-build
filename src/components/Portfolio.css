@@ -259,14 +259,19 @@
 }
 
 .project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #020202;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   border: 2px solid #020202;
   border-radius: 50px;
   transition: all 0.3s ease;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .project-link:hover {
@@ -278,6 +283,7 @@
 .project-link-secondary {
   background-color: transparent;
   color: #020202;
+  border: 2px solid #020202;
 }
 
 .project-link-secondary:hover {
@@ -287,39 +293,48 @@
 }
 
 .portfolio-cta {
+  padding: 6rem 2rem;
+  text-align: center;
   background-color: #020202;
   color: #fcfaf7;
-  padding: 8rem 2rem;
-  text-align: center;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .portfolio-cta h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin: 0 0 1rem;
+  margin-bottom: 1rem;
+  max-width: 600px;
 }
 
 .portfolio-cta p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #fac6db;
-  margin: 0 0 2rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
 }
 
 .cta-button {
-  display: inline-block;
-  color: #020202;
-  background-color: #fcfaf7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: #3c8669;
+  color: #fcfaf7;
   text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 1.25rem 2.5rem;
   border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
 }
 
 .cta-button:hover {
-  background-color: #fac6db;
+  background-color: #2d6650;
   transform: translateY(-2px);
 }
 
@@ -369,11 +384,35 @@
     flex-direction: column;
   }
 
+  .project-link {
+    width: 100%;
+    justify-content: center;
+  }
+
   .portfolio-cta {
-    padding: 4rem 1rem;
+    padding: 4rem 1.5rem;
   }
 
   .portfolio-cta h2 {
     font-size: 2rem;
+    margin-bottom: 0.75rem;
+    max-width: 100%;
+  }
+
+  .portfolio-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .cta-button::after {
+    display: none;
   }
 }
