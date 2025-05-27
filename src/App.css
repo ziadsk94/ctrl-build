@@ -831,7 +831,7 @@ textarea {
   }
 
   .about h2 {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   .about p {
@@ -931,7 +931,7 @@ textarea {
   }
 
   .portfolio-header h2 {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   .portfolio .project-image {
@@ -994,5 +994,62 @@ textarea {
 
   .service-details p {
     font-size: 0.9rem;
+  }
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #3c8669;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #2d6650;
+  transform: translateY(-2px);
+}
+
+/* Circular button for small screens */
+@media (max-width: 768px) {
+  .cta-button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .cta-button::after {
+    content: "→";
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cta-button span {
+    display: none;
+  }
+}
+
+.portfolio-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .portfolio-cta {
+    margin-top: 2rem;
   }
 }
