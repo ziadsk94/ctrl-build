@@ -59,6 +59,7 @@ function Services() {
           ← Back
         </Link>
         <h1>Services</h1>
+        <p>Transforming ideas into exceptional digital experiences.</p>
       </div>
 
       <div className="services-container">

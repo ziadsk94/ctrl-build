@@ -6,9 +6,14 @@
 }
 
 .services-hero {
-  padding: 4rem 2rem;
+  padding: 6rem 2rem 3rem;
   background-color: #020202;
   color: #fcfaf7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
 }
 
 .services-hero .back-button {
@@ -22,13 +27,39 @@
   padding: 0.5rem 1rem;
   border: 2px solid #fcfaf7;
   border-radius: 50px;
+  transition: all 0.3s ease;
+  width: fit-content;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.services-hero .back-button:hover {
+  background-color: #fcfaf7;
+  color: #020202;
 }
 
 .services-hero h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: #fcfaf7;
-  font-weight: 700;
-  margin-top: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  font-family: inherit;
+  margin: 0;
+  max-width: 800px;
+}
+
+.services-hero p {
+  font-size: 1.5rem;
+  color: #fac6db;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  font-family: inherit;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0;
 }
 
 .services-container {
@@ -137,11 +168,20 @@
 
 @media (max-width: 768px) {
   .services-hero {
-    padding: 3rem 1rem;
+    padding: 6rem 1rem 3rem;
+  }
+
+  .services-hero .back-button {
+    top: 1.5rem;
+    left: 1.5rem;
   }
 
   .services-hero h1 {
     font-size: 2.5rem;
+  }
+
+  .services-hero p {
+    font-size: 1.2rem;
   }
 
   .services-container {

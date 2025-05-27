@@ -2,14 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, useLocation, Link } from "react-router-dom";
 import "./App.css";
 import logo from "./assets/images/logo.png";
-import terenImage from "./assets/images/teren.png";
 import About from "./components/About";
 import Services from "./components/Services";
 import ServiceDetails from "./components/ServiceDetails";
+import Portfolio from "./components/Portfolio";
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hoveredPartner, setHoveredPartner] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
   const cursorRef = useRef(null);
   const targetPositionRef = useRef({ x: 0, y: 0 });
@@ -36,46 +35,15 @@ function AppContent() {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
-  useEffect(() => {
-    const cursor = cursorRef.current;
-
-    const handleMouseMove = (e) => {
-      targetPositionRef.current = { x: e.clientX - 0, y: e.clientY - 0 };
-    };
-
-    const animate = () => {
-      const lerp = (start, end, factor) => start + (end - start) * factor;
-      currentPositionRef.current.x = lerp(
-        currentPositionRef.current.x,
-        targetPositionRef.current.x,
-        0.05
-      );
-      currentPositionRef.current.y = lerp(
-        currentPositionRef.current.y,
-        targetPositionRef.current.y,
-        0.05
-      );
-
-      cursor.style.left = `${currentPositionRef.current.x}px`;
-      cursor.style.top = `${currentPositionRef.current.y}px`;
-
-      requestAnimationFrame(animate);
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    requestAnimationFrame(animate);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   const renderContent = () => {
     if (location.pathname === "/about") {
       return <About />;
     }
     if (location.pathname === "/services") {
       return <Services />;
+    }
+    if (location.pathname === "/portfolio") {
+      return <Portfolio />;
     }
 
     return (
@@ -106,9 +74,9 @@ function AppContent() {
                     </Link>
                   </li>
                   <li>
-                    <a href="#portfolio" onClick={toggleMenu}>
+                    <Link to="/portfolio" onClick={toggleMenu}>
                       Portfolio
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <Link to="/services" onClick={toggleMenu}>
@@ -169,49 +137,47 @@ function AppContent() {
           </Link>
         </section>
 
-        <section className="snap-section partners">
-          <div className="partners-header">
-            <h2>Selected Partners</h2>
-            <span className="partners-year">2025 ©</span>
+        <section className="snap-section portfolio">
+          <div className="portfolio-header">
+            <h2>Selected Works</h2>
+            <span className="portfolio-year">2025 ©</span>
           </div>
-          <div className="partners-content">
-            <div className="partner-section">
-              <div className="partner-main">
+          <div className="portfolio-grid">
+            <div className="project-card" data-project="teren">
+              <div className="project-header">
+                <h3>TEREN</h3>
+                <span className="project-year">2025</span>
+              </div>
+              <p className="project-description">
+                A comprehensive platform connecting football enthusiasts with
+                local games. Features include a user-friendly frontend for game
+                discovery and booking, a powerful backend system for real-time
+                updates, and a dedicated venue management dashboard.
+              </p>
+              <div className="project-tech">
+                <span className="tech-tag">React</span>
+                <span className="tech-tag">Node.js</span>
+                <span className="tech-tag">MongoDB</span>
+                <span className="tech-tag">Express</span>
+              </div>
+              <div className="project-links">
                 <a
                   href="https://teren-1.onrender.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="partner-link"
-                  onMouseEnter={() => setHoveredPartner("TEREN")}
-                  onMouseLeave={() => setHoveredPartner(null)}
+                  className="project-link"
                 >
-                  {Array.from("TEREN").map((letter, index) => (
-                    <span key={index} className="partner-letter">
-                      {letter}
-                    </span>
-                  ))}
+                  View Live →
                 </a>
-                <div className="partner-info">
-                  <h3>Football Game Finder</h3>
-                  <p>
-                    A comprehensive platform connecting football enthusiasts
-                    with local games. Features include a user-friendly frontend
-                    for game discovery and booking, a powerful backend system
-                    for real-time updates, and a dedicated venue management
-                    dashboard. Users can create, join, or organize games, while
-                    venue managers can efficiently handle bookings and facility
-                    management.
-                  </p>
-                  <div className="tech-stack">
-                    <span>React</span>
-                    <span>Node.js</span>
-                    <span>MongoDB</span>
-                    <span>Express</span>
-                  </div>
-                </div>
+                <a href="#" className="project-link project-link-secondary">
+                  Case Study →
+                </a>
               </div>
             </div>
           </div>
+          <Link to="/portfolio" className="portfolio-button">
+            View All Projects
+          </Link>
         </section>
 
         <section className="snap-section services">
@@ -282,7 +248,7 @@ function AppContent() {
                   <a href="#home">Home</a>
                 </li>
                 <li>
-                  <a href="#portfolio">Portfolio</a>
+                  <Link to="/portfolio">Portfolio</Link>
                 </li>
                 <li>
                   <a href="#services">Services</a>
@@ -314,14 +280,6 @@ function AppContent() {
         />
       )}
       {isMenuOpen && <div className="menu-overlay" onClick={closeMenu} />}
-      <div
-        className={`cursor ${hoveredPartner ? "cursor-image" : ""}`}
-        ref={cursorRef}
-      >
-        {hoveredPartner === "TEREN" && (
-          <img src={terenImage} alt="TEREN" className="cursor-partner-image" />
-        )}
-      </div>
     </>
   );
 }
