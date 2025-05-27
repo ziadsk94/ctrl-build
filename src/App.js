@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter as Router, useLocation, Link } from "react-router-dom";
 import "./App.css";
 import logo from "./assets/images/logo.png";
 import terenImage from "./assets/images/teren.png";
@@ -170,7 +164,9 @@ function AppContent() {
               <span className="stat-label">Growth Potential</span>
             </div>
           </div>
-          <button className="about-button">Join Our Journey</button>
+          <Link to="/about" className="about-button">
+            Join Our Journey
+          </Link>
         </section>
 
         <section className="snap-section partners">
