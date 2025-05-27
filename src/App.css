@@ -540,38 +540,13 @@ textarea {
 
 /* Services Section */
 .services {
-  padding: 8rem 2rem;
   background-color: #fcfaf7;
+  padding: 6rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-.services::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+  align-items: flex-start;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(
-      45deg,
-      transparent 48%,
-      rgba(60, 134, 105, 0.03) 50%,
-      transparent 52%
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 48%,
-      rgba(60, 134, 105, 0.03) 50%,
-      transparent 52%
-    );
-  background-size: 60px 60px;
-  pointer-events: none;
+  min-height: 100vh;
 }
 
 .services h2 {
@@ -579,17 +554,7 @@ textarea {
   color: #3c8669;
   font-weight: 700;
   letter-spacing: 0.03em;
-}
-
-.services h2::after {
-  content: "";
-  position: absolute;
-  bottom: -1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #3c8669, transparent);
+  margin-bottom: 3rem;
 }
 
 .services-grid {
@@ -597,18 +562,14 @@ textarea {
   flex-direction: column;
   gap: 6rem;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
 }
 
 .service-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 4rem;
+  width: 100%;
   position: relative;
-  padding: 2rem 0;
-  cursor: pointer;
 }
 
 .service-item:nth-child(even) {
@@ -617,18 +578,20 @@ textarea {
 
 .service-content {
   flex: 1;
-  position: relative;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  align-items: flex-start;
 }
 
 .service-content h3 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #020202;
-  margin: 0 0 1rem 0;
-  letter-spacing: -0.02em;
   position: relative;
-  display: inline-block;
+  width: 100%;
+  text-align: left;
 }
 
 .service-content h3::before {
@@ -648,28 +611,20 @@ textarea {
 }
 
 .service-content p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #666;
-  line-height: 1.6;
-  margin: 0;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-  max-width: 90%;
-}
-
-.service-item:hover .service-content p {
-  opacity: 1;
-  transform: translateX(1rem);
+  line-height: 1.8;
+  width: 100%;
+  text-align: left;
 }
 
 .service-visual {
   flex: 1;
-  position: relative;
-  height: 400px;
+  height: 300px;
   background: linear-gradient(135deg, rgba(60, 134, 105, 0.05), transparent);
   border-radius: 2px;
+  position: relative;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-visual::before {
@@ -681,41 +636,13 @@ textarea {
   transition: opacity 0.4s ease;
 }
 
-.service-item:hover .service-visual {
-  transform: scale(1.02);
-}
-
 .service-item:hover .service-visual::before {
   opacity: 1;
 }
 
-.service-number {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 5rem;
-  font-weight: 800;
-  color: #3c8669;
-  opacity: 0.03;
-  line-height: 1;
-  transition: all 0.4s ease;
-  z-index: 0;
-}
-
-.service-item:hover .service-number {
-  opacity: 0.05;
-  transform: scale(1.1);
-}
-
 .service-arrow {
-  position: absolute;
-  bottom: 0;
-  right: 0;
   font-size: 0.9rem;
   color: #3c8669;
-  opacity: 0;
-  transform: translateX(-1rem);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
   letter-spacing: 0.02em;
   padding: 0.5rem 0;
@@ -723,40 +650,41 @@ textarea {
   border: none;
   cursor: pointer;
   font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  width: fit-content;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .service-arrow::after {
   content: "→";
   font-size: 1rem;
-  margin-left: 0.5rem;
   transition: transform 0.3s ease;
-  display: inline-block;
 }
 
-.service-item:hover .service-arrow {
-  opacity: 1;
-  transform: translateX(0);
+.service-arrow:hover {
+  color: #2d6650;
 }
 
-.service-item:hover .service-arrow::after {
+.service-arrow:hover::after {
   transform: translateX(4px);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .service-item {
     gap: 3rem;
   }
 
   .service-content h3 {
-    font-size: 1.5rem;
-  }
-
-  .service-content p {
-    font-size: 0.95rem;
+    font-size: 1.75rem;
   }
 
   .service-visual {
-    height: 300px;
+    height: 250px;
   }
 }
 
@@ -773,16 +701,20 @@ textarea {
   .service-item:nth-child(even) {
     flex-direction: column;
     gap: 2rem;
-    padding: 1rem 0;
   }
 
   .service-content {
     text-align: center;
+    align-items: center;
+  }
+
+  .service-content h3,
+  .service-content p {
+    text-align: center;
   }
 
   .service-content h3 {
-    font-size: 1.35rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
   }
 
   .service-content h3::before {
@@ -790,25 +722,18 @@ textarea {
   }
 
   .service-content p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     max-width: 100%;
   }
 
   .service-visual {
-    height: 250px;
+    height: 200px;
     width: 100%;
   }
 
-  .service-number {
-    font-size: 3.5rem;
-  }
-
   .service-arrow {
-    font-size: 0.85rem;
-  }
-
-  .service-arrow::after {
-    font-size: 0.9rem;
+    position: static;
+    margin: 0 auto;
   }
 }
 
