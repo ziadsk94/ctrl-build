@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { BrowserRouter as Router, useLocation, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  useLocation,
+  Link,
+  Routes,
+  Route,
+} from "react-router-dom";
 import "./App.css";
 import logo from "./assets/images/logo.png";
 import About from "./components/About";
@@ -7,6 +13,7 @@ import Services from "./components/Services";
 import ServiceDetails from "./components/ServiceDetails";
 import Portfolio from "./components/Portfolio";
 import terenImage from "./assets/images/teren.png";
+import TerenCaseStudy from "./components/TerenCaseStudy";
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -257,7 +264,7 @@ function AppContent() {
                         View Live
                       </a>
                       <Link
-                        to="/portfolio"
+                        to="/case-study/teren"
                         className="project-link project-link-secondary"
                       >
                         Case Study
@@ -391,7 +398,11 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <AppContent />
+      <Routes>
+        <Route path="/" element={<AppContent />} />
+        <Route path="/case-study/teren" element={<TerenCaseStudy />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+      </Routes>
     </Router>
   );
 }

@@ -110,9 +110,12 @@ function Portfolio() {
                   >
                     View Live →
                   </a>
-                  <button className="project-link project-link-secondary">
+                  <Link
+                    to="/case-study/teren"
+                    className="project-link project-link-secondary"
+                  >
                     Case Study →
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
