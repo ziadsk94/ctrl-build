@@ -133,7 +133,7 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
       <BlueprintSection project={project} />
 
       {/* The Build */}
-      <BuildSection />
+      <BuildSection project={project} />
 
       {/* The Impact */}
       <ImpactSection project={project} />
@@ -153,6 +153,7 @@ interface Project {
   challenge: string;
   colorPalette: Array<{ name: string; hex: string; color: string }>;
   typography: Array<{ name: string; font: string; size: string; weight: string }>;
+  buildImages: Array<{ src: string; alt: string; caption: string }>;
   metrics: Array<{ value: string; label: string }>;
   testimonial: string;
   testimonialAuthor: string;
@@ -296,7 +297,7 @@ function BlueprintSection({ project }: { project: Project }) {
   );
 }
 
-function BuildSection() {
+function BuildSection({ project }: { project: Project }) {
   return (
     <section className="py-24 bg-alabaster">
       <div className="max-w-7xl mx-auto px-6">
@@ -305,29 +306,18 @@ function BuildSection() {
         </h3>
 
         <div className="space-y-24">
-          {/* Featured Image */}
-          <div className="relative">
-            <img
-              src="/assets/images/featured-2.png"
-              alt="iPower Website Desktop Mockup"
-              className="w-full h-96 object-cover rounded-lg"
-            />
-            <div className="absolute bottom-4 left-4 bg-alabaster/90 px-4 py-2 rounded">
-              <p className="font-satoshi text-stone italic text-sm">High-resolution device mockup showcasing responsive design</p>
+          {project.buildImages.map((image: { src: string; alt: string; caption: string }, index: number) => (
+            <div key={index} className="relative">
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-96 object-cover rounded-lg"
+              />
+              <div className="absolute bottom-4 left-4 bg-alabaster/90 px-4 py-2 rounded">
+                <p className="font-satoshi text-stone italic text-sm">{image.caption}</p>
+              </div>
             </div>
-          </div>
-
-          {/* Interaction Demo */}
-          <div className="relative">
-            <img
-              src="/assets/images/Screenshot (15).png"
-              alt="iPower Website Interaction Demo"
-              className="w-full h-96 object-cover rounded-lg"
-            />
-            <div className="absolute bottom-4 left-4 bg-alabaster/90 px-4 py-2 rounded">
-              <p className="font-satoshi text-stone italic text-sm">Screen recording demonstrating key animations and features</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
