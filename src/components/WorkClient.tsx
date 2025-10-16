@@ -30,6 +30,14 @@ export default function WorkClient() {
 
   const projects = [
     {
+      id: 'aetier',
+      title: 'AETIER',
+      services: 'Brand Strategy, Digital Experience, Web Development',
+      category: 'BRAND IDENTITY',
+      image: '/assets/images/featured-1.png',
+      slug: 'aetier'
+    },
+    {
       id: 'ipower',
       title: 'iPower',
       services: 'Web Design, Development, SEO',

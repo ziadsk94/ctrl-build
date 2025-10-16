@@ -31,11 +31,21 @@ export default function FeaturedWork() {
   const projects = [
     {
       id: 1,
+      title: "AETIER",
+      services: "Brand Strategy, Digital Experience, Web Development",
+      image: "/assets/images/featured-1.png",
+      video: "/assets/images/Screenshot%20(14).png",
+      gridClass: "col-span-6 col-start-2",
+      textPosition: "below",
+      slug: "aetier"
+    },
+    {
+      id: 2,
       title: "iPower",
       services: "Web Design, Development, SEO",
       image: "/assets/images/featured-2.png",
-      video: "/assets/images/Screenshot%20(15).png", // URL encoded spaces
-      gridClass: "col-span-10 col-start-2",
+      video: "/assets/images/Screenshot%20(15).png",
+      gridClass: "col-span-4 col-start-9",
       textPosition: "below",
       slug: "ipower"
     }

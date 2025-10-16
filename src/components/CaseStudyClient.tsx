@@ -31,42 +31,88 @@ export default function CaseStudyClient() {
     return () => observer.disconnect();
   }, []);
 
-  // Mock project data - in real app, this would come from CMS/API
-  const project = {
-    title: 'iPower',
-    client: 'iPower',
-    services: 'Web Design, Development, SEO',
-    year: '2025',
-    liveUrl: 'https://ipower-9xk.pages.dev',
-    challenge: 'iPower needed to establish a strong digital presence in Lebanon\'s electrical engineering solutions market. The challenge was to create a professional web platform that would showcase their 15+ years of experience, attract clients across Lebanon\'s diverse industries (residential, commercial, and industrial), and demonstrate their expertise in electrical systems, solar solutions, and automation.',
-    colorPalette: [
-      { name: 'Primary', hex: '#007577', color: '#007577' },
-      { name: 'Secondary', hex: '#E68E27', color: '#E68E27' },
-      { name: 'Accent', hex: '#939C98', color: '#939C98' },
-      { name: 'Background', hex: '#FFFFFF', color: '#FFFFFF' }
-    ],
-    typography: [
-      { name: 'H1', font: 'Polly Rounded', size: '64px', weight: 'Bold' },
-      { name: 'H2', font: 'Polly Rounded', size: '48px', weight: 'Regular' },
-      { name: 'Body', font: 'Polly Rounded', size: '16px', weight: 'Light' },
-      { name: 'Caption', font: 'Polly Rounded', size: '14px', weight: 'Thin' }
-    ],
-    wireframes: [
-      '/assets/images/wireframe-1.png', // Placeholder
-      '/assets/images/wireframe-2.png', // Placeholder
-    ],
-    buildImages: [
-      { src: '/assets/images/featured-2.png', alt: 'iPower Website Desktop Mockup', caption: 'High-resolution device mockup showcasing responsive design' },
-      { src: '/assets/images/Screenshot (15).png', alt: 'iPower Website Interaction Demo', caption: 'Screen recording demonstrating key animations and features' },
-    ],
-    metrics: [
-      { value: '100+', label: 'Electrical Projects Completed' },
-      { value: '15+', label: 'Years of Experience' },
-      { value: '98%', label: 'Client Satisfaction Score' }
-    ],
-    testimonial: '"The new website perfectly showcases our electrical engineering expertise across Lebanon and has significantly improved our online visibility. CTRL+BUILD understood our mission to empower Lebanon with reliable electrical systems."',
-    testimonialAuthor: 'iPower Team, Lebanon'
+  // Get project data based on URL slug
+  const getProjectData = () => {
+    const pathname = window.location.pathname;
+    const slug = pathname.split('/').pop();
+    
+    if (slug === 'aetier') {
+      return {
+        title: 'AETIER',
+        client: 'AETIER',
+        services: 'Brand Strategy, Digital Experience, Web Development',
+        year: '2025',
+        liveUrl: 'https://aetier.pages.dev',
+        challenge: 'AETIER needed to establish a distinctive brand identity in the competitive brand strategy space. The challenge was to create a digital experience that would communicate their philosophy of "Signal Over Noise" - distilling complexity into clarity for leaders of category-defining companies. The website needed to reflect their refined, minimalist approach while showcasing their expertise in brand strategy, digital experience, and content creation.',
+        colorPalette: [
+          { name: 'Charcoal', hex: '#1E1E1E', color: '#1E1E1E' },
+          { name: 'Stone', hex: '#A1A1A5', color: '#A1A1A5' },
+          { name: 'Alabaster', hex: '#F9F9F7', color: '#F9F9F7' },
+          { name: 'Accent', hex: '#3A4B40', color: '#3A4B40' }
+        ],
+        typography: [
+          { name: 'H1', font: 'Tiempos Headline', size: '80px', weight: 'Bold' },
+          { name: 'H2', font: 'Tiempos Headline', size: '64px', weight: 'Bold' },
+          { name: 'Body', font: 'Satoshi', size: '18px', weight: 'Regular' },
+          { name: 'Caption', font: 'Satoshi', size: '14px', weight: 'Medium' }
+        ],
+        wireframes: [
+          '/assets/images/wireframe-1.png', // Placeholder
+          '/assets/images/wireframe-2.png', // Placeholder
+        ],
+        buildImages: [
+          { src: '/assets/images/featured-1.png', alt: 'AETIER Website Desktop View', caption: 'Clean, minimalist design showcasing brand strategy expertise' },
+          { src: '/assets/images/Screenshot (14).png', alt: 'AETIER Website Interaction Demo', caption: 'Smooth animations and refined user experience' },
+        ],
+        metrics: [
+          { value: '50+', label: 'Brand Strategies Delivered' },
+          { value: '100%', label: 'Client Retention Rate' },
+          { value: '3x', label: 'Brand Recognition Growth' }
+        ],
+        testimonial: '"AETIER has a unique ability to distill complexity into its most elegant and effective form. They didn\'t just give us a new website; they gave us a language and a platform that finally articulated our true value in the market. The clarity they provided has been foundational to our growth."',
+        testimonialAuthor: 'Julian Hayes, Founder & CEO, Arcsecond'
+      };
+    }
+    
+    // Default to iPower project
+    return {
+      title: 'iPower',
+      client: 'iPower',
+      services: 'Web Design, Development, SEO',
+      year: '2025',
+      liveUrl: 'https://ipower-9xk.pages.dev',
+      challenge: 'iPower needed to establish a strong digital presence in Lebanon\'s electrical engineering solutions market. The challenge was to create a professional web platform that would showcase their 15+ years of experience, attract clients across Lebanon\'s diverse industries (residential, commercial, and industrial), and demonstrate their expertise in electrical systems, solar solutions, and automation.',
+      colorPalette: [
+        { name: 'Primary', hex: '#007577', color: '#007577' },
+        { name: 'Secondary', hex: '#E68E27', color: '#E68E27' },
+        { name: 'Accent', hex: '#939C98', color: '#939C98' },
+        { name: 'Background', hex: '#FFFFFF', color: '#FFFFFF' }
+      ],
+      typography: [
+        { name: 'H1', font: 'Polly Rounded', size: '64px', weight: 'Bold' },
+        { name: 'H2', font: 'Polly Rounded', size: '48px', weight: 'Regular' },
+        { name: 'Body', font: 'Polly Rounded', size: '16px', weight: 'Light' },
+        { name: 'Caption', font: 'Polly Rounded', size: '14px', weight: 'Thin' }
+      ],
+      wireframes: [
+        '/assets/images/wireframe-1.png', // Placeholder
+        '/assets/images/wireframe-2.png', // Placeholder
+      ],
+      buildImages: [
+        { src: '/assets/images/featured-2.png', alt: 'iPower Website Desktop Mockup', caption: 'High-resolution device mockup showcasing responsive design' },
+        { src: '/assets/images/Screenshot (15).png', alt: 'iPower Website Interaction Demo', caption: 'Screen recording demonstrating key animations and features' },
+      ],
+      metrics: [
+        { value: '100+', label: 'Electrical Projects Completed' },
+        { value: '15+', label: 'Years of Experience' },
+        { value: '98%', label: 'Client Satisfaction Score' }
+      ],
+      testimonial: '"The new website perfectly showcases our electrical engineering expertise across Lebanon and has significantly improved our online visibility. CTRL+BUILD understood our mission to empower Lebanon with reliable electrical systems."',
+      testimonialAuthor: 'iPower Team, Lebanon'
+    };
   };
+
+  const project = getProjectData();
 
   if (!project) {
     return <div className="min-h-screen flex items-center justify-center">Project not found</div>;

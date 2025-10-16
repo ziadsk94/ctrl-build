@@ -3,12 +3,40 @@ import { Metadata } from 'next';
 
 export async function generateStaticParams() {
   return [
+    { slug: 'aetier' },
     { slug: 'ipower' }
   ];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+  
+  if (slug === 'aetier') {
+    return {
+      title: 'AETIER - Brand Strategy & Digital Experience | CTRL+BUILD',
+      description: 'Discover how we crafted AETIER\'s brand strategy and digital experience, distilling complexity into clarity for leaders of category-defining companies.',
+      keywords: 'AETIER, brand strategy, digital experience, brand identity, web development, CTRL+BUILD',
+      openGraph: {
+        title: 'AETIER - Brand Strategy & Digital Experience',
+        description: 'Discover how we crafted AETIER\'s brand strategy and digital experience, distilling complexity into clarity for leaders of category-defining companies.',
+        url: 'https://ctrlbuild.com/work/aetier',
+        siteName: 'CTRL+BUILD',
+        images: [
+          {
+            url: 'https://ctrlbuild.com/opengraph-image',
+            width: 1200,
+            height: 630,
+            alt: 'AETIER - Brand Strategy & Digital Experience',
+          },
+        ],
+        locale: 'en_US',
+        type: 'website',
+      },
+      alternates: {
+        canonical: 'https://ctrlbuild.com/work/aetier',
+      },
+    };
+  }
   
   if (slug === 'ipower') {
     return {
