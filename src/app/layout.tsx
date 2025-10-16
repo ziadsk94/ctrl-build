@@ -100,7 +100,7 @@ export default function RootLayout({
       "@type": "ContactPoint",
       "telephone": "+40-XXX-XXX-XXX",
       "contactType": "customer service",
-      "email": "hello@ctrlbuild.com"
+      "email": "contact@ctrl-build.com"
     },
     "sameAs": [
       "https://linkedin.com/company/ctrlbuild",

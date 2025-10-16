@@ -92,7 +92,7 @@ function CTAButton() {
 
   return (
     <a
-      href="mailto:hello@ctrlbuild.com?subject=Project Inquiry from ctrlbuild.com"
+      href="mailto:contact@ctrl-build.com?subject=Project Inquiry from ctrlbuild.com"
       className="inline-block group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

@@ -40,7 +40,7 @@ export default function ContactClient() {
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('hello@ctrlbuild.com');
+      await navigator.clipboard.writeText('contact@ctrl-build.com');
       setEmailCopied(true);
       setTimeout(() => setEmailCopied(false), 1500);
     } catch (err) {
@@ -84,7 +84,7 @@ export default function ContactClient() {
                     ) : isEmailHovered ? (
                       <span>COPY TO CLIPBOARD</span>
                     ) : (
-                      <span>hello@ctrlbuild.com</span>
+                      <span>contact@ctrl-build.com</span>
                     )}
                   </div>
                 </div>
