@@ -33,8 +33,8 @@ export default function FeaturedWork() {
       id: 1,
       title: "AETIER",
       services: "Brand Strategy, Digital Experience, Web Development",
-      image: "/assets/images/featured-1.png",
-      video: "/assets/images/Screenshot%20(14).png",
+      image: "/assets/images/featured-4.png",
+      video: "/assets/images/Screenshot%20(17).png",
       gridClass: "col-span-6 col-start-2",
       textPosition: "below",
       slug: "aetier"

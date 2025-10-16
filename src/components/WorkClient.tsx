@@ -34,7 +34,7 @@ export default function WorkClient() {
       title: 'AETIER',
       services: 'Brand Strategy, Digital Experience, Web Development',
       category: 'BRAND IDENTITY',
-      image: '/assets/images/featured-1.png',
+      image: '/assets/images/featured-4.png',
       slug: 'aetier'
     },
     {

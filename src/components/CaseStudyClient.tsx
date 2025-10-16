@@ -61,8 +61,8 @@ export default function CaseStudyClient() {
           '/assets/images/wireframe-2.png', // Placeholder
         ],
         buildImages: [
-          { src: '/assets/images/featured-1.png', alt: 'AETIER Website Desktop View', caption: 'Clean, minimalist design showcasing brand strategy expertise' },
-          { src: '/assets/images/Screenshot (14).png', alt: 'AETIER Website Interaction Demo', caption: 'Smooth animations and refined user experience' },
+          { src: '/assets/images/featured-4.png', alt: 'AETIER Website Desktop View', caption: 'Clean, minimalist design showcasing brand strategy expertise' },
+          { src: '/assets/images/Screenshot (17).png', alt: 'AETIER Website Interaction Demo', caption: 'Smooth animations and refined user experience' },
         ],
         metrics: [
           { value: '50+', label: 'Brand Strategies Delivered' },
