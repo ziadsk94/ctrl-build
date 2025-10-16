@@ -311,7 +311,7 @@ function BuildSection({ project }: { project: Project }) {
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full rounded-lg"
+                className="w-full max-w-2xl mx-auto rounded-lg"
                 style={{ height: 'auto' }}
               />
               <div className="absolute bottom-4 left-4 bg-alabaster/90 px-4 py-2 rounded">
