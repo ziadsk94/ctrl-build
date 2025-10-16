@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 // Route segment config
-export const runtime = 'edge'
+export const dynamic = 'force-static'
 
 // Image metadata
 export const size = {
@@ -24,15 +24,20 @@ export default function AppleIcon() {
           justifyContent: 'center',
         }}
       >
-        <img
-          src="/logo.png"
-          alt="CTRL+BUILD"
+        <div
           style={{
             width: '100%',
             height: '100%',
-            objectFit: 'contain',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '32px',
+            fontWeight: 'bold',
+            color: '#1E1E1E',
           }}
-        />
+        >
+          CTRL+BUILD
+        </div>
       </div>
     ),
     {

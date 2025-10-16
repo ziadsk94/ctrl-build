@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 // Route segment config
-export const runtime = 'edge'
+export const dynamic = 'force-static'
 
 // Image metadata
 export const alt = 'CTRL+BUILD - Digital Architecture & Design Studio'
@@ -27,16 +27,23 @@ export default function OpenGraphImage() {
           color: '#1E1E1E',
         }}
       >
-        <img
-          src="/logo.png"
-          alt="CTRL+BUILD Logo"
+        <div
           style={{
             width: 200,
             height: 200,
-            objectFit: 'contain',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '48px',
+            fontWeight: 'bold',
+            color: '#1E1E1E',
             marginBottom: 40,
+            border: '4px solid #1E1E1E',
+            borderRadius: '12px',
           }}
-        />
+        >
+          CTRL+BUILD
+        </div>
         <div
           style={{
             fontSize: 80,

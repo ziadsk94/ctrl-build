@@ -88,7 +88,7 @@ export default function CaseStudyClient() {
       <BlueprintSection project={project} />
 
       {/* The Build */}
-      <BuildSection project={project} />
+      <BuildSection />
 
       {/* The Impact */}
       <ImpactSection project={project} />
@@ -105,6 +105,12 @@ interface Project {
   services: string;
   year: string;
   liveUrl: string;
+  challenge: string;
+  colorPalette: Array<{ name: string; hex: string; color: string }>;
+  typography: Array<{ name: string; font: string; size: string; weight: string }>;
+  metrics: Array<{ value: string; label: string }>;
+  testimonial: string;
+  testimonialAuthor: string;
 }
 
 function HeroSection({
