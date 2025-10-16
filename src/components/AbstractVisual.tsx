@@ -68,7 +68,13 @@ function Points({ pillar }: { pillar: string }) {
   return (
     <>
       {springs.map((props, i) => (
-        <a.mesh key={i} {...props} geometry={pointGeometry} material={pointMaterial} />
+        <a.mesh 
+          key={i} 
+          {...props} 
+          geometry={pointGeometry} 
+          material={pointMaterial}
+          position={props.position as [number, number, number]}
+        />
       ))}
     </>
   );

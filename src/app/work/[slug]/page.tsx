@@ -45,6 +45,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  return <CaseStudyClient params={resolvedParams} />;
+  await params; // Await to satisfy Next.js 15 requirements
+  return <CaseStudyClient />;
 }
