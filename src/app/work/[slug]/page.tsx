@@ -1,8 +1,8 @@
 import CaseStudyClient from '@/components/CaseStudyClient';
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   
   if (slug === 'ipower') {
     return {
@@ -44,6 +44,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  return <CaseStudyClient params={params} />;
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  return <CaseStudyClient params={resolvedParams} />;
 }

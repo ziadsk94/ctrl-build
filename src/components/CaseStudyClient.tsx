@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import StartConversation from '@/components/StartConversation';
 
-export default function CaseStudyClient() {
+export default function CaseStudyClient({ params }: { params: { slug: string } }) {
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
 
