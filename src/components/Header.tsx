@@ -49,30 +49,25 @@ export default function Header() {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 h-full">
-        <div className="grid grid-cols-12 h-full items-center">
-          {/* Logotype - Column 1 */}
-          <div className="col-span-1">
+        <div className="flex items-center justify-between h-full">
+          {/* Logotype */}
+          <div className="flex-shrink-0">
             <Logotype />
           </div>
           
-          {/* Spacer - Columns 2-5 */}
-          <div className="col-span-4"></div>
-          
-          {/* Primary Navigation - Column 6 */}
-          <div className="col-span-2">
-            <nav className="flex gap-8">
-              <NavLink href="/work" label="WORK" />
-              <NavLink href="/studio" label="STUDIO" />
-            </nav>
-          </div>
-          
-          {/* Spacer - Columns 7-11 */}
-          <div className="col-span-4"></div>
-          
-          {/* Contact - Column 12 */}
-          <div className="col-span-1 flex justify-end">
+          {/* Navigation - Desktop */}
+          <nav className="hidden md:flex items-center gap-8">
+            <NavLink href="/work" label="WORK" />
+            <NavLink href="/studio" label="STUDIO" />
             <NavLink href="/contact" label="CONTACT" />
-          </div>
+          </nav>
+          
+          {/* Navigation - Mobile */}
+          <nav className="flex md:hidden items-center gap-6">
+            <NavLink href="/work" label="WORK" />
+            <NavLink href="/studio" label="STUDIO" />
+            <NavLink href="/contact" label="CONTACT" />
+          </nav>
         </div>
       </div>
     </header>
