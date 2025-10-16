@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import StartConversation from '@/components/StartConversation';
 
-export default function CaseStudyClient() {
+export default function CaseStudyClient({ slug }: { slug: string }) {
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -31,11 +31,8 @@ export default function CaseStudyClient() {
     return () => observer.disconnect();
   }, []);
 
-  // Get project data based on URL slug
+  // Get project data based on slug prop
   const getProjectData = () => {
-    const pathname = window.location.pathname;
-    const slug = pathname.split('/').pop();
-    
     if (slug === 'aetier') {
       return {
         title: 'AETIER',
