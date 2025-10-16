@@ -178,7 +178,7 @@ function HeroSection({
       >
         <div className="w-full h-full bg-studio-green flex items-center justify-center">
           <img
-            src={project.title === 'AETIER' ? '/assets/images/featured-4.png' : '/assets/images/featured-2.png'}
+            src={project.title === 'AETIER' ? '/assets/images/aetier-mockup-iphone.png' : '/assets/images/featured-2.png'}
             alt={`${project.title} Project Hero`}
             className="w-full h-full object-cover"
           />
