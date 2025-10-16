@@ -114,7 +114,7 @@ function HeroSection({
 }: {
   project: Project;
   scrollY: number;
-  heroRef: React.RefObject<HTMLDivElement>;
+  heroRef: React.RefObject<HTMLDivElement | null>;
 }) {
   return (
     <section ref={heroRef} className="relative h-screen overflow-hidden">
