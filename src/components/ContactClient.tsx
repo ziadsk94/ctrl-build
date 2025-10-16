@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 
 export default function ContactClient() {
-  const [isVisible, setIsVisible] = useState(true);
   const [currentTime, setCurrentTime] = useState('');
   const [isOnline, setIsOnline] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
@@ -55,23 +54,19 @@ export default function ContactClient() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-12 gap-8">
             {/* Left Pane - The Invitation */}
-            <div className={`col-span-12 md:col-span-6 md:col-start-2 transition-all duration-800 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
+            <div className="col-span-12 md:col-span-6 md:col-start-2">
               <div className="space-y-6 md:space-y-8">
                 <h1 className="font-tiempos text-charcoal text-5xl md:text-6xl lg:text-8xl font-bold leading-none">
                   Let's build together.
                 </h1>
                 <p className="font-satoshi text-charcoal text-base md:text-lg leading-relaxed">
-                  We believe the best work begins with a real conversation. We've skipped the forms to connect with you directly. For new projects, collaborations, or inquiries, please use the channels provided.
+                  We believe the best work begins with a real conversation. We&apos;ve skipped the forms to connect with you directly. For new projects, collaborations, or inquiries, please use the channels provided.
                 </p>
               </div>
             </div>
 
             {/* Right Pane - The Channels */}
-            <div className={`col-span-12 md:col-span-4 md:col-start-9 transition-all duration-800 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`} style={{ transitionDelay: isVisible ? '200ms' : '0ms' }}>
+            <div className="col-span-12 md:col-span-4 md:col-start-9">
               <div className="space-y-8">
                 {/* Primary Contact */}
                 <div>

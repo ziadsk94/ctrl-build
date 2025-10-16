@@ -114,7 +114,16 @@ function FilterSystem({
   );
 }
 
-function ProjectGrid({ projects }: { projects: any[] }) {
+interface Project {
+  id: string;
+  title: string;
+  services: string;
+  category: string;
+  image: string;
+  slug: string;
+}
+
+function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {projects.map((project) => (
@@ -124,16 +133,11 @@ function ProjectGrid({ projects }: { projects: any[] }) {
   );
 }
 
-function ProjectEntry({ project }: { project: any }) {
-  const [isHovered, setIsHovered] = useState(false);
+function ProjectEntry({ project }: { project: Project }) {
 
   return (
     <Link href={`/work/${project.slug}`}>
-      <div
-        className="group cursor-pointer"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <div className="group cursor-pointer">
         {/* Project Image */}
         <div className="relative overflow-hidden rounded-lg mb-6">
           <div className="aspect-video">

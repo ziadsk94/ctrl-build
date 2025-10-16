@@ -62,7 +62,7 @@ export default function StartConversation() {
               
               {/* Supporting Statement */}
               <p className="font-satoshi text-charcoal text-base md:text-lg leading-relaxed">
-                Have a challenge in mind or a project on the horizon? We're ready to listen.
+                Have a challenge in mind or a project on the horizon? We&apos;re ready to listen.
               </p>
               
               {/* Call-to-Action */}

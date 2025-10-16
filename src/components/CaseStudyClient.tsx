@@ -5,9 +5,7 @@ import Link from 'next/link';
 import StartConversation from '@/components/StartConversation';
 
 export default function CaseStudyClient({ params }: { params: { slug: string } }) {
-  const { slug } = params;
   const [scrollY, setScrollY] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,7 +18,7 @@ export default function CaseStudyClient({ params }: { params: { slug: string } }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          // Observer logic if needed
         }
       },
       { threshold: 0.1 }
@@ -80,7 +78,6 @@ export default function CaseStudyClient({ params }: { params: { slug: string } }
       <HeroSection
         project={project}
         scrollY={scrollY}
-        isVisible={isVisible}
         heroRef={heroRef}
       />
 
@@ -102,15 +99,21 @@ export default function CaseStudyClient({ params }: { params: { slug: string } }
   );
 }
 
+interface Project {
+  title: string;
+  client: string;
+  services: string;
+  year: string;
+  liveUrl: string;
+}
+
 function HeroSection({
   project,
   scrollY,
-  isVisible,
   heroRef
 }: {
-  project: any;
+  project: Project;
   scrollY: number;
-  isVisible: boolean;
   heroRef: React.RefObject<HTMLDivElement>;
 }) {
   return (
@@ -169,7 +172,7 @@ function HeroSection({
   );
 }
 
-function BriefSection({ project }: { project: any }) {
+function BriefSection({ project }: { project: Project }) {
   return (
     <section className="py-24 bg-alabaster">
       <div className="max-w-6xl mx-auto px-6">
@@ -188,7 +191,7 @@ function BriefSection({ project }: { project: any }) {
   );
 }
 
-function BlueprintSection({ project }: { project: any }) {
+function BlueprintSection({ project }: { project: Project }) {
   return (
     <section className="py-24 bg-stone/5">
       <div className="max-w-7xl mx-auto px-6">
@@ -242,7 +245,7 @@ function BlueprintSection({ project }: { project: any }) {
   );
 }
 
-function BuildSection({ project }: { project: any }) {
+function BuildSection({ project }: { project: Project }) {
   return (
     <section className="py-24 bg-alabaster">
       <div className="max-w-7xl mx-auto px-6">
@@ -280,7 +283,7 @@ function BuildSection({ project }: { project: any }) {
   );
 }
 
-function ImpactSection({ project }: { project: any }) {
+function ImpactSection({ project }: { project: Project }) {
   return (
     <section className="py-24 bg-stone/5">
       <div className="max-w-6xl mx-auto px-6">

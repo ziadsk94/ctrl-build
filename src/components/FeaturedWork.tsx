@@ -88,16 +88,27 @@ export default function FeaturedWork() {
   );
 }
 
-function ProjectModule({ 
-  project, 
-  index, 
-  isVisible, 
-  isHovered, 
-  isSiblingHovered, 
-  onHover, 
-  onLeave 
+interface Project {
+  id: number;
+  title: string;
+  services: string;
+  image: string;
+  video: string;
+  gridClass: string;
+  textPosition: string;
+  slug: string;
+}
+
+function ProjectModule({
+  project,
+  index,
+  isVisible,
+  isHovered,
+  isSiblingHovered,
+  onHover,
+  onLeave
 }: {
-  project: any;
+  project: Project;
   index: number;
   isVisible: boolean;
   isHovered: boolean;
@@ -186,12 +197,12 @@ function CallToAction() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <a
-      href="/work"
-      className="relative cursor-pointer font-satoshi text-sm font-medium tracking-blueprint uppercase transition-colors duration-300"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+        <Link
+          href="/work"
+          className="relative cursor-pointer font-satoshi text-sm font-medium tracking-blueprint uppercase transition-colors duration-300"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
       Explore All Works
       <span
         className={`absolute bottom-0 left-0 h-px bg-studio-green transition-transform duration-250 origin-center ${
@@ -199,6 +210,6 @@ function CallToAction() {
         }`}
         style={{ width: '100%' }}
       />
-    </a>
+        </Link>
   );
 }

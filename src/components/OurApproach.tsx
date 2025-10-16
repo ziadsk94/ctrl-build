@@ -110,12 +110,23 @@ export default function OurApproach() {
   );
 }
 
+interface Pillar {
+  id: number;
+  number: string;
+  title: string;
+  content: {
+    title: string;
+    narrative: string;
+    deliverables: string[];
+  };
+}
+
 function PillarIndex({ 
   pillars, 
   activePillar, 
   onPillarSelect 
 }: {
-  pillars: any[];
+  pillars: Pillar[];
   activePillar: number;
   onPillarSelect: (id: number) => void;
 }) {
@@ -138,7 +149,7 @@ function PillarItem({
   isActive, 
   onSelect 
 }: {
-  pillar: any;
+  pillar: Pillar;
   isActive: boolean;
   onSelect: () => void;
 }) {
@@ -170,7 +181,7 @@ function PillarExposition({
   pillar, 
   activePillar 
 }: {
-  pillar: any;
+  pillar: Pillar;
   activePillar: number;
 }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
