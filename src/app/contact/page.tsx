@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import StartConversation from '@/components/StartConversation';
 import { Metadata } from 'next';
