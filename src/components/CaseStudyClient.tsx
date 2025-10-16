@@ -61,6 +61,7 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
         ],
         buildImages: [
           { src: '/assets/images/featured-4.png', alt: 'AETIER Website Desktop View', caption: 'Clean, minimalist design showcasing brand strategy expertise' },
+          { src: '/assets/images/aetier-mockup-iphone.png', alt: 'AETIER Website Mobile View', caption: 'Responsive design optimized for mobile experience' },
           { src: '/assets/images/Screenshot (17).png', alt: 'AETIER Website Interaction Demo', caption: 'Smooth animations and refined user experience' },
         ],
         metrics: [
