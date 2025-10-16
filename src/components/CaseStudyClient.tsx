@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import StartConversation from '@/components/StartConversation';
 
-export default function CaseStudyClient({ params }: { params: { slug: string } }) {
+export default function CaseStudyClient() {
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
 
@@ -202,7 +202,7 @@ function BlueprintSection({ project }: { project: Project }) {
               Color Palette
             </h3>
             <div className="space-y-4">
-              {project.colorPalette.map((color: any, index: number) => (
+              {project.colorPalette.map((color: { name: string; hex: string; color: string }, index: number) => (
                 <div key={index} className="flex items-center space-x-4">
                   <div
                     className="w-16 h-16 rounded-lg border border-stone/20"
@@ -223,7 +223,7 @@ function BlueprintSection({ project }: { project: Project }) {
               Typography
             </h3>
             <div className="space-y-6">
-              {project.typography.map((type: any, index: number) => (
+              {project.typography.map((type: { name: string; font: string; size: string; weight: string }, index: number) => (
                 <div key={index} className="border-b border-stone/20 pb-4">
                   <div className="font-satoshi text-stone text-sm mb-2">{type.name}</div>
                   <div
@@ -245,7 +245,7 @@ function BlueprintSection({ project }: { project: Project }) {
   );
 }
 
-function BuildSection({ project }: { project: Project }) {
+function BuildSection() {
   return (
     <section className="py-24 bg-alabaster">
       <div className="max-w-7xl mx-auto px-6">
@@ -295,7 +295,7 @@ function ImpactSection({ project }: { project: Project }) {
             
             {/* Metrics */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {project.metrics.map((metric: any, index: number) => (
+              {project.metrics.map((metric: { value: string; label: string }, index: number) => (
                 <div key={index} className="text-center">
                   <div className="font-tiempos text-charcoal text-4xl font-bold mb-2">
                     {metric.value}

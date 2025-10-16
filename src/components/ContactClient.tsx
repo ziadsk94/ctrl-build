@@ -57,7 +57,7 @@ export default function ContactClient() {
             <div className="col-span-12 md:col-span-6 md:col-start-2">
               <div className="space-y-6 md:space-y-8">
                 <h1 className="font-tiempos text-charcoal text-5xl md:text-6xl lg:text-8xl font-bold leading-none">
-                  Let's build together.
+                  Let&apos;s build together.
                 </h1>
                 <p className="font-satoshi text-charcoal text-base md:text-lg leading-relaxed">
                   We believe the best work begins with a real conversation. We&apos;ve skipped the forms to connect with you directly. For new projects, collaborations, or inquiries, please use the channels provided.

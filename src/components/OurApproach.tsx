@@ -132,7 +132,7 @@ function PillarIndex({
 }) {
   return (
     <div className="space-y-8">
-      {pillars.map((pillar, index) => (
+      {pillars.map((pillar) => (
         <PillarItem
           key={pillar.id}
           pillar={pillar}
