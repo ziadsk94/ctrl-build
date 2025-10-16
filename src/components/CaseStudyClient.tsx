@@ -311,8 +311,8 @@ function BuildSection({ project }: { project: Project }) {
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full max-w-2xl mx-auto rounded-lg"
-                style={{ height: 'auto' }}
+                className="w-full max-w-lg mx-auto rounded-lg object-cover"
+                style={{ height: '400px' }}
               />
               <div className="absolute bottom-4 left-4 bg-alabaster/90 px-4 py-2 rounded">
                 <p className="font-satoshi text-stone italic text-sm">{image.caption}</p>
