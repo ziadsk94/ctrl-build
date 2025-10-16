@@ -73,7 +73,7 @@ function Points({ pillar }: { pillar: string }) {
           {...props} 
           geometry={pointGeometry} 
           material={pointMaterial}
-          position={props.position as [number, number, number]}
+          position={props.position as unknown as [number, number, number]}
         />
       ))}
     </>
