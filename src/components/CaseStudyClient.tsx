@@ -42,16 +42,18 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
         liveUrl: 'https://aetier.pages.dev',
         challenge: 'AETIER needed to establish a distinctive brand identity in the competitive brand strategy space. The challenge was to create a digital experience that would communicate their philosophy of "Signal Over Noise" - distilling complexity into clarity for leaders of category-defining companies. The website needed to reflect their refined, minimalist approach while showcasing their expertise in brand strategy, digital experience, and content creation.',
         colorPalette: [
-          { name: 'Charcoal', hex: '#1E1E1E', color: '#1E1E1E' },
-          { name: 'Stone', hex: '#A1A1A5', color: '#A1A1A5' },
-          { name: 'Alabaster', hex: '#F9F9F7', color: '#F9F9F7' },
-          { name: 'Accent', hex: '#3A4B40', color: '#3A4B40' }
+          { name: 'Cream', hex: '#F8F7F5', color: '#F8F7F5' },
+          { name: 'Charcoal', hex: '#1A1A1A', color: '#1A1A1A' },
+          { name: 'Light Gray', hex: '#EAEAEA', color: '#EAEAEA' },
+          { name: 'Medium Gray', hex: '#A3A3A3', color: '#A3A3A3' },
+          { name: 'Terracotta', hex: '#B5654A', color: '#B5654A' }
         ],
         typography: [
-          { name: 'H1', font: 'Tiempos Headline', size: '80px', weight: 'Bold' },
-          { name: 'H2', font: 'Tiempos Headline', size: '64px', weight: 'Bold' },
+          { name: 'H1', font: 'Canela Deck', size: '80px', weight: 'Bold' },
+          { name: 'H2', font: 'Canela Deck', size: '64px', weight: 'Bold' },
           { name: 'Body', font: 'Satoshi', size: '18px', weight: 'Regular' },
-          { name: 'Caption', font: 'Satoshi', size: '14px', weight: 'Medium' }
+          { name: 'Caption', font: 'Satoshi', size: '14px', weight: 'Medium' },
+          { name: 'Code', font: 'IBM Plex Mono', size: '14px', weight: 'Regular' }
         ],
         wireframes: [
           '/assets/images/wireframe-1.png', // Placeholder
