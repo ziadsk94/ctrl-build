@@ -149,7 +149,12 @@ function Lines({ pillar }: { pillar: string }) {
   }, [pillar]);
 
   const lineMaterial = useMemo(() => 
-    new THREE.LineBasicMaterial({ color: LINE_COLOR, linewidth: 1 }), []
+    new THREE.LineBasicMaterial({ 
+      color: LINE_COLOR, 
+      linewidth: 1,
+      transparent: true,
+      opacity: opacity.get()
+    }), [opacity]
   );
 
   return (
@@ -157,7 +162,6 @@ function Lines({ pillar }: { pillar: string }) {
       ref={lineRef}
       geometry={lineGeometry}
       material={lineMaterial}
-      style={{ opacity }}
     />
   );
 }
