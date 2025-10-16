@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* Satoshi Font Face */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/assets/fonts/Satoshi-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/assets/fonts/Satoshi-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tiempos Headline Font Face */
+@font-face {
+  font-family: 'TiemposHeadline';
+  src: url('/assets/fonts/TiemposHeadline-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TiemposHeadline';
+  src: url('/assets/fonts/TiemposHeadline-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TiemposHeadline';
+  src: url('/assets/fonts/TiemposHeadline-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand Colors */
+  --color-alabaster: #F9F9F7;
+  --color-charcoal: #1E1E1E;
+  --color-stone: #A1A1A5;
+  --color-studio-green: #3A4B40;
+  
+  /* Typography */
+  --font-satoshi: 'Satoshi', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@theme inline {
+  --color-alabaster: var(--color-alabaster);
+  --color-charcoal: var(--color-charcoal);
+  --color-stone: var(--color-stone);
+  --color-studio-green: var(--color-studio-green);
+  --font-sans: var(--font-satoshi);
+}
+
+body {
+  background: var(--color-alabaster);
+  color: var(--color-charcoal);
+  font-family: var(--font-satoshi);
+  font-weight: 400;
+  line-height: 1.5;
+  cursor: none;
+}
+
+/* Custom cursor styles */
+* {
+  cursor: none !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-alabaster);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-charcoal);
+}
+
+/* Our Approach Animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@keyframes draw-lines {
+  from { stroke-dasharray: 0 1000; }
+  to { stroke-dasharray: 1000 0; }
+}
+
+@keyframes build-3d {
+  from { transform: rotateX(0deg) rotateY(0deg); }
+  to { transform: rotateX(15deg) rotateY(15deg); }
+}
+
+@keyframes fold-grid {
+  from { 
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+  }
+  to { 
+    opacity: 0.3;
+    transform: scale(0.8) rotateX(20deg);
+  }
+}
+
+@keyframes cube-3d {
+  from { 
+    opacity: 0;
+    transform: scale(0.8) rotateX(0deg) rotateY(0deg);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1) rotateX(20deg) rotateY(15deg);
+  }
+}
+
+@keyframes fade-out {
+  from { opacity: 0.2; }
+  to { opacity: 0; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.4s ease-out;
+}
+
+.animate-draw-lines {
+  animation: draw-lines 0.8s ease-out;
+}
+
+.animate-build-3d {
+  animation: build-3d 0.6s ease-out;
+}
+
+.animate-fold-grid {
+  animation: fold-grid 0.8s ease-out;
+}
+
+.animate-cube-3d {
+  animation: cube-3d 0.6s ease-out 0.4s both;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.4s ease-out;
+}

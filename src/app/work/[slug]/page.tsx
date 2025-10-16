@@ -1,0 +1,378 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import StartConversation from '@/components/StartConversation';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = params;
+  
+  if (slug === 'ipower') {
+    return {
+      title: "iPower Case Study - Electrical Engineering Website",
+      description: "Explore how CTRL+BUILD created a comprehensive digital presence for iPower, Lebanon's electrical engineering solutions provider. Web design, development, and SEO optimization.",
+      keywords: [
+        "iPower case study",
+        "electrical engineering website",
+        "Lebanon web design",
+        "electrical solutions website",
+        "web development case study",
+        "SEO optimization",
+        "digital strategy",
+        "professional website design"
+      ],
+      openGraph: {
+        title: "iPower Case Study - Electrical Engineering Website | CTRL+BUILD",
+        description: "Explore how CTRL+BUILD created a comprehensive digital presence for iPower, Lebanon's electrical engineering solutions provider.",
+        url: "https://ctrlbuild.com/work/ipower",
+        type: "article",
+        images: [
+          {
+            url: "/assets/images/featured-2.png",
+            width: 1200,
+            height: 630,
+            alt: "iPower Website - Electrical Engineering Solutions",
+          },
+        ],
+      },
+      alternates: {
+        canonical: "/work/ipower",
+      },
+    };
+  }
+  
+  return {
+    title: "Project Case Study | CTRL+BUILD",
+    description: "Explore CTRL+BUILD's project case studies and digital architecture solutions.",
+  };
+}
+
+export default function CaseStudyPage({ params }: { params: { slug: string } }) {
+  const [scrollY, setScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Mock project data - in real app, this would come from CMS/API
+  const project = {
+    title: 'iPower',
+    client: 'iPower',
+    services: 'Web Design, Development, SEO',
+    year: '2025',
+    liveUrl: 'https://ipower-9xk.pages.dev',
+    challenge: 'iPower needed to establish a strong digital presence in Lebanon\'s electrical engineering solutions market. The challenge was to create a professional web platform that would showcase their 15+ years of experience, attract clients across Lebanon\'s diverse industries (residential, commercial, and industrial), and demonstrate their expertise in electrical systems, solar solutions, and automation.',
+    colorPalette: [
+      { name: 'Primary', hex: '#007577', color: '#007577' },
+      { name: 'Secondary', hex: '#E68E27', color: '#E68E27' },
+      { name: 'Accent', hex: '#939C98', color: '#939C98' },
+      { name: 'Background', hex: '#FFFFFF', color: '#FFFFFF' }
+    ],
+    typography: [
+      { name: 'H1', font: 'Polly Rounded', size: '64px', weight: 'Bold' },
+      { name: 'H2', font: 'Polly Rounded', size: '48px', weight: 'Regular' },
+      { name: 'Body', font: 'Polly Rounded', size: '16px', weight: 'Light' },
+      { name: 'Caption', font: 'Polly Rounded', size: '14px', weight: 'Thin' }
+    ],
+    metrics: [
+      { value: '100+', label: 'Electrical Projects Completed' },
+      { value: '15+', label: 'Years of Experience' },
+      { value: '98%', label: 'Client Satisfaction Score' }
+    ],
+    testimonial: '"The new website perfectly showcases our electrical engineering expertise across Lebanon and has significantly improved our online visibility. CTRL+BUILD understood our mission to empower Lebanon with reliable electrical systems."',
+    testimonialAuthor: 'iPower Team, Lebanon'
+  };
+
+  return (
+    <div className="min-h-screen bg-alabaster">
+      {/* Hero Section */}
+      <HeroSection 
+        project={project} 
+        scrollY={scrollY}
+        isVisible={isVisible}
+        heroRef={heroRef}
+      />
+      
+      {/* The Brief */}
+      <BriefSection project={project} />
+      
+      {/* The Blueprint */}
+      <BlueprintSection project={project} />
+      
+      {/* The Build */}
+      <BuildSection project={project} />
+      
+      {/* The Impact */}
+      <ImpactSection project={project} />
+      
+      {/* Start a Conversation / Footer */}
+      <StartConversationSection />
+      
+      {/* Navigation - Hidden since there are no other projects */}
+      {/* <NextProjectSection /> */}
+    </div>
+  );
+}
+
+function HeroSection({ 
+  project, 
+  scrollY, 
+  isVisible, 
+  heroRef 
+}: {
+  project: any;
+  scrollY: number;
+  isVisible: boolean;
+  heroRef: React.RefObject<HTMLDivElement>;
+}) {
+  return (
+    <section ref={heroRef} className="relative h-screen overflow-hidden">
+      {/* Hero Video */}
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          transform: `translateY(${scrollY * 0.5}px)`,
+        }}
+      >
+        <div className="w-full h-full bg-studio-green flex items-center justify-center">
+          <img 
+            src="/assets/images/featured-2.png" 
+            alt="iPower Project Hero"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Title Reveal */}
+      <div 
+        className={`absolute inset-0 bg-alabaster transition-opacity duration-1000 ${
+          scrollY > 200 ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className="h-full flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="font-tiempos text-charcoal text-8xl md:text-9xl font-bold mb-8">
+              {project.title}
+            </h1>
+            
+            {/* Metadata Block */}
+            <div className="space-y-4">
+              <div className="font-satoshi text-charcoal">
+                <span className="font-medium">Client:</span> {project.client}
+              </div>
+              <div className="font-satoshi text-charcoal">
+                <span className="font-medium">Services:</span> {project.services}
+              </div>
+              <div className="font-satoshi text-charcoal">
+                <span className="font-medium">Year:</span> {project.year}
+              </div>
+              <div className="pt-4">
+                <a 
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-satoshi text-sm font-medium tracking-blueprint uppercase text-charcoal hover:text-studio-green transition-colors duration-300 relative group"
+                >
+                  VISIT LIVE SITE
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-studio-green transition-all duration-250 group-hover:w-full" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BriefSection({ project }: { project: any }) {
+  return (
+    <section className="py-24">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="text-center">
+          <h3 className="font-satoshi text-xs font-medium tracking-blueprint uppercase text-stone mb-8">
+            THE CHALLENGE
+          </h3>
+          <p className="font-satoshi text-charcoal text-lg leading-relaxed">
+            {project.challenge}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BlueprintSection({ project }: { project: any }) {
+  return (
+    <section className="py-24 bg-stone/5">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Color Palette */}
+          <div className="md:col-span-6">
+            <h3 className="font-tiempos text-charcoal text-3xl font-bold mb-8">
+              Color Palette
+            </h3>
+            <div className="space-y-4">
+              {project.colorPalette.map((color: any, index: number) => (
+                <div key={index} className="flex items-center space-x-4">
+                  <div 
+                    className="w-16 h-16 rounded-lg border border-stone/20"
+                    style={{ backgroundColor: color.color }}
+                  />
+                  <div>
+                    <div className="font-satoshi text-charcoal font-medium">{color.name}</div>
+                    <div className="font-mono text-stone text-sm">{color.hex}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Typography */}
+          <div className="md:col-span-6">
+            <h3 className="font-tiempos text-charcoal text-3xl font-bold mb-8">
+              Typography
+            </h3>
+            <div className="space-y-6">
+              {project.typography.map((type: any, index: number) => (
+                <div key={index} className="border-b border-stone/20 pb-4">
+                  <div className="font-satoshi text-stone text-sm mb-2">{type.name}</div>
+                  <div 
+                    className="font-tiempos text-charcoal"
+                    style={{ 
+                      fontSize: type.size.replace('px', 'px'),
+                      fontWeight: type.weight.toLowerCase()
+                    }}
+                  >
+                    {type.font} {type.size} {type.weight}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BuildSection({ project }: { project: any }) {
+  return (
+    <section className="py-24">
+      <div className="max-w-7xl mx-auto px-6">
+        <h3 className="font-tiempos text-charcoal text-3xl font-bold mb-16 text-center">
+          The Build
+        </h3>
+        
+        <div className="space-y-24">
+          {/* Featured Image */}
+          <div className="relative">
+            <img 
+              src="/assets/images/featured-2.png" 
+              alt="iPower Website Desktop Mockup"
+              className="w-full h-96 object-cover rounded-lg"
+            />
+            <div className="absolute bottom-4 left-4 bg-alabaster/90 px-4 py-2 rounded">
+              <p className="font-satoshi text-stone italic text-sm">High-resolution device mockup showcasing responsive design</p>
+            </div>
+          </div>
+
+          {/* Interaction Demo */}
+          <div className="relative">
+            <img 
+              src="/assets/images/Screenshot (15).png" 
+              alt="iPower Website Interaction Demo"
+              className="w-full h-96 object-cover rounded-lg"
+            />
+            <div className="absolute bottom-4 left-4 bg-alabaster/90 px-4 py-2 rounded">
+              <p className="font-satoshi text-stone italic text-sm">Screen recording demonstrating key animations and features</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ImpactSection({ project }: { project: any }) {
+  return (
+    <section className="py-24">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h3 className="font-tiempos text-charcoal text-5xl font-bold mb-16">
+          A Foundational Shift
+        </h3>
+        
+        {/* Quantitative Data */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {project.metrics.map((metric: any, index: number) => (
+            <div key={index} className="text-center">
+              <div className="font-tiempos text-studio-green text-4xl font-bold mb-2">
+                {metric.value}
+              </div>
+              <div className="font-satoshi text-charcoal">
+                {metric.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Qualitative Data */}
+        <div className="border-t border-stone/20 pt-16">
+          <blockquote className="font-satoshi text-charcoal text-xl italic leading-relaxed mb-8">
+            "{project.testimonial}"
+          </blockquote>
+          <div className="font-satoshi text-stone">
+            — {project.testimonialAuthor}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NextProjectSection() {
+  return (
+    <section className="border-t border-stone/20">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        <Link href="/work/studio-north" className="block group">
+          <div className="text-center">
+            <h3 className="font-tiempos text-charcoal text-3xl font-bold mb-4 group-hover:text-studio-green transition-colors duration-300">
+              NEXT PROJECT
+            </h3>
+            <p className="font-satoshi text-stone text-lg">
+              Studio North
+            </p>
+          </div>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function StartConversationSection() {
+  return <StartConversation />;
+}

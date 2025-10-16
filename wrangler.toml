@@ -1,0 +1,22 @@
+name = "ctrl-build"
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "ctrl-build"
+
+[env.preview]
+name = "ctrl-build-preview"
+
+# Build configuration
+[build]
+command = "npm run build"
+cwd = "."
+
+# Pages configuration
+[[pages]]
+name = "ctrl-build"
+source = "out"
+
+# Environment variables (add your secrets in Cloudflare dashboard)
+[vars]
+NODE_ENV = "production"

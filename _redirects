@@ -1,0 +1,6 @@
+# Redirects for Cloudflare Pages
+# Handle client-side routing for Next.js
+/*    /index.html   200
+
+# Custom redirects (if needed)
+# /old-page    /new-page    301
