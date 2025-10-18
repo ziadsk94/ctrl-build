@@ -44,6 +44,14 @@ export default function WorkClient() {
       category: 'WEB PLATFORM',
       image: '/assets/images/featured-2.png',
       slug: 'ipower'
+    },
+    {
+      id: 'gaplens',
+      title: 'GapLens',
+      services: 'Web Design, Development, Brand Identity',
+      category: 'BRAND IDENTITY',
+      image: '/assets/images/featured-5.png',
+      slug: 'gaplens'
     }
   ];
 

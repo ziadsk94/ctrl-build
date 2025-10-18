@@ -73,6 +73,45 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
       };
     }
     
+    if (slug === 'gaplens') {
+      return {
+        title: 'GapLens',
+        client: 'GapLens',
+        services: 'Web Design, Development, Brand Identity',
+        year: '2025',
+        liveUrl: 'https://gaplens.com',
+        challenge: 'GapLens needed to establish a distinctive digital presence that would capture the essence of their photographic philosophy - "capturing the space between the light and the shadow." The challenge was to create a website that would reflect their minimalist, contemplative approach to photography while showcasing their archive of work. The site needed to embody their philosophy of finding depth in silence and structure, creating an immersive experience that would allow visitors to explore their photographic journey.',
+        colorPalette: [
+          { name: 'Gallery White', hex: '#F9F9F9', color: '#F9F9F9' },
+          { name: 'Signature Ink', hex: '#1C1C1C', color: '#1C1C1C' },
+          { name: 'Whisper Grey', hex: '#C7C7C7', color: '#C7C7C7' },
+          { name: 'Archive Sepia', hex: '#B8B0A8', color: '#B8B0A8' }
+        ],
+        typography: [
+          { name: 'H1', font: 'Garamond Premier Pro', size: '80px', weight: 'Bold' },
+          { name: 'H2', font: 'Garamond Premier Pro', size: '64px', weight: 'Bold' },
+          { name: 'Body', font: 'Suisse Int\'l', size: '18px', weight: 'Regular' },
+          { name: 'Caption', font: 'Suisse Int\'l', size: '14px', weight: 'Medium' },
+          { name: 'Navigation', font: 'Suisse Int\'l', size: '16px', weight: 'Medium' }
+        ],
+        wireframes: [
+          '/assets/images/wireframe-1.png', // Placeholder
+          '/assets/images/wireframe-2.png', // Placeholder
+        ],
+        buildImages: [
+          { src: '/assets/images/featured-5.png', alt: 'GapLens Website Desktop View', caption: 'High-resolution desktop mockup showcasing the minimalist design' },
+          { src: '/assets/images/Screenshot (24).png', alt: 'GapLens Website Interaction Demo', caption: 'Smooth animations and contemplative user experience' },
+        ],
+        metrics: [
+          { value: '100+', label: 'Photographic Works Archived' },
+          { value: '95%', label: 'User Engagement Rate' },
+          { value: '2.5x', label: 'Time Spent on Site' }
+        ],
+        testimonial: '"The new website perfectly captures our philosophy of finding depth in silence. CTRL+BUILD understood our vision of creating a space where visitors can truly contemplate our work. The design allows the photographs to speak for themselves while providing an elegant framework for exploration."',
+        testimonialAuthor: 'GapLens Studio Team'
+      };
+    }
+    
     // Default to iPower project
     return {
       title: 'iPower',
@@ -179,7 +218,11 @@ function HeroSection({
       >
         <div className="w-full h-full bg-studio-green flex items-center justify-center">
           <img
-            src={project.title === 'AETIER' ? '/assets/images/featured-4.png' : '/assets/images/featured-2.png'}
+            src={
+              project.title === 'AETIER' ? '/assets/images/featured-4.png' :
+              project.title === 'GapLens' ? '/assets/images/featured-5.png' :
+              '/assets/images/featured-2.png'
+            }
             alt={`${project.title} Project Hero`}
             className="w-full h-full object-cover"
           />

@@ -48,6 +48,16 @@ export default function FeaturedWork() {
       gridClass: "col-span-4 col-start-9",
       textPosition: "below",
       slug: "ipower"
+    },
+    {
+      id: 3,
+      title: "GapLens",
+      services: "Web Design, Development, Brand Identity",
+      image: "/assets/images/featured-5.png",
+      video: "/assets/images/Screenshot%20(24).png",
+      gridClass: "col-span-6 col-start-2",
+      textPosition: "below",
+      slug: "gaplens"
     }
   ];
 

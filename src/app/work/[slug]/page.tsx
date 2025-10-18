@@ -4,7 +4,8 @@ import { Metadata } from 'next';
 export async function generateStaticParams() {
   return [
     { slug: 'aetier' },
-    { slug: 'ipower' }
+    { slug: 'ipower' },
+    { slug: 'gaplens' }
   ];
 }
 
@@ -68,6 +69,40 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       },
       alternates: {
         canonical: "/work/ipower",
+      },
+    };
+  }
+  
+  if (slug === 'gaplens') {
+    return {
+      title: "GapLens - Photography Studio Website | CTRL+BUILD",
+      description: "Discover how we crafted GapLens' minimalist photography website, capturing the essence of their philosophy: 'the space between the light and the shadow.'",
+      keywords: [
+        "GapLens case study",
+        "photography website design",
+        "minimalist web design",
+        "photography studio website",
+        "brand identity design",
+        "web development case study",
+        "digital strategy",
+        "contemplative design"
+      ],
+      openGraph: {
+        title: "GapLens - Photography Studio Website | CTRL+BUILD",
+        description: "Discover how we crafted GapLens' minimalist photography website, capturing the essence of their philosophy: 'the space between the light and the shadow.'",
+        url: "https://ctrlbuild.com/work/gaplens",
+        type: "article",
+        images: [
+          {
+            url: "/assets/images/featured-5.png",
+            width: 1200,
+            height: 630,
+            alt: "GapLens Website - Photography Studio",
+          },
+        ],
+      },
+      alternates: {
+        canonical: "/work/gaplens",
       },
     };
   }
