@@ -440,7 +440,7 @@ function BuildSection({ project }: { project: Project }) {
     <section ref={sectionRef} className="relative py-24 bg-alabaster">
       <div className="max-w-7xl mx-auto px-6">
         <h3 className="font-tiempos text-charcoal text-4xl font-bold mb-24 text-center">
-          The Architect's Log
+          The Architect&apos;s Log
         </h3>
 
         <div className="grid grid-cols-12 gap-8">
