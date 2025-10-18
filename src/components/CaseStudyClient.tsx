@@ -341,27 +341,166 @@ function BlueprintSection({ project }: { project: Project }) {
 }
 
 function BuildSection({ project }: { project: Project }) {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [visibleEntries, setVisibleEntries] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const sectionHeight = sectionRef.current.offsetHeight;
+        
+        // Calculate scroll progress (0 to 1)
+        const progress = Math.max(0, Math.min(1, -rect.top / (sectionHeight - windowHeight)));
+        setScrollProgress(progress);
+        
+        // Determine visible entries based on scroll progress
+        const entries = getProjectLogEntries(project);
+        const visible = [];
+        for (let i = 0; i < entries.length; i++) {
+          const entryThreshold = (i + 1) / entries.length;
+          if (progress >= entryThreshold - 0.3) {
+            visible.push(i);
+          }
+        }
+        setVisibleEntries(visible);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [project]);
+
+  const getProjectLogEntries = (project: Project) => {
+    if (project.title === 'GapLens') {
+      return [
+        {
+          phase: 'PHASE 01: THE FOUNDATION',
+          content: 'The client\'s core challenge was creating a digital space that would embody their photographic philosophy of "capturing the space between the light and the shadow." Our first move wasn\'t design; it was understanding their contemplative approach to photography. We selected a minimalist architecture using Next.js for its performance and SEO capabilities, ensuring the photographs would load instantly and be discoverable.',
+          technical: ['Next.js', 'SEO optimization', 'performance-first']
+        },
+        {
+          phase: 'PHASE 02: THE VISUAL LANGUAGE',
+          content: 'Typography became the primary design element. We chose Garamond Premier Pro for its classical elegance and Suisse Int\'l for its modern clarity. The color palette was deliberately restrained: Gallery White, Signature Ink, Whisper Grey, and Archive Sepia. This monochromatic approach would let the photographs speak without visual interference.',
+          technical: ['Garamond Premier Pro', 'Suisse Int\'l', 'monochromatic palette']
+        },
+        {
+          phase: 'PHASE 03: THE EXPERIENCE',
+          content: 'The final challenge was creating an interface that would encourage contemplation. We implemented smooth scroll animations and carefully orchestrated reveal sequences. Every interaction was designed to feel intentional and unhurried, mirroring the studio\'s approach to photography. The result was a digital space that felt as thoughtful as the work it showcased.',
+          technical: ['scroll animations', 'reveal sequences', 'contemplative UX']
+        }
+      ];
+    }
+    
+    if (project.title === 'AETIER') {
+      return [
+        {
+          phase: 'PHASE 01: THE FOUNDATION',
+          content: 'The client\'s core challenge was establishing a distinctive brand identity in the competitive brand strategy space. Our first move wasn\'t design; it was strategy. We unified their "Signal Over Noise" philosophy into a cohesive digital experience that would communicate their expertise to leaders of category-defining companies.',
+          technical: ['brand strategy', 'digital experience', 'content architecture']
+        },
+        {
+          phase: 'PHASE 02: THE VISUAL SYSTEM',
+          content: 'We developed a sophisticated typographic system using Canela Deck for its editorial authority and Satoshi for its technical precision. The color palette reflected their refined approach: Cream, Charcoal, and Terracotta accents. Every element was designed to convey expertise and trust.',
+          technical: ['Canela Deck', 'Satoshi', 'editorial typography']
+        },
+        {
+          phase: 'PHASE 03: THE EXECUTION',
+          content: 'The technical implementation focused on performance and accessibility. We achieved a Lighthouse score of 99 and ensured every interaction felt premium. The site became a testament to their philosophy: clarity through structure, elegance through restraint.',
+          technical: ['Lighthouse 99', 'accessibility', 'premium interactions']
+        }
+      ];
+    }
+    
+    // Default to iPower
+    return [
+      {
+        phase: 'PHASE 01: THE FOUNDATION',
+        content: 'The client\'s core challenge was establishing a strong digital presence in Lebanon\'s electrical engineering market. Our first move wasn\'t design; it was understanding their 15+ years of experience across residential, commercial, and industrial sectors. We built a comprehensive content strategy that would showcase their expertise and attract clients across Lebanon\'s diverse industries.',
+        technical: ['content strategy', 'market research', 'Lebanon focus']
+      },
+      {
+        phase: 'PHASE 02: THE TECHNICAL FRAME',
+        content: 'We chose a robust architecture using Next.js for its SEO capabilities and performance. The primary technical challenge was creating an intuitive navigation system that would help clients find relevant services quickly. We implemented a service-based information architecture with clear calls-to-action.',
+        technical: ['Next.js', 'SEO optimization', 'information architecture']
+      },
+      {
+        phase: 'PHASE 03: THE FINAL TOUCHES',
+        content: 'Accessibility was non-negotiable for a professional services website. Every component was built to be fully keyboard-navigable and WCAG 2.1 AA compliant. We spent significant time on performance tuning and mobile optimization, ensuring the site would perform flawlessly across all devices in Lebanon\'s diverse digital landscape.',
+        technical: ['WCAG 2.1 AA', 'mobile optimization', 'performance tuning']
+      }
+    ];
+  };
+
+  const logEntries = getProjectLogEntries(project);
+
   return (
-    <section className="py-24 bg-alabaster">
+    <section ref={sectionRef} className="relative py-24 bg-alabaster">
       <div className="max-w-7xl mx-auto px-6">
-        <h3 className="font-tiempos text-charcoal text-3xl font-bold mb-16 text-center">
-          The Build
+        <h3 className="font-tiempos text-charcoal text-4xl font-bold mb-24 text-center">
+          The Architect's Log
         </h3>
 
-        <div className="space-y-24">
-          {project.buildImages.map((image: { src: string; alt: string; caption: string }, index: number) => (
-            <div key={index} className="relative">
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full max-w-lg mx-auto rounded-lg object-cover"
-                style={{ height: '400px' }}
-              />
-              <div className="absolute bottom-4 left-4 bg-alabaster/90 px-4 py-2 rounded">
-                <p className="font-satoshi text-stone italic text-sm">{image.caption}</p>
-              </div>
+        <div className="grid grid-cols-12 gap-8">
+          {/* Timeline */}
+          <div className="col-span-2 relative">
+            <div 
+              className="absolute left-1/2 top-0 w-px bg-stone transition-all duration-1000"
+              style={{ 
+                height: `${scrollProgress * 100}%`,
+                transform: 'translateX(-50%)'
+              }}
+            />
+          </div>
+
+          {/* Content */}
+          <div className="col-span-8 col-start-3">
+            <div className="space-y-32">
+              {logEntries.map((entry, index) => (
+                <div
+                  key={index}
+                  className={`transition-all duration-1000 ${
+                    visibleEntries.includes(index) 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ 
+                    transitionDelay: `${index * 200}ms` 
+                  }}
+                >
+                  {/* Phase Header */}
+                  <div className="sticky top-8 mb-8">
+                    <h4 className="font-satoshi text-stone text-xs font-medium tracking-widest uppercase">
+                      {entry.phase}
+                    </h4>
+                  </div>
+
+                  {/* Entry Content */}
+                  <div className="max-w-4xl">
+                    <p className="font-satoshi text-charcoal text-lg italic leading-relaxed">
+                      {entry.content.split(' ').map((word, wordIndex) => {
+                        const isTechnical = entry.technical.some(term => 
+                          word.toLowerCase().includes(term.toLowerCase())
+                        );
+                        
+                        return isTechnical ? (
+                          <span key={wordIndex} className="font-mono text-studio-green font-medium">
+                            {word}{' '}
+                          </span>
+                        ) : (
+                          <span key={wordIndex}>
+                            {word}{' '}
+                          </span>
+                        );
+                      })}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
