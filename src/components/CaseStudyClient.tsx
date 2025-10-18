@@ -88,7 +88,7 @@ export default function CaseStudyClient({ slug }: { slug: string }) {
           { name: 'Archive Sepia', hex: '#B8B0A8', color: '#B8B0A8' }
         ],
         typography: [
-          { name: 'H1', font: 'Garamond Premier Pro', size: '80px', weight: 'Bold' },
+          { name: 'H1', font: 'Garamond Premier Pro', size: '72px', weight: 'Bold' },
           { name: 'H2', font: 'Garamond Premier Pro', size: '64px', weight: 'Bold' },
           { name: 'Body', font: 'Suisse Int\'l', size: '18px', weight: 'Regular' },
           { name: 'Caption', font: 'Suisse Int\'l', size: '14px', weight: 'Medium' },
