@@ -378,17 +378,17 @@ function BuildSection({ project }: { project: Project }) {
       return [
         {
           phase: 'PHASE 01: THE FOUNDATION',
-          content: 'The client\'s core challenge was creating a digital space that would embody their photographic philosophy of "capturing the space between the light and the shadow." Our first move wasn\'t design; it was understanding their contemplative approach to photography. We selected a minimalist architecture using Next.js for its performance and SEO capabilities, ensuring the photographs would load instantly and be discoverable.',
+          content: 'The client&apos;s core challenge was creating a digital space that would embody their photographic philosophy of "capturing the space between the light and the shadow." Our first move wasn&apos;t design; it was understanding their contemplative approach to photography. We selected a minimalist architecture using Next.js for its performance and SEO capabilities, ensuring the photographs would load instantly and be discoverable.',
           technical: ['Next.js', 'SEO optimization', 'performance-first']
         },
         {
           phase: 'PHASE 02: THE VISUAL LANGUAGE',
-          content: 'Typography became the primary design element. We chose Garamond Premier Pro for its classical elegance and Suisse Int\'l for its modern clarity. The color palette was deliberately restrained: Gallery White, Signature Ink, Whisper Grey, and Archive Sepia. This monochromatic approach would let the photographs speak without visual interference.',
+          content: 'Typography became the primary design element. We chose Garamond Premier Pro for its classical elegance and Suisse Int&apos;l for its modern clarity. The color palette was deliberately restrained: Gallery White, Signature Ink, Whisper Grey, and Archive Sepia. This monochromatic approach would let the photographs speak without visual interference.',
           technical: ['Garamond Premier Pro', 'Suisse Int\'l', 'monochromatic palette']
         },
         {
           phase: 'PHASE 03: THE EXPERIENCE',
-          content: 'The final challenge was creating an interface that would encourage contemplation. We implemented smooth scroll animations and carefully orchestrated reveal sequences. Every interaction was designed to feel intentional and unhurried, mirroring the studio\'s approach to photography. The result was a digital space that felt as thoughtful as the work it showcased.',
+          content: 'The final challenge was creating an interface that would encourage contemplation. We implemented smooth scroll animations and carefully orchestrated reveal sequences. Every interaction was designed to feel intentional and unhurried, mirroring the studio&apos;s approach to photography. The result was a digital space that felt as thoughtful as the work it showcased.',
           technical: ['scroll animations', 'reveal sequences', 'contemplative UX']
         }
       ];
@@ -418,7 +418,7 @@ function BuildSection({ project }: { project: Project }) {
     return [
       {
         phase: 'PHASE 01: THE FOUNDATION',
-        content: 'The client\'s core challenge was establishing a strong digital presence in Lebanon\'s electrical engineering market. Our first move wasn\'t design; it was understanding their 15+ years of experience across residential, commercial, and industrial sectors. We built a comprehensive content strategy that would showcase their expertise and attract clients across Lebanon\'s diverse industries.',
+          content: 'The client&apos;s core challenge was establishing a strong digital presence in Lebanon&apos;s electrical engineering market. Our first move wasn&apos;t design; it was understanding their 15+ years of experience across residential, commercial, and industrial sectors. We built a comprehensive content strategy that would showcase their expertise and attract clients across Lebanon&apos;s diverse industries.',
         technical: ['content strategy', 'market research', 'Lebanon focus']
       },
       {
@@ -428,7 +428,7 @@ function BuildSection({ project }: { project: Project }) {
       },
       {
         phase: 'PHASE 03: THE FINAL TOUCHES',
-        content: 'Accessibility was non-negotiable for a professional services website. Every component was built to be fully keyboard-navigable and WCAG 2.1 AA compliant. We spent significant time on performance tuning and mobile optimization, ensuring the site would perform flawlessly across all devices in Lebanon\'s diverse digital landscape.',
+        content: 'Accessibility was non-negotiable for a professional services website. Every component was built to be fully keyboard-navigable and WCAG 2.1 AA compliant. We spent significant time on performance tuning and mobile optimization, ensuring the site would perform flawlessly across all devices in Lebanon&apos;s diverse digital landscape.',
         technical: ['WCAG 2.1 AA', 'mobile optimization', 'performance tuning']
       }
     ];
