@@ -69,7 +69,26 @@ export default function Hero() {
                   transition: 'transform 0.1s ease-out'
                 }}
               >
-                <PrimaryHeadline isLoaded={isLoaded} />
+                {/* Decorative duplicate rendered as non-heading to avoid multiple H1s */}
+                <div className="font-tiempos text-charcoal leading-none whitespace-nowrap" aria-hidden={true}>
+                  {"Digital Structures.".split('').map((char, index) => (
+                    <span
+                      key={index}
+                      className={`inline-block transition-all duration-300 ${
+                        isLoaded 
+                          ? 'opacity-100 translate-y-0' 
+                          : 'opacity-0 translate-y-5'
+                      }`}
+                      style={{
+                        transitionDelay: isLoaded ? `${index * 30}ms` : '0ms',
+                        fontSize: 'clamp(2.5rem, 8vw, 6rem)',
+                        fontWeight: 700
+                      }}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  ))}
+                </div>
               </div>
               
               {/* Main text layer */}
