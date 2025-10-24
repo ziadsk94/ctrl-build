@@ -17,6 +17,22 @@ cwd = "."
 name = "ctrl-build"
 source = "out"
 
+# Redirect rules for www to non-www
+[[redirects]]
+from = "https://www.ctrl-build.com/*"
+to = "https://ctrl-build.com/:splat"
+status = 301
+
+[[redirects]]
+from = "http://www.ctrl-build.com/*"
+to = "https://ctrl-build.com/:splat"
+status = 301
+
+[[redirects]]
+from = "http://ctrl-build.com/*"
+to = "https://ctrl-build.com/:splat"
+status = 301
+
 # Environment variables (add your secrets in Cloudflare dashboard)
 [vars]
 NODE_ENV = "production"
