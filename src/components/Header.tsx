@@ -40,11 +40,7 @@ export default function Header() {
   // Cleanup effect to restore scrolling if component unmounts
   useEffect(() => {
     return () => {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = 'unset';
-      document.removeEventListener('touchmove', preventScroll);
+      aggressiveScrollCleanup();
     };
   }, []);
 
@@ -86,21 +82,36 @@ export default function Header() {
     e.preventDefault();
   };
 
-  const handleLinkClick = (link: string) => {
-    // Immediately clean up scroll prevention
-    const scrollY = document.body.style.top;
+  // More aggressive cleanup function
+  const aggressiveScrollCleanup = () => {
+    // Reset any body styles that might be preventing scrolling
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = '';
+    
+    // Remove ALL touch event listeners (more aggressive approach)
+    document.removeEventListener('touchmove', preventScroll as EventListener, false);
+    document.removeEventListener('touchmove', preventScroll as EventListener, true);
+    document.removeEventListener('touchmove', preventScroll as EventListener);
+    
+    // Ensure the page can scroll
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    
+    // Force a reflow to ensure styles are applied
+    document.body.offsetHeight;
+  };
+
+  const handleLinkClick = (link: string) => {
+    // Immediately clean up scroll prevention using aggressive cleanup
+    const scrollY = document.body.style.top;
+    aggressiveScrollCleanup();
     
     // Restore scroll position
     if (scrollY) {
       window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
-    
-    // Remove touch event listener
-    document.removeEventListener('touchmove', preventScroll);
     
     // Close menu immediately
     setIsMenuOpen(false);
