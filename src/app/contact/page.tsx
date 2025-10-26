@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { trackEmailClick } from '@/lib/analytics';
 
 export default function Contact() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -88,6 +89,7 @@ export default function Contact() {
     
     // Navigate after animation
     setTimeout(() => {
+      trackEmailClick(); // Track the email click
       window.location.href = 'mailto:contact@ctrl-build.com';
       document.body.removeChild(transition);
     }, 300);

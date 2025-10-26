@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { trackProjectStart } from '@/lib/analytics';
 
 export default function FinalCTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -57,6 +58,7 @@ export default function FinalCTA() {
     });
     
     setTimeout(() => {
+      trackProjectStart(); // Track the project start conversion
       window.location.href = '/contact';
       document.body.removeChild(transition);
     }, 300);
