@@ -106,7 +106,7 @@ export default function Process() {
     title: string;
     description: string;
     isVisible: boolean;
-    stepRef: React.RefObject<HTMLDivElement | null>;
+    stepRef: React.RefObject<HTMLDivElement>;
     isLast?: boolean;
   }) => (
     <div ref={stepRef} className="py-24 px-6 md:px-16">
@@ -186,7 +186,7 @@ export default function Process() {
   }: {
     text: string;
     isVisible: boolean;
-    phaseRef: React.RefObject<HTMLDivElement | null>;
+    phaseRef: React.RefObject<HTMLDivElement>;
   }) => (
     <div ref={phaseRef} className="py-16 px-6 md:px-16">
       <div className="max-w-7xl mx-auto">

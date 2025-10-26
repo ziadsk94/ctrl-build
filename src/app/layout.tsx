@@ -51,6 +51,7 @@ const fraunces = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ctrl-build.com'),
   title: 'CTRL+BUILD | Bespoke Web Design & Headless Development Agency',
   description: 'CTRL+BUILD is a design studio in Romania creating high-performance, bespoke websites. We practice Digital Discipline to build platforms that drive results.',
   keywords: 'bespoke web design, headless development agency, custom website design, web design Romania, agentie web design, UI/UX Romania, developare web, web design Craiova, Awwwards-winning studio',

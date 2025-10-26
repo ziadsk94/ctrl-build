@@ -1,6 +1,0 @@
-name = "ctrl-build"
-main = "src/index.ts"
-compatibility_date = "2023-01-01"
-
-[site]
-bucket = "out" # Next.js static export output directory
