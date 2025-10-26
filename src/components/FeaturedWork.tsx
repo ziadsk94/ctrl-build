@@ -432,7 +432,30 @@ export default function FeaturedWork() {
               {/* Section CTA - Mobile */}
               <div className="text-center">
                 <button 
-                  onClick={() => window.location.href = '/work'}
+                  onClick={() => {
+                    const transition = document.createElement('div');
+                    transition.style.cssText = `
+                      position: fixed;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      background-color: #3c8669;
+                      z-index: 9999;
+                      transform: scaleX(0);
+                      transform-origin: left;
+                      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    `;
+                    document.body.appendChild(transition);
+                    
+                    requestAnimationFrame(() => {
+                      transition.style.transform = 'scaleX(1)';
+                    });
+                    
+                    setTimeout(() => {
+                      window.location.href = '/work';
+                    }, 300);
+                  }}
                   className={`transition-all duration-500 ${
                     showProject2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   } bg-[#3c8669] hover:bg-transparent hover:border-2 hover:border-[#3c8669] w-[90%] py-4 font-syne font-bold text-black transition-colors duration-300 text-lg`}

@@ -26,7 +26,7 @@ export default function Work() {
     {
       slug: 'gaplens',
       name: 'GAPLENS',
-      services: 'UI/UX DESIGN, HEADLESS DEV, SEO',
+      services: 'UI/UX DESIGN, HEADLESS DEV, PHOTOGRAPHIC ARCHIVE',
       image: '/assets/images/projects/gaplens/featured.png'
     },
     {

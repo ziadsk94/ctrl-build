@@ -46,7 +46,7 @@ export default function Footer() {
         } else if (link === 'contact') {
           router.push('/contact');
         } else if (link === 'privacy') {
-          router.push('/#privacy');
+          router.push('/privacy');
         }
       };
 

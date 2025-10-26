@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Hero() {
+  const router = useRouter();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showPeriod, setShowPeriod] = useState(false);
   const [showManifesto, setShowManifesto] = useState(false);
@@ -34,6 +36,10 @@ export default function Hero() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const handleViewWork = () => {
+    router.push('/work');
+  };
 
   return (
     <section className="h-screen bg-cream relative overflow-hidden">
@@ -100,6 +106,7 @@ export default function Hero() {
           {/* Primary CTA - Bottom-Left */}
           <div className="absolute bottom-8 md:bottom-16 left-8 md:left-16">
             <button 
+              onClick={handleViewWork}
               className={`transition-all duration-500 ${
                 showManifesto ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               } bg-[#3c8669] hover:bg-transparent hover:border-2 hover:border-[#3c8669] px-6 py-3 md:px-8 md:py-4 font-syne font-bold text-black transition-colors duration-300 text-sm md:text-base`}
@@ -169,6 +176,7 @@ export default function Hero() {
           {/* CTA - Bottom/Center */}
           <div className="absolute bottom-[50px] left-6 right-6">
             <button 
+              onClick={handleViewWork}
               className={`transition-all duration-500 ${
                 showManifesto ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               } bg-[#3c8669] hover:bg-transparent hover:border-2 hover:border-[#3c8669] w-full py-4 font-syne font-bold text-black transition-colors duration-300 text-base`}
