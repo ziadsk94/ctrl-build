@@ -190,37 +190,23 @@ export default function Process() {
   }) => (
     <div ref={phaseRef} className="py-16 px-6 md:px-16">
       <div className="max-w-7xl mx-auto">
-        {/* Desktop/Tablet: Ghosted Background Element */}
-        {!isMobile && (
-          <div className={`transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-          }`}>
-            <h2 
-              className="font-syne font-bold text-left"
-              style={{
-                fontSize: 'clamp(4rem, 12vw, 12rem)',
-                WebkitTextStroke: '1px #020202',
-                color: 'transparent',
-                lineHeight: '0.8'
-              }}
-            >
-              {text}
-            </h2>
-          </div>
-        )}
+        {/* Ghosted Background Element - All Devices */}
+        <div className={`transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+        }`}>
+          <h2 
+            className="font-syne font-bold text-left"
+            style={{
+              fontSize: 'clamp(4rem, 12vw, 12rem)',
+              WebkitTextStroke: '1px #020202',
+              color: 'transparent',
+              lineHeight: '0.8'
+            }}
+          >
+            {text}
+          </h2>
+        </div>
 
-        {/* Mobile: Solid Centered Headline */}
-        {isMobile && (
-          <div className={`transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <h2 
-              className="font-syne font-bold text-black text-center text-2xl"
-            >
-              {text}
-            </h2>
-          </div>
-        )}
       </div>
     </div>
   );

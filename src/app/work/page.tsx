@@ -70,10 +70,7 @@ export default function Work() {
     const handleMouseMove = (e: MouseEvent) => {
       // Use requestAnimationFrame for smoother cursor following
       requestAnimationFrame(() => {
-        // Constrain cursor position to prevent horizontal scrolling
-        const x = Math.max(150, Math.min(e.clientX, window.innerWidth - 150));
-        const y = Math.max(150, Math.min(e.clientY, window.innerHeight - 150));
-        setCursorPosition({ x, y });
+        setCursorPosition({ x: e.clientX, y: e.clientY });
       });
     };
 
