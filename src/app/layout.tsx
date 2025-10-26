@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
-import ScrollRestoration from "@/components/ScrollRestoration";
 
 const syne = localFont({
   src: [
@@ -157,7 +156,6 @@ export default function RootLayout({
       <body
         className={`${syne.variable} ${fraunces.variable} font-syne antialiased`}
       >
-        <ScrollRestoration />
         {children}
         <CookieConsent />
       </body>

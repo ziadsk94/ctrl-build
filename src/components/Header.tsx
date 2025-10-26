@@ -37,82 +37,17 @@ export default function Header() {
     };
   }, []);
 
-  // Cleanup effect to restore scrolling if component unmounts
-  useEffect(() => {
-    return () => {
-      aggressiveScrollCleanup();
-    };
-  }, []);
+  // No cleanup needed since we allow background scrolling
 
   const toggleMenu = () => {
     const newMenuState = !isMenuOpen;
     setIsMenuOpen(newMenuState);
-    
-    // Prevent background scrolling when menu is open
-    if (newMenuState) {
-      // Store current scroll position
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-      
-      // Prevent touch events on mobile
-      document.addEventListener('touchmove', preventScroll, { passive: false });
-    } else {
-      // Restore scrolling
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.overflow = 'unset';
-      
-      // Restore scroll position
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
-      
-      // Remove touch event listener
-      document.removeEventListener('touchmove', preventScroll);
-    }
+    // Allow background scrolling - no scroll prevention needed
   };
 
-  // Function to prevent touch scrolling
-  const preventScroll = (e: TouchEvent) => {
-    e.preventDefault();
-  };
-
-  // More aggressive cleanup function
-  const aggressiveScrollCleanup = () => {
-    // Reset any body styles that might be preventing scrolling
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-    document.body.style.overflow = '';
-    
-    // Remove ALL touch event listeners (more aggressive approach)
-    document.removeEventListener('touchmove', preventScroll as EventListener, false);
-    document.removeEventListener('touchmove', preventScroll as EventListener, true);
-    document.removeEventListener('touchmove', preventScroll as EventListener);
-    
-    // Ensure the page can scroll
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-    
-    // Force a reflow to ensure styles are applied
-    document.body.offsetHeight;
-  };
+  // No scroll prevention functions needed - we allow background scrolling
 
   const handleLinkClick = (link: string) => {
-    // Immediately clean up scroll prevention using aggressive cleanup
-    const scrollY = document.body.style.top;
-    aggressiveScrollCleanup();
-    
-    // Restore scroll position
-    if (scrollY) {
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    }
-    
     // Close menu immediately
     setIsMenuOpen(false);
     
