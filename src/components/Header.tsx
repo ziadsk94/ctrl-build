@@ -37,8 +37,23 @@ export default function Header() {
     };
   }, []);
 
+  // Cleanup effect to restore scrolling if component unmounts
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    const newMenuState = !isMenuOpen;
+    setIsMenuOpen(newMenuState);
+    
+    // Prevent background scrolling when menu is open
+    if (newMenuState) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
   };
 
   const handleLinkClick = (link: string) => {
@@ -73,6 +88,7 @@ export default function Header() {
             router.push('/contact');
           }
           setIsMenuOpen(false);
+          document.body.style.overflow = 'unset'; // Restore scrolling
           document.body.removeChild(transition);
         }, 300);
   };
