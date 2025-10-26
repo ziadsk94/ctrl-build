@@ -87,6 +87,24 @@ export default function Header() {
   };
 
   const handleLinkClick = (link: string) => {
+    // Immediately clean up scroll prevention
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.style.overflow = 'unset';
+    
+    // Restore scroll position
+    if (scrollY) {
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+    
+    // Remove touch event listener
+    document.removeEventListener('touchmove', preventScroll);
+    
+    // Close menu immediately
+    setIsMenuOpen(false);
+    
     // Create the expanding green transition
     const transition = document.createElement('div');
     transition.style.cssText = `
@@ -117,22 +135,6 @@ export default function Header() {
           } else if (link === 'contact') {
             router.push('/contact');
           }
-          setIsMenuOpen(false);
-          
-          // Restore scrolling properly
-          const scrollY = document.body.style.top;
-          document.body.style.position = '';
-          document.body.style.top = '';
-          document.body.style.width = '';
-          document.body.style.overflow = 'unset';
-          
-          // Restore scroll position
-          if (scrollY) {
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
-          }
-          
-          // Remove touch event listener
-          document.removeEventListener('touchmove', preventScroll);
           
           document.body.removeChild(transition);
         }, 300);
