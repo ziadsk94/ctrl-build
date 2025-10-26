@@ -52,7 +52,7 @@ const fraunces = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ctrl-build.com'),
-  title: 'CTRL+BUILD | Bespoke Web Design & Headless Development Agency',
+  title: 'CTRL+BUILD | Bespoke Web Design & Development Agency',
   description: 'CTRL+BUILD is a design studio in Romania creating high-performance, bespoke websites. We practice Digital Discipline to build platforms that drive results.',
   keywords: 'bespoke web design, headless development agency, custom website design, web design Romania, agentie web design, UI/UX Romania, developare web, web design Craiova, Awwwards-winning studio',
   authors: [{ name: 'CTRL+BUILD' }],
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://ctrl-build.com',
     siteName: 'CTRL+BUILD',
-    title: 'CTRL+BUILD | Bespoke Web Design & Headless Development Agency',
+    title: 'CTRL+BUILD | Bespoke Web Design & Development Agency',
     description: 'CTRL+BUILD is a design studio in Romania creating high-performance, bespoke websites. We practice Digital Discipline to build platforms that drive results.',
     images: [
       {
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CTRL+BUILD | Bespoke Web Design & Headless Development Agency',
+    title: 'CTRL+BUILD | Bespoke Web Design & Development Agency',
     description: 'CTRL+BUILD is a design studio in Romania creating high-performance, bespoke websites. We practice Digital Discipline to build platforms that drive results.',
     images: ['/assets/images/og-image.jpg'],
   },
