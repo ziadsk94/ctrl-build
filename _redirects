@@ -1,21 +1,15 @@
 # URL Canonicalization - Ensure all variations redirect to canonical URL
 # Canonical URL: https://ctrl-build.com/
 
-# Force HTTPS and remove www
+# Redirect www to non-www (multiple variations for Cloudflare Pages)
+https://www.ctrl-build.com https://ctrl-build.com 301
 https://www.ctrl-build.com/* https://ctrl-build.com/:splat 301
+http://www.ctrl-build.com https://ctrl-build.com 301
 http://www.ctrl-build.com/* https://ctrl-build.com/:splat 301
+
+# Force HTTPS (should be handled by Cloudflare, but adding for safety)
+http://ctrl-build.com https://ctrl-build.com 301
 http://ctrl-build.com/* https://ctrl-build.com/:splat 301
-
-# Remove trailing slashes (Next.js already handles this, but adding explicit redirects)
-https://ctrl-build.com/*/ https://ctrl-build.com/:splat 301
-
-# Case variations (redirect to lowercase)
-https://Ctrl-Build.com/* https://ctrl-build.com/:splat 301
-https://CTRL-BUILD.com/* https://ctrl-build.com/:splat 301
-
-# Common URL variations
-https://ctrl-build.com/index https://ctrl-build.com/ 301
-https://ctrl-build.com/index.html https://ctrl-build.com/ 301
 
 # SEO redirects
 /home / 301
