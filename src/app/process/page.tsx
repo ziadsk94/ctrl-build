@@ -191,16 +191,18 @@ export default function Process() {
     <div ref={phaseRef} className="py-16 px-6 md:px-16">
       <div className="max-w-7xl mx-auto">
         {/* Ghosted Background Element - All Devices */}
-        <div className={`transition-all duration-1000 ${
+        <div className={`transition-all duration-1000 overflow-hidden ${
           isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
         }`}>
           <h2 
             className="font-syne font-bold text-left"
             style={{
-              fontSize: 'clamp(4rem, 12vw, 12rem)',
+              fontSize: isMobile ? 'clamp(2rem, 8vw, 4rem)' : 'clamp(4rem, 12vw, 12rem)',
               WebkitTextStroke: '1px #020202',
               color: 'transparent',
-              lineHeight: '0.8'
+              lineHeight: '0.8',
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word'
             }}
           >
             {text}
@@ -212,7 +214,7 @@ export default function Process() {
   );
 
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-cream overflow-x-hidden">
       <Header />
       
       <main>
