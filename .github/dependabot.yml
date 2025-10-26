@@ -1,0 +1,61 @@
+# Dependabot Configuration for Automated Security Updates
+# Automatically creates pull requests for dependency updates
+
+version: 2
+updates:
+  # Enable version updates for npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "security"
+    groups:
+      # Group all production dependencies together
+      production-dependencies:
+        dependency-type: "production"
+      # Group all development dependencies together
+      development-dependencies:
+        dependency-type: "development"
+    # Ignore major version updates (requires manual review)
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    # Add reviewers to security updates
+    reviewers:
+      - "ziadsk94"
+    # Add assignees to security updates
+    assignees:
+      - "ziadsk94"
+    # Enable dependency grouping for updates
+    versioning-strategy: increase-if-necessary
+    # Rebase internal branches automatically
+    rebase-strategy: "auto"
+    # Allow updates to lockfiles
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    # Pull request options
+    pull-request-branch-name:
+      separator: "-"
+    # Allow scheduling updates
+    schedule:
+      timezone: "America/New_York"
+
+  # GitHub Actions updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "ci/cd"
+      - "github-actions"
+    reviewers:
+      - "ziadsk94"
+    assignees:
+      - "ziadsk94"
+

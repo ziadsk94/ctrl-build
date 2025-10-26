@@ -14,14 +14,39 @@ NPM_VERSION = "9"
 # GOOGLE_ANALYTICS_ID = "your-ga4-id"
 # GOOGLE_VERIFICATION_CODE = "your-verification-code"
 
-# Headers for security and caching
+# Comprehensive Security Headers
 [[headers]]
 for = "/*"
 [headers.values]
+# Content Security Policy - Strict whitelist of allowed sources
+Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://ssl.google-analytics.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
+
+# HTTP Strict Transport Security - Force HTTPS for 1 year including subdomains
+Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Prevent MIME type sniffing
 X-Content-Type-Options = "nosniff"
+
+# Prevent clickjacking attacks
 X-Frame-Options = "DENY"
+
+# Enable XSS filter (legacy but still useful)
 X-XSS-Protection = "1; mode=block"
-Referrer-Policy = "origin-when-cross-origin"
+
+# Control referrer information
+Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Restrict browser features we don't use
+Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), vr=(), interest-cohort=()"
+
+# Remove server information
+X-Powered-By = ""
+
+# Use content type UTF-8 to prevent XSS
+X-Content-Type = "text/html; charset=utf-8"
+
+# Require HTTPS for secure cookies
+Secure = "true"
 
 [[headers]]
 for = "/assets/*"
