@@ -187,31 +187,70 @@ export default function Process() {
     text: string;
     isVisible: boolean;
     phaseRef: React.RefObject<HTMLDivElement>;
-  }) => (
-    <div ref={phaseRef} className="py-16 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto">
-        {/* Ghosted Background Element - All Devices */}
-        <div className={`transition-all duration-1000 overflow-hidden ${
-          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-        }`}>
-          <h2 
-            className="font-syne font-bold text-left"
-            style={{
-              fontSize: isMobile ? 'clamp(2rem, 8vw, 4rem)' : 'clamp(4rem, 12vw, 12rem)',
-              WebkitTextStroke: '1px #020202',
-              color: 'transparent',
-              lineHeight: '0.8',
-              wordBreak: 'break-word',
-              overflowWrap: 'break-word'
-            }}
-          >
-            {text}
-          </h2>
-        </div>
+  }) => {
+    // Split text for mobile display
+    const parts = text.split(': ');
+    const phasePart = parts[0]; // "PHASE I" or "PHASE II"
+    const actionPart = parts[1]; // "CONTROL" or "BUILD"
+    
+    return (
+      <div ref={phaseRef} className="py-16 px-6 md:px-16">
+        <div className="max-w-7xl mx-auto">
+          {/* Desktop/Tablet: Single Line Ghosted Background */}
+          {!isMobile && (
+            <div className={`transition-all duration-1000 overflow-hidden ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+            }`}>
+              <h2 
+                className="font-syne font-bold text-left"
+                style={{
+                  fontSize: 'clamp(4rem, 12vw, 12rem)',
+                  WebkitTextStroke: '1px #020202',
+                  color: 'transparent',
+                  lineHeight: '0.8',
+                  wordBreak: 'break-word',
+                  overflowWrap: 'break-word'
+                }}
+              >
+                {text}
+              </h2>
+            </div>
+          )}
 
+          {/* Mobile: Two Lines - Ghosted Text */}
+          {isMobile && (
+            <div className={`transition-all duration-1000 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}>
+              <h2 className="font-syne font-bold text-center">
+                <div 
+                  className="mb-2"
+                  style={{ 
+                    fontSize: 'clamp(1.5rem, 6vw, 2.5rem)',
+                    WebkitTextStroke: '1px #020202',
+                    color: 'transparent',
+                    lineHeight: '1'
+                  }}
+                >
+                  {phasePart}
+                </div>
+                <div 
+                  style={{ 
+                    fontSize: 'clamp(1.5rem, 6vw, 2.5rem)',
+                    WebkitTextStroke: '1px #020202',
+                    color: 'transparent',
+                    lineHeight: '1'
+                  }}
+                >
+                  {actionPart}
+                </div>
+              </h2>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-cream overflow-x-hidden">
