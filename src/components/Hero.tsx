@@ -179,15 +179,17 @@ export default function Hero() {
         </div>
       )}
 
-      {/* Scroll Indicator - Bottom-Center */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="w-px h-10 bg-black relative overflow-hidden">
-          <div 
-            className="absolute top-0 left-0 w-full bg-black scroll-indicator"
-            style={{ height: '40px' }}
-          />
+      {/* Scroll Indicator - Bottom-Center (Desktop/Tablet Only) */}
+      {!isMobile && (
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-px h-10 bg-black relative overflow-hidden">
+            <div 
+              className="absolute top-0 left-0 w-full bg-black scroll-indicator"
+              style={{ height: '40px' }}
+            />
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }
