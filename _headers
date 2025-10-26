@@ -49,9 +49,11 @@ X-Content-Type = "text/html; charset=utf-8"
 Secure = "true"
 
 [[headers]]
-for = "/assets/*"
+for = "/assets/images/*"
 [headers.values]
 Cache-Control = "public, max-age=31536000, immutable"
+# Enable Cloudflare image optimization (automatic WebP/AVIF conversion)
+CF-Image-Optimization = "on"
 
 [[headers]]
 for = "/_next/static/*"

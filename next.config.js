@@ -7,7 +7,9 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   images: {
+    // Unoptimized for static export - Cloudflare Pages CDN handles optimization
     unoptimized: true,
+    // Cloudflare will automatically serve WebP/AVIF when browser supports it
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
