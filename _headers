@@ -1,0 +1,45 @@
+# Cloudflare Pages Configuration
+# This file configures your site for Cloudflare Pages deployment
+
+[build]
+command = "npm run build"
+publish = "out"
+
+[build.environment]
+NODE_VERSION = "18"
+NPM_VERSION = "9"
+
+# Environment variables (set these in Cloudflare Pages dashboard)
+# NEXT_PUBLIC_SITE_URL = "https://ctrl-build.com"
+# GOOGLE_ANALYTICS_ID = "your-ga4-id"
+# GOOGLE_VERIFICATION_CODE = "your-verification-code"
+
+# Headers for security and caching
+[[headers]]
+for = "/*"
+[headers.values]
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+X-XSS-Protection = "1; mode=block"
+Referrer-Policy = "origin-when-cross-origin"
+
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/_next/static/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects for SEO
+[[redirects]]
+from = "/home"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/portfolio"
+to = "/work"
+status = 301

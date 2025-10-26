@@ -1,0 +1,16 @@
+# Cloudflare Pages Build Configuration
+# This file tells Cloudflare Pages how to build your Next.js application
+
+# Build command
+npm run build
+
+# Build output directory
+out
+
+# Node.js version
+node_version = "18"
+
+# Environment variables (add your actual values)
+# NEXT_PUBLIC_SITE_URL = "https://ctrl-build.com"
+# GOOGLE_ANALYTICS_ID = "your-ga4-id"
+# GOOGLE_VERIFICATION_CODE = "your-verification-code"

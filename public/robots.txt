@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Allow crawling of all assets
+Allow: /assets/
+Allow: /_next/static/
+Allow: /favicon.ico
+
+# Block admin/staging areas (if any)
+Disallow: /admin/
+Disallow: /staging/
+Disallow: /test/
+
+# Sitemap location
+Sitemap: https://ctrl-build.com/sitemap.xml
