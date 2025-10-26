@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-const statementText = "The digital landscape is ready for a new standard. We are tired of the template. Based in Romania, CTRL+BUILD was founded on 'Digital Discipline'— creating bespoke, high-performance platforms that are engineered for results.";
+const statementText = "The digital landscape is ready for a new standard. We are tired of the template. Based in Romania, CTRL+BUILD was founded on 'Digital Discipline'— creating bespoke web design, high-performance platforms that are engineered for results.";
 const words = statementText.split(' ');
 
 export default function BrandStatement() {

@@ -61,7 +61,7 @@ export default function CoreServices() {
     {
       number: "02", 
       title: "HEADLESS DEVELOPMENT",
-      description: "We build high-performance websites using modern headless architecture. This means unparalleled speed, security, and scalability."
+      description: "We build high-performance websites using modern development architecture. This means unparalleled speed, security, and scalability."
     },
     {
       number: "03",
