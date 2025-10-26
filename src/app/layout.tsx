@@ -115,22 +115,9 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
         <link rel="manifest" href="/site.webmanifest" />
         
-        {/* Google Analytics - Load with defer to prevent render blocking */}
-        <script 
-          src="https://www.googletagmanager.com/gtag/js?id=G-RWE7TFWDRQ"
-          defer
-        />
-        <script
-          defer
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-RWE7TFWDRQ', { 'anonymize_ip': true });
-            `,
-          }}
-        />
+        {/* Preconnect to external domains for faster resource loading */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
         
         {/* Preload critical fonts for LCP optimization */}
         <link
@@ -155,13 +142,28 @@ export default function RootLayout({
         />
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//www.google-analytics.com" />
       </head>
       <body
         className={`${syne.variable} ${fraunces.variable} font-syne antialiased`}
       >
         {children}
         <CookieConsent />
+        
+        {/* Google Analytics - Loaded at end of body to prevent render blocking */}
+        <script 
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-RWE7TFWDRQ"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-RWE7TFWDRQ', { 'anonymize_ip': true });
+            `,
+          }}
+        />
       </body>
     </html>
   );
