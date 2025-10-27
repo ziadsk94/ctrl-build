@@ -20,15 +20,13 @@ export default function CoreServices() {
         
         if (isInView) {
           if (isMobile) {
-            // Vertical cascade for mobile
             setTimeout(() => setShowColumn1(true), 200);
             setTimeout(() => setShowColumn2(true), 400);
             setTimeout(() => setShowColumn3(true), 600);
           } else {
-            // Staggered sequence from left to right for desktop/tablet
             setTimeout(() => setShowColumn1(true), 200);
-            setTimeout(() => setShowColumn2(true), 350); // 0.15s delay
-            setTimeout(() => setShowColumn3(true), 500); // 0.15s delay
+            setTimeout(() => setShowColumn2(true), 350);
+            setTimeout(() => setShowColumn3(true), 500);
           }
         }
       }
@@ -39,7 +37,6 @@ export default function CoreServices() {
       setIsMobile(width <= 600);
     };
 
-    // Initial checks
     handleResize();
     handleScroll();
 
@@ -73,14 +70,12 @@ export default function CoreServices() {
   return (
     <section ref={sectionRef} className="bg-cream py-24 px-6 md:px-16">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className="mb-16">
           <h2 className="font-syne font-bold text-black text-3xl md:text-4xl">
             Core Capabilities
           </h2>
         </div>
 
-        {/* Desktop/Tablet: 3-Column Grid */}
         {!isMobile && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
             {services.map((service, index) => {
@@ -94,7 +89,6 @@ export default function CoreServices() {
                   onMouseEnter={() => setHoveredColumn(index)}
                   onMouseLeave={() => setHoveredColumn(null)}
                 >
-                  {/* Hover Outline */}
                   <div 
                     className={`absolute inset-0 border border-[#3c8669] transition-all duration-200 ${
                       isHovered ? 'opacity-100' : 'opacity-0'
@@ -105,11 +99,9 @@ export default function CoreServices() {
                     }}
                   />
                   
-                  {/* Content */}
                   <div className={`transition-all duration-500 ${
                     isColumnVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    {/* Number */}
                     <div 
                       className={`font-syne font-bold text-6xl mb-4 transition-colors duration-200 ${
                         isHovered ? 'text-[#3c8669]' : 'text-pink'
@@ -118,12 +110,10 @@ export default function CoreServices() {
                       {service.number}
                     </div>
                     
-                    {/* Title */}
                     <h3 className="font-syne font-bold text-black text-xl md:text-2xl mb-6">
                       {service.title}
                     </h3>
                     
-                    {/* Description */}
                     <p className="font-fraunces text-black text-base md:text-lg leading-relaxed">
                       {service.description}
                     </p>
@@ -134,7 +124,6 @@ export default function CoreServices() {
           </div>
         )}
 
-        {/* Mobile: Vertical Stack */}
         {isMobile && (
           <div className="space-y-0">
             {services.map((service, index) => {
@@ -142,27 +131,22 @@ export default function CoreServices() {
               
               return (
                 <div key={index}>
-                  {/* Service Block */}
                   <div className={`transition-all duration-500 ${
                     isColumnVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
-                    {/* Number */}
                     <div className="font-syne font-bold text-6xl mb-4 text-pink">
                       {service.number}
                     </div>
                     
-                    {/* Title */}
                     <h3 className="font-syne font-bold text-black text-xl mb-6">
                       {service.title}
                     </h3>
                     
-                    {/* Description */}
                     <p className="font-fraunces text-black text-base leading-relaxed">
                       {service.description}
                     </p>
                   </div>
                   
-                  {/* Separator Line (except for last item) */}
                   {index < services.length - 1 && (
                     <div className="w-full h-px bg-black my-12"></div>
                   )}

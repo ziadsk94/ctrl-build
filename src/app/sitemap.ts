@@ -5,7 +5,6 @@ export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ctrl-build.com';
   
-  // Static pages
   const staticPages = [
     {
       url: baseUrl,
@@ -39,7 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic case study pages
   const caseStudies = [
     'ipower',
     'gaplens', 

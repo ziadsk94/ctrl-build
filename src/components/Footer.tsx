@@ -20,17 +20,15 @@ export default function Footer() {
         setIsVisible(isInView);
         
         if (isInView) {
-          // Staggered from left to right with 0.1s delay
           setTimeout(() => setShowColumn1(true), 200);
-          setTimeout(() => setShowColumn2(true), 300); // 0.1s delay
-          setTimeout(() => setShowColumn3(true), 400); // 0.1s delay
+          setTimeout(() => setShowColumn2(true), 300);
+          setTimeout(() => setShowColumn3(true), 400);
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     
-    // Initial check
     handleScroll();
 
     return () => {
@@ -52,12 +50,10 @@ export default function Footer() {
 
   return (
     <footer ref={sectionRef} className="bg-pink">
-      {/* Main Footer Content */}
       <div className="py-16 px-6 md:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
             
-            {/* Column 01: Brand & Contact */}
             <div className={`transition-all duration-500 ${
               showColumn1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
             }`}>
@@ -80,7 +76,6 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Column 02: Menu */}
             <div className={`transition-all duration-500 ${
               showColumn2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
             }`}>
@@ -124,7 +119,6 @@ export default function Footer() {
               </nav>
             </div>
 
-            {/* Column 03: Social */}
             <div className={`transition-all duration-500 ${
               showColumn3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
             }`}>
@@ -151,10 +145,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Sub-Footer Separator */}
       <div className="w-full h-px bg-black"></div>
 
-      {/* Sub-Footer */}
       <div className="py-6 px-6 md:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">

@@ -1,4 +1,3 @@
-// Google Analytics utility functions
 declare global {
   interface Window {
     gtag: (...args: any[]) => void;
@@ -25,7 +24,6 @@ export const trackConversion = (conversionType: string) => {
   }
 };
 
-// Specific tracking functions for CTRL+BUILD
 export const trackEmailClick = () => {
   trackConversion('Email Click');
   trackEvent('click', 'Contact', 'Email Link');

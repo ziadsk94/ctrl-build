@@ -20,17 +20,15 @@ export default function BrandStatement() {
         setIsVisible(isInView);
         
         if (isInView) {
-          // Start line drawing animation
           setTimeout(() => setShowLine(true), 200);
           
-          // Start word-by-word animation after line completes
           setTimeout(() => {
             words.forEach((_, index) => {
               setTimeout(() => {
                 setVisibleWords(prev => [...prev, index]);
-              }, index * 50); // 0.05s delay between words
+              }, index * 50);
             });
-          }, 700); // Start after line animation (0.5s) + small delay
+          }, 700);
         }
       }
     };
@@ -40,7 +38,6 @@ export default function BrandStatement() {
       setIsMobile(width <= 600);
     };
 
-    // Initial checks
     handleResize();
     handleScroll();
 
@@ -57,7 +54,6 @@ export default function BrandStatement() {
     <section ref={sectionRef} className="bg-cream py-32 px-6 md:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center">
-          {/* Accent Marker - Green Line */}
           <div className="mb-12">
             <div 
               className="h-px bg-[#3c8669] transition-all duration-500 ease-out"
@@ -68,7 +64,6 @@ export default function BrandStatement() {
             />
           </div>
 
-          {/* Statement Text */}
           <div className={`text-center ${
             isMobile ? 'max-w-[90%]' : 'max-w-[60%]'
           }`}>

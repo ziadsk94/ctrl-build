@@ -107,19 +107,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Favicon and App Icons */}
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        
-        {/* Preconnect to external domains for faster resource loading */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
-        
-        {/* Preload critical fonts for LCP optimization */}
         <link
           rel="preload"
           href="/assets/fonts/Syne-Bold.ttf"
@@ -134,13 +129,11 @@ export default function RootLayout({
           type="font/ttf"
           crossOrigin="anonymous"
         />
-        {/* Preload hero images for LCP */}
         <link
           rel="preload"
           href="/assets/images/projects/ipower/featured.png"
           as="image"
         />
-        {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       </head>
       <body
@@ -148,8 +141,6 @@ export default function RootLayout({
       >
         {children}
         <CookieConsent />
-        
-        {/* Google Analytics - Loaded at end of body to prevent render blocking */}
         <script 
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-RWE7TFWDRQ"

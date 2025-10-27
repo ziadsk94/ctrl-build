@@ -24,9 +24,8 @@ export default function Header() {
       setIsTablet(width <= 1024 && width > 600);
     };
 
-    // Initial check
     handleResize();
-    handleScroll(); // Initial scroll check
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize);
@@ -37,21 +36,13 @@ export default function Header() {
     };
   }, []);
 
-  // No cleanup needed since we allow background scrolling
-
   const toggleMenu = () => {
     const newMenuState = !isMenuOpen;
     setIsMenuOpen(newMenuState);
-    // Allow background scrolling - no scroll prevention needed
   };
 
-  // No scroll prevention functions needed - we allow background scrolling
-
   const handleLinkClick = (link: string) => {
-    // Close menu immediately
     setIsMenuOpen(false);
-    
-    // Create the expanding green transition
     const transition = document.createElement('div');
     transition.style.cssText = `
       position: fixed;
@@ -67,12 +58,10 @@ export default function Header() {
     `;
     document.body.appendChild(transition);
     
-    // Trigger the expansion
     requestAnimationFrame(() => {
       transition.style.transform = 'scaleX(1)';
     });
     
-        // Navigate after animation
         setTimeout(() => {
           if (link === 'work') {
             router.push('/work');
@@ -88,7 +77,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Header */}
       <header 
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isMobile ? 'h-[70px]' : 'h-[90px]'
@@ -100,7 +88,6 @@ export default function Header() {
         }}
       >
         <div className="flex items-center justify-between h-full px-6 relative">
-          {/* Logo - Left */}
           <button
             onClick={() => router.push('/')}
             className="font-syne font-bold text-black text-lg flex-shrink-0 hover:text-[#3c8669] transition-colors duration-200"
@@ -108,20 +95,17 @@ export default function Header() {
             CTRL+BUILD
           </button>
 
-          {/* Center Keyword - Desktop only */}
           {!isTablet && !isMobile && (
             <div className="absolute left-1/2 transform -translate-x-1/2 font-syne font-bold text-[10px] uppercase text-black">
               RO—WEB DESIGN & DEV
             </div>
           )}
 
-          {/* Menu Trigger - Right */}
           <button
             onClick={toggleMenu}
             onMouseEnter={() => setIsHoveringMenu(true)}
             onMouseLeave={() => setIsHoveringMenu(false)}
             onTouchStart={() => {
-              // Haptic feedback for mobile
               if (navigator.vibrate) {
                 navigator.vibrate(50);
               }
@@ -143,7 +127,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Full-Screen Menu Overlay */}
       {isMenuOpen && (
         <div 
           className="fixed inset-0 z-50 animate-slide-in menu-overlay" 
@@ -153,7 +136,6 @@ export default function Header() {
           }}
         >
           <div className="flex flex-col h-full w-full">
-            {/* Close Button */}
             <div className="flex justify-end p-6">
               <button
                 onClick={toggleMenu}
@@ -169,7 +151,6 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Navigation Links */}
             <div className="flex-1 flex items-center justify-start pl-8">
               <nav className="space-y-12">
                 <button
@@ -177,7 +158,6 @@ export default function Header() {
                   onMouseEnter={() => setHoveredLink('work')}
                   onMouseLeave={() => setHoveredLink(null)}
                   onTouchStart={() => {
-                    // Instant flash for mobile
                     setHoveredLink('work');
                     if (navigator.vibrate) {
                       navigator.vibrate(30);
