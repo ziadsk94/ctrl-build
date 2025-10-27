@@ -150,7 +150,6 @@ export default function AetierCaseStudy() {
                   {project.subtitle}
                 </p>
                 
-                {/* Website Link */}
                 <a
                   href={project.website}
                   target="_blank"

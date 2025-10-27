@@ -150,7 +150,6 @@ export default function GaplensCaseStudy() {
                   {project.subtitle}
                 </p>
                 
-                {/* Website Link */}
                 <a
                   href={project.website}
                   target="_blank"
