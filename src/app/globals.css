@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font Face Declarations */
 @font-face {
   font-family: 'Syne';
   src: url('/assets/fonts/Syne-Regular.ttf') format('truetype');
@@ -74,7 +73,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -92,13 +90,11 @@ body {
   background: #3c8669;
 }
 
-/* Menu overlay background */
 .menu-overlay {
   background-color: #fcfaf7 !important;
   background: #fcfaf7 !important;
 }
 
-/* Responsive typography for mobile */
 @media (max-width: 600px) {
   .nav-link-text {
     font-size: clamp(2.25rem, 4.5vw, 4.5vw) !important;
@@ -106,7 +102,6 @@ body {
   }
 }
 
-/* Hero scroll indicator animation */
 @keyframes drawLine {
   0%, 100% {
     transform: translateY(-40px);
@@ -122,7 +117,6 @@ body {
   animation: drawLine 2s ease-in-out infinite;
 }
 
-/* Featured Work animations */
 .curtain-reveal {
   transform-origin: left;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -133,7 +127,6 @@ body {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Custom cursor styles */
 .custom-cursor {
   pointer-events: none;
   z-index: 9999;
