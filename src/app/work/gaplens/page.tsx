@@ -37,7 +37,6 @@ export default function GaplensCaseStudy() {
   };
 
   useEffect(() => {
-    // Page load animation
     setTimeout(() => setIsLoaded(true), 200);
     setTimeout(() => setShowHeroContent(true), 800);
 
@@ -48,7 +47,6 @@ export default function GaplensCaseStudy() {
     };
 
     const handleScroll = () => {
-      // Brief & Services reveal
       if (briefRef.current) {
         const rect = briefRef.current.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
@@ -56,26 +54,23 @@ export default function GaplensCaseStudy() {
         }
       }
 
-      // Visual Showcase reveal
       if (showcaseRef.current) {
         const rect = showcaseRef.current.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
           setShowShowcase(true);
-          // Staggered reveal for each image
-          project.showcaseImages.slice(0, 1).forEach((_, index) => { // Only first image for now
+          project.showcaseImages.slice(0, 1).forEach((_, index) => {
             setTimeout(() => {
               setVisibleImages(prev => {
                 const newVisible = [...prev];
                 newVisible[index] = true;
                 return newVisible;
               });
-            }, index * 200); // 0.2s delay between images
+            }, index * 200);
           });
         }
       }
     };
 
-    // Initial checks
     handleResize();
     handleScroll();
 
@@ -89,7 +84,6 @@ export default function GaplensCaseStudy() {
   }, [project.showcaseImages.length]);
 
   const handleNextProjectClick = (nextSlug: string) => {
-    // Create the expanding green transition
     const transition = document.createElement('div');
     transition.style.cssText = `
       position: fixed;
@@ -105,12 +99,10 @@ export default function GaplensCaseStudy() {
     `;
     document.body.appendChild(transition);
     
-    // Trigger the expansion
     requestAnimationFrame(() => {
       transition.style.transform = 'scaleX(1)';
     });
     
-    // Navigate after animation
     setTimeout(() => {
       window.location.href = `/work/${nextSlug.toLowerCase()}`;
       document.body.removeChild(transition);
@@ -122,9 +114,7 @@ export default function GaplensCaseStudy() {
       <Header />
       
       <main>
-        {/* Project Hero */}
-        <section className={`${isMobile ? 'h-[80vh]' : 'h-[90vh]'} relative overflow-hidden`}>
-          {/* Background Image */}
+          <section className={`${isMobile ? 'h-[80vh]' : 'h-[90vh]'} relative overflow-hidden`}>
           <div className="absolute inset-0">
             <Image
               src={project.heroImage}
@@ -136,15 +126,12 @@ export default function GaplensCaseStudy() {
                 transform: isLoaded ? 'scale(1)' : 'scale(1.05)'
               }}
             />
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black opacity-15"></div>
           </div>
 
-          {/* Content */}
           <div className="relative z-10 flex items-center justify-center h-full text-center px-6 md:px-16">
             <div className="max-w-7xl mx-auto">
-              {/* H1 Project Name */}
-              <h1 
+              <h1
                 className={`font-syne font-bold text-[#fcfaf7] mb-4 transition-all duration-1000 ${
                   showHeroContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
@@ -153,7 +140,6 @@ export default function GaplensCaseStudy() {
                 {project.name}
               </h1>
               
-              {/* Subtitle */}
               <div 
                 className={`${isMobile ? 'max-w-[90%]' : 'max-w-[60%]'} mx-auto transition-all duration-1000 ${
                   showHeroContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -181,15 +167,12 @@ export default function GaplensCaseStudy() {
           </div>
         </section>
 
-        {/* Brief & Services */}
         <section ref={briefRef} className="bg-cream py-24 px-6 md:px-16">
           <div className="max-w-7xl mx-auto">
-            {/* Desktop/Tablet: 2-Column Grid */}
             {!isMobile && (
               <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 transition-all duration-700 ${
                 showBrief ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                {/* Column 1: The Objective */}
                 <div>
                   <h3 className="font-syne font-bold text-black text-2xl md:text-3xl mb-6">
                     THE OBJECTIVE
@@ -199,7 +182,6 @@ export default function GaplensCaseStudy() {
                   </p>
                 </div>
 
-                {/* Column 2: Capabilities */}
                 <div>
                   <h3 className="font-syne font-bold text-black text-2xl md:text-3xl mb-6">
                     CAPABILITIES
@@ -213,10 +195,8 @@ export default function GaplensCaseStudy() {
               </div>
             )}
 
-            {/* Mobile: Single Column Stack - Left Aligned */}
             {isMobile && (
               <div className="text-left space-y-12">
-                {/* The Objective */}
                 <div className={`transition-all duration-700 ${
                   showBrief ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
@@ -228,7 +208,6 @@ export default function GaplensCaseStudy() {
                   </p>
                 </div>
 
-                {/* Capabilities */}
                 <div className={`transition-all duration-700 ${
                   showBrief ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`} style={{ transitionDelay: '150ms' }}>
@@ -246,17 +225,13 @@ export default function GaplensCaseStudy() {
           </div>
         </section>
 
-        {/* Separator */}
         <div className="w-full h-px bg-black max-w-7xl mx-auto px-6 md:px-16"></div>
 
-        {/* Visual Showcase */}
         <section ref={showcaseRef} className="bg-cream py-24">
           <div className="max-w-7xl mx-auto">
-            {/* Full-Bleed Homepage Screenshot */}
             <div className={`relative overflow-hidden mb-24 ${
               isMobile ? 'px-6' : 'px-16'
             }`}>
-              {/* Curtain Reveal */}
               <div className={`absolute inset-0 bg-pink z-10 transition-transform duration-400 ${
                 visibleImages[0] ? '-translate-x-full' : 'translate-x-0'
               }`}></div>
@@ -270,7 +245,6 @@ export default function GaplensCaseStudy() {
               />
             </div>
 
-            {/* Testimonial Section */}
             <div className="py-24 px-6 md:px-16 bg-pink">
               <div className="max-w-4xl mx-auto text-center">
                 <blockquote className="font-fraunces text-black text-xl md:text-2xl leading-relaxed">
@@ -281,13 +255,10 @@ export default function GaplensCaseStudy() {
           </div>
         </section>
 
-        {/* Navigation (The Outro) */}
         <section className="py-24 px-6 md:px-16 bg-cream">
           <div className="max-w-7xl mx-auto text-center">
-            {/* Separator */}
             <div className="w-full h-px bg-black mb-12"></div>
 
-            {/* Next Project Link */}
             <div className={`transition-all duration-700 ${
               showShowcase ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`} style={{ transitionDelay: '200ms' }}>
@@ -307,7 +278,6 @@ export default function GaplensCaseStudy() {
           </div>
         </section>
 
-        {/* Final CTA */}
         <FinalCTA />
       </main>
       
