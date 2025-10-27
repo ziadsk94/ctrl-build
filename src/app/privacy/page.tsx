@@ -13,7 +13,6 @@ export default function Privacy() {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    // Page load animation
     setTimeout(() => setIsLoaded(true), 200);
     setTimeout(() => setShowHeroContent(true), 400);
 
@@ -37,10 +36,8 @@ export default function Privacy() {
       });
     };
 
-    // Initialize visible sections array
     setVisibleSections(new Array(6).fill(false));
 
-    // Initial checks
     handleResize();
     handleScroll();
 
@@ -85,10 +82,8 @@ export default function Privacy() {
       <Header />
       
       <main>
-        {/* Page Hero */}
         <section className={`${isMobile ? 'h-[40vh]' : 'h-[50vh]'} bg-cream flex items-center justify-center px-6 md:px-16`}>
           <div className="max-w-7xl mx-auto text-center">
-            {/* H1 Headline */}
             <h1 
               className={`font-syne font-bold text-black mb-8 transition-all duration-500 ${
                 isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -98,7 +93,6 @@ export default function Privacy() {
               PRIVACY POLICY
             </h1>
             
-            {/* Introduction Text */}
             <div 
               className={`${isMobile ? 'max-w-[90%]' : 'max-w-[60%]'} mx-auto transition-all duration-500 ${
                 showHeroContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -112,7 +106,6 @@ export default function Privacy() {
           </div>
         </section>
 
-        {/* Content Layout */}
         <section className="bg-cream py-24 px-6 md:px-16">
           <div className="max-w-4xl mx-auto">
             {sections.map((section, index) => (
@@ -124,14 +117,12 @@ export default function Privacy() {
                   className={`transition-all duration-700 ${
                     visibleSections[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                   }`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  {/* Section Title */}
+                  style={{                     transitionDelay: `${index * 100}ms` }}
+                  >
                   <h2 className="font-syne font-bold text-black text-xl md:text-2xl mb-6 text-left">
                     {section.title}
                   </h2>
                   
-                  {/* Section Content */}
                   <div className="mb-8">
                     {section.content.split('\n\n').map((paragraph, pIndex) => (
                       <p key={pIndex} className="font-fraunces text-black text-lg leading-relaxed mb-4">
@@ -150,7 +141,6 @@ export default function Privacy() {
                   </div>
                 </div>
 
-                {/* Separator Line (except for last section) */}
                 {index < sections.length - 1 && (
                   <div className="w-full h-px bg-black mb-12"></div>
                 )}

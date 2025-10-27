@@ -23,7 +23,6 @@ export default function Process() {
   const step4Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Page load animation
     setTimeout(() => setIsLoaded(true), 200);
 
     const handleResize = () => {
@@ -32,7 +31,6 @@ export default function Process() {
     };
 
     const handleScroll = () => {
-      // Phase I: Control
       if (phase1Ref.current) {
         const rect = phase1Ref.current.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -40,7 +38,6 @@ export default function Process() {
         }
       }
 
-      // Step 01
       if (step1Ref.current) {
         const rect = step1Ref.current.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -48,7 +45,6 @@ export default function Process() {
         }
       }
 
-      // Step 02
       if (step2Ref.current) {
         const rect = step2Ref.current.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -56,7 +52,6 @@ export default function Process() {
         }
       }
 
-      // Phase II: Build
       if (phase2Ref.current) {
         const rect = phase2Ref.current.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -64,7 +59,6 @@ export default function Process() {
         }
       }
 
-      // Step 03
       if (step3Ref.current) {
         const rect = step3Ref.current.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -72,7 +66,6 @@ export default function Process() {
         }
       }
 
-      // Step 04
       if (step4Ref.current) {
         const rect = step4Ref.current.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -81,7 +74,6 @@ export default function Process() {
       }
     };
 
-    // Initial checks
     handleResize();
     handleScroll();
 
@@ -111,10 +103,8 @@ export default function Process() {
   }) => (
     <div ref={stepRef} className="py-24 px-6 md:px-16">
       <div className="max-w-7xl mx-auto">
-        {/* Desktop/Tablet: Asymmetrical Grid */}
         {!isMobile && (
           <div className="grid grid-cols-1 md:grid-cols-10 gap-8">
-            {/* Left Column - Number (30%) */}
             <div className="md:col-span-3 flex items-start justify-center md:justify-start">
               <div className={`transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -128,7 +118,6 @@ export default function Process() {
               </div>
             </div>
 
-            {/* Right Column - Content (70%) */}
             <div className="md:col-span-7 flex flex-col justify-center">
               <div className={`transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -144,13 +133,11 @@ export default function Process() {
           </div>
         )}
 
-        {/* Mobile: Single Column Stack */}
         {isMobile && (
           <div>
             <div className={`transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-              {/* Number */}
               <div 
                 className="font-syne font-bold text-pink mb-4"
                 style={{ fontSize: '80px', lineHeight: '1' }}
@@ -158,18 +145,15 @@ export default function Process() {
                 {stepNumber}
               </div>
               
-              {/* Title */}
               <h3 className="font-syne font-bold text-black text-xl mb-4">
                 {title}
               </h3>
               
-              {/* Description */}
               <p className="font-fraunces text-black text-base leading-relaxed">
                 {description}
               </p>
             </div>
             
-            {/* Separator Line (except for last item) */}
             {!isLast && (
               <div className="w-full h-px bg-black mt-12"></div>
             )}
@@ -188,16 +172,14 @@ export default function Process() {
     isVisible: boolean;
     phaseRef: React.RefObject<HTMLDivElement>;
   }) => {
-    // Split text for mobile display
     const parts = text.split(': ');
-    const phasePart = parts[0]; // "PHASE I" or "PHASE II"
-    const actionPart = parts[1]; // "CONTROL" or "BUILD"
+    const phasePart = parts[0];
+    const actionPart = parts[1];
     
     return (
       <div ref={phaseRef} className="py-16 px-6 md:px-16">
-        <div className="max-w-7xl mx-auto">
-          {/* Desktop/Tablet: Single Line Ghosted Background */}
-          {!isMobile && (
+      <div className="max-w-7xl mx-auto">
+        {!isMobile && (
             <div className={`transition-all duration-1000 overflow-hidden ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             }`}>
@@ -217,7 +199,6 @@ export default function Process() {
             </div>
           )}
 
-          {/* Mobile: Two Lines - Ghosted Text */}
           {isMobile && (
             <div className={`transition-all duration-1000 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -257,7 +238,6 @@ export default function Process() {
       <Header />
       
       <main>
-        {/* Page Hero & Introduction */}
         <section className={`${isMobile ? 'h-[80vh]' : 'h-screen'} bg-cream flex items-center justify-center px-6 md:px-16`}>
           <div className="max-w-7xl mx-auto text-center">
             <h1 
@@ -282,14 +262,12 @@ export default function Process() {
           </div>
         </section>
 
-        {/* Phase I: Control */}
         <PhaseHeading 
           text="PHASE I: CONTROL" 
           isVisible={showPhase1} 
           phaseRef={phase1Ref} 
         />
 
-        {/* Step 01: Discovery & Strategy */}
         <ProcessStep
           stepNumber="01"
           title="DISCOVERY & STRATEGY"
@@ -299,7 +277,6 @@ export default function Process() {
           isLast={false}
         />
 
-        {/* Step 02: Architecture & UX */}
         <ProcessStep
           stepNumber="02"
           title="ARCHITECTURE & UX"
@@ -309,14 +286,12 @@ export default function Process() {
           isLast={false}
         />
 
-        {/* Phase II: Build */}
         <PhaseHeading 
           text="PHASE II: BUILD" 
           isVisible={showPhase2} 
           phaseRef={phase2Ref} 
         />
 
-        {/* Step 03: Bespoke Design & Dev */}
         <ProcessStep
           stepNumber="03"
           title="BESPOKE DESIGN & DEV"
@@ -326,7 +301,6 @@ export default function Process() {
           isLast={false}
         />
 
-        {/* Step 04: Deployment & Optimization */}
         <ProcessStep
           stepNumber="04"
           title="DEPLOYMENT & OPTIMIZATION"
@@ -336,7 +310,6 @@ export default function Process() {
           isLast={true}
         />
 
-        {/* Final CTA */}
         <FinalCTA />
       </main>
       

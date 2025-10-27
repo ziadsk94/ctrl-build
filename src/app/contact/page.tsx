@@ -19,7 +19,6 @@ export default function Contact() {
   const secondaryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Page load animation
     setTimeout(() => setIsLoaded(true), 200);
 
     const handleResize = () => {
@@ -29,7 +28,6 @@ export default function Contact() {
     };
 
     const handleScroll = () => {
-      // Email link reveal
       if (emailRef.current) {
         const rect = emailRef.current.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -37,7 +35,6 @@ export default function Contact() {
         }
       }
 
-      // Secondary info reveal
       if (secondaryRef.current) {
         const rect = secondaryRef.current.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -50,7 +47,6 @@ export default function Contact() {
       setCursorPosition({ x: e.clientX, y: e.clientY });
     };
 
-    // Initial checks
     handleResize();
     handleScroll();
 
@@ -66,7 +62,6 @@ export default function Contact() {
   }, []);
 
   const handleEmailClick = () => {
-    // Create the expanding green transition
     const transition = document.createElement('div');
     transition.style.cssText = `
       position: fixed;
@@ -82,14 +77,12 @@ export default function Contact() {
     `;
     document.body.appendChild(transition);
     
-    // Trigger the expansion
     requestAnimationFrame(() => {
       transition.style.transform = 'scaleX(1)';
     });
     
-    // Navigate after animation
     setTimeout(() => {
-      trackEmailClick(); // Track the email click
+      trackEmailClick();
       window.location.href = 'mailto:contact@ctrl-build.com';
       document.body.removeChild(transition);
     }, 300);
@@ -97,7 +90,6 @@ export default function Contact() {
 
   return (
     <>
-      {/* Custom Cursor - Desktop/Tablet Only */}
       {!isMobile && (
         <div 
           className="fixed pointer-events-none z-50 transition-all duration-200"
@@ -126,10 +118,8 @@ export default function Contact() {
         <Header />
         
         <main>
-          {/* Page Hero & Introduction */}
           <section className={`${isMobile ? 'h-[70vh]' : 'h-[80vh]'} bg-cream flex items-center justify-center px-6 md:px-16`}>
             <div className="max-w-7xl mx-auto text-center">
-              {/* H1 Headline */}
               <h1 
                 className={`font-syne font-bold text-black mb-8 transition-all duration-500 ${
                   isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -147,7 +137,6 @@ export default function Contact() {
                 </span>
               </h1>
               
-              {/* Introduction Text */}
               <div 
                 className={`${isMobile ? 'max-w-[90%]' : 'max-w-[60%]'} mx-auto transition-all duration-500 ${
                   isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -163,7 +152,6 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* Primary Email CTA */}
           <section className="py-24 px-6 md:px-16 overflow-hidden">
             <div className="max-w-7xl mx-auto text-center">
               <div 
@@ -200,7 +188,6 @@ export default function Contact() {
                   }}
                 >
                   contact@ctrl-build.com
-                  {/* Animated underline */}
                   <div 
                     className={`absolute bottom-0 left-0 h-px bg-[#3c8669] transition-all duration-300 ${
                       hoveredEmail ? 'w-full' : 'w-0'
@@ -212,13 +199,10 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* Secondary Information */}
           <section ref={secondaryRef} className="py-16 px-6 md:px-16">
             <div className="max-w-7xl mx-auto">
-              {/* Desktop/Tablet: 2-Column Grid */}
               {!isMobile && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                  {/* Column 01: Social */}
                   <div className={`transition-all duration-500 ${
                     showSecondary ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
@@ -235,7 +219,6 @@ export default function Contact() {
                     </nav>
                   </div>
 
-                  {/* Column 02: Studio */}
                   <div className={`transition-all duration-500 ${
                     showSecondary ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`} style={{ transitionDelay: '150ms' }}>
@@ -248,10 +231,8 @@ export default function Contact() {
                 </div>
               )}
 
-              {/* Mobile: Single Column Stack - Left Aligned */}
               {isMobile && (
                 <div className="text-left space-y-8">
-                  {/* Social */}
                   <div className={`transition-all duration-500 ${
                     showSecondary ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}>
@@ -268,7 +249,6 @@ export default function Contact() {
                     </nav>
                   </div>
 
-                  {/* Studio */}
                   <div className={`transition-all duration-500 ${
                     showSecondary ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`} style={{ transitionDelay: '150ms' }}>

@@ -38,7 +38,6 @@ export default function Work() {
   ];
 
   useEffect(() => {
-    // Page load animation
     setTimeout(() => setIsLoaded(true), 200);
 
     const handleResize = () => {
@@ -53,7 +52,6 @@ export default function Work() {
         const isInView = rect.top < window.innerHeight && rect.bottom > 0;
         
         if (isInView) {
-          // Staggered reveal for each project
           projects.forEach((_, index) => {
             setTimeout(() => {
               setVisibleProjects(prev => {
@@ -61,23 +59,20 @@ export default function Work() {
                 newVisible[index] = true;
                 return newVisible;
               });
-            }, index * 100); // 0.1s delay between projects
+            }, index * 100);
           });
         }
       }
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Use requestAnimationFrame for smoother cursor following
       requestAnimationFrame(() => {
         setCursorPosition({ x: e.clientX, y: e.clientY });
       });
     };
 
-    // Initialize visible projects array
     setVisibleProjects(new Array(projects.length).fill(false));
 
-    // Initial checks
     handleResize();
     handleScroll();
 
@@ -93,7 +88,6 @@ export default function Work() {
   }, []);
 
   const handleProjectClick = (slug: string) => {
-    // Create the expanding green transition
     const transition = document.createElement('div');
     transition.style.cssText = `
       position: fixed;
@@ -109,12 +103,10 @@ export default function Work() {
     `;
     document.body.appendChild(transition);
     
-    // Trigger the expansion
     requestAnimationFrame(() => {
       transition.style.transform = 'scaleX(1)';
     });
     
-    // Navigate after animation
     setTimeout(() => {
       window.location.href = `/work/${slug}`;
       document.body.removeChild(transition);
@@ -123,7 +115,6 @@ export default function Work() {
 
   return (
     <>
-      {/* Custom Cursor - Desktop/Tablet Only */}
       {!isMobile && (
         <div 
           className="fixed pointer-events-none z-50"
@@ -159,10 +150,8 @@ export default function Work() {
         <Header />
         
         <main>
-          {/* Page Hero */}
           <section className={`${isMobile ? 'h-[60vh]' : 'h-[70vh]'} bg-cream flex items-center justify-center px-6 md:px-16`}>
             <div className="max-w-7xl mx-auto text-center">
-              {/* H1 Headline */}
               <h1 
                 className={`font-syne font-bold text-black mb-8 transition-all duration-500 ${
                   isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -172,7 +161,6 @@ export default function Work() {
                 SELECTED WORK
               </h1>
               
-              {/* Introduction Text */}
               <div 
                 className={`${isMobile ? 'max-w-[90%]' : 'max-w-[60%]'} mx-auto transition-all duration-500 ${
                   isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -186,10 +174,8 @@ export default function Work() {
             </div>
           </section>
 
-          {/* Project List */}
           <section ref={projectsRef} className="bg-cream">
             <div className="max-w-7xl mx-auto">
-              {/* Desktop: 3-Column Layout with Image Follow */}
               {!isTablet && !isMobile && (
                 <div className="space-y-0">
                   {projects.map((project, index) => (
@@ -208,21 +194,18 @@ export default function Work() {
                         style={{ transitionDelay: `${index * 100}ms` }}
                       >
                         <div className="grid grid-cols-3 gap-8 items-center">
-                          {/* Column 1: Project Name (Left-Aligned) */}
                           <div className="text-left">
                             <h3 className="font-syne font-bold text-black text-xl md:text-2xl">
                               {project.name}
                             </h3>
                           </div>
 
-                          {/* Column 2: Services (Center-Aligned) */}
                           <div className="text-center">
                             <p className="font-syne font-bold text-black text-sm md:text-base">
                               {project.services}
                             </p>
                           </div>
 
-                          {/* Column 3: VIEW (Right-Aligned) */}
                           <div className="text-right">
                             <span 
                               className={`font-syne font-bold text-sm md:text-base transition-colors duration-200 ${
@@ -235,7 +218,6 @@ export default function Work() {
                         </div>
                       </a>
 
-                      {/* Separator Line (except for last item) */}
                       {index < projects.length - 1 && (
                         <div className="w-full h-px bg-black mx-6 md:mx-16"></div>
                       )}
@@ -244,7 +226,6 @@ export default function Work() {
                 </div>
               )}
 
-              {/* Tablet: 2-Column Layout (No [VIEW], No Image Follow) */}
               {isTablet && !isMobile && (
                 <div className="space-y-0">
                   {projects.map((project, index) => (
@@ -268,7 +249,6 @@ export default function Work() {
                         style={{ transitionDelay: `${index * 100}ms` }}
                       >
                         <div className="grid grid-cols-2 gap-8 items-center">
-                          {/* Column 1: Project Name (Left-Aligned) */}
                           <div className="text-left">
                             <h3 className={`font-syne font-bold text-xl md:text-2xl transition-colors duration-200 ${
                               activeProject === project.slug ? 'text-[#3c8669]' : 'text-black'
@@ -277,7 +257,6 @@ export default function Work() {
                             </h3>
                           </div>
 
-                          {/* Column 2: Services (Right-Aligned) */}
                           <div className="text-right">
                             <p className={`font-syne font-bold text-sm md:text-base transition-colors duration-200 ${
                               activeProject === project.slug ? 'text-[#3c8669]' : 'text-black'
@@ -288,7 +267,6 @@ export default function Work() {
                         </div>
                       </a>
 
-                      {/* Separator Line (except for last item) */}
                       {index < projects.length - 1 && (
                         <div className="w-full h-px bg-black mx-6 md:mx-16"></div>
                       )}
@@ -297,7 +275,6 @@ export default function Work() {
                 </div>
               )}
 
-              {/* Mobile: Single Column Stack (Left-Aligned) */}
               {isMobile && (
                 <div className="space-y-0">
                   {projects.map((project, index) => (
@@ -321,14 +298,12 @@ export default function Work() {
                         style={{ transitionDelay: `${index * 100}ms` }}
                       >
                         <div className="text-left space-y-2">
-                          {/* Project Name */}
                           <h3 className={`font-syne font-bold text-lg transition-colors duration-200 ${
                             activeProject === project.slug ? 'text-[#3c8669]' : 'text-black'
                           }`}>
                             {project.name}
                           </h3>
 
-                          {/* Services */}
                           <p className={`font-syne font-bold text-sm transition-colors duration-200 ${
                             activeProject === project.slug ? 'text-[#3c8669]' : 'text-black'
                           }`}>
@@ -337,7 +312,6 @@ export default function Work() {
                         </div>
                       </a>
 
-                      {/* Separator Line (except for last item) */}
                       {index < projects.length - 1 && (
                         <div className="w-full h-px bg-black mx-6"></div>
                       )}
@@ -348,7 +322,6 @@ export default function Work() {
             </div>
           </section>
 
-          {/* Final CTA */}
           <FinalCTA />
         </main>
         
