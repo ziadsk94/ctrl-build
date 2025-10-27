@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

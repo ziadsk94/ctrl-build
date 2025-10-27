@@ -10,11 +10,9 @@ export default function NotFound() {
   const [isGlitching, setIsGlitching] = useState(true);
 
   useEffect(() => {
-    // Page load animation
     setTimeout(() => setIsLoaded(true), 200);
     setTimeout(() => setShowContent(true), 400);
 
-    // Glitch effect for 404
     const glitchCharacters = ['39&', '5#1', '2@8', '7$3', '1!9', '6%4', '404'];
     let glitchIndex = 0;
     
@@ -35,7 +33,6 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-cream flex items-center justify-center px-6">
       <div className="text-center max-w-4xl mx-auto">
-        {/* Error Code (H1) - Ghosted */}
         <h1 
           className={`font-syne font-bold mb-8 transition-all duration-500 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
@@ -50,7 +47,6 @@ export default function NotFound() {
           {errorCode}
         </h1>
 
-        {/* Headline (H2) */}
         <h2 
           className={`font-syne font-bold text-black mb-6 transition-all duration-500 ${
             showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -60,7 +56,6 @@ export default function NotFound() {
           PAGE NOT FOUND
         </h2>
 
-        {/* Helper Text */}
         <p 
           className={`font-fraunces text-black mb-12 transition-all duration-500 ${
             showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -73,7 +68,6 @@ export default function NotFound() {
           The link is broken or the page has been removed. We suggest returning to the homepage.
         </p>
 
-        {/* Primary CTA Button */}
         <div 
           className={`transition-all duration-500 ${
             showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

@@ -22,7 +22,6 @@ export default function FeaturedWork() {
         setIsVisible(isInView);
         
         if (isInView) {
-          // Staggered reveals
           setTimeout(() => setShowProject1(true), 200);
           setTimeout(() => setShowProject2(true), 800);
         }
@@ -39,7 +38,6 @@ export default function FeaturedWork() {
       setCursorPosition({ x: e.clientX, y: e.clientY });
     };
 
-    // Initial checks
     handleResize();
     handleScroll();
 
@@ -55,7 +53,6 @@ export default function FeaturedWork() {
   }, []);
 
   const handleCaseStudyClick = (project: string) => {
-    // Create expanding green transition
     const transition = document.createElement('div');
     transition.style.cssText = `
       position: fixed;
@@ -83,7 +80,6 @@ export default function FeaturedWork() {
 
   return (
     <>
-      {/* Custom Cursor - Desktop/Tablet Only */}
       {!isMobile && (
         <div 
           className="fixed pointer-events-none z-50 transition-all duration-200"
@@ -110,14 +106,11 @@ export default function FeaturedWork() {
 
       <section ref={sectionRef} className="bg-cream py-24 px-6 md:px-16">
         <div className="max-w-7xl mx-auto">
-          {/* Desktop/Tablet Layout */}
           {!isMobile && (
             <>
-              {/* Project One: iPower - The Anchor */}
               <div className={`grid grid-cols-1 gap-12 mb-32 ${
                 isTablet ? 'lg:grid-cols-2' : 'lg:grid-cols-4'
               }`}>
-                {/* Text - Left */}
                 <div className={`flex flex-col justify-center ${
                   isTablet ? 'lg:col-span-1' : 'lg:col-span-2'
                 }`}>
@@ -160,7 +153,6 @@ export default function FeaturedWork() {
               </div>
             </div>
 
-                {/* Visual - Right */}
                 <div className={`relative overflow-hidden ${
                   isTablet ? 'lg:col-span-1' : 'lg:col-span-2'
                 }`}>
@@ -170,12 +162,10 @@ export default function FeaturedWork() {
                 onMouseLeave={() => setIsHoveringImage(null)}
                 onClick={() => handleCaseStudyClick('ipower')}
               >
-                {/* Curtain Reveal */}
                 <div className={`absolute inset-0 bg-pink z-10 transition-transform duration-400 ${
                   showProject1 ? '-translate-x-full' : 'translate-x-0'
                 }`}></div>
                 
-                {/* Image */}
                 <div className="aspect-[3/4] relative">
                   <Image
                     src="/assets/images/projects/ipower/featured.png"
@@ -193,14 +183,11 @@ export default function FeaturedWork() {
             </div>
           </div>
 
-              {/* Large Whitespace Block */}
               <div className="h-24"></div>
 
-              {/* Project Two: GapLens - The Reversal */}
               <div className={`grid grid-cols-1 gap-12 mb-16 ${
                 isTablet ? 'lg:grid-cols-2' : 'lg:grid-cols-4'
               }`}>
-                {/* Visual - Left */}
                 <div className={`relative overflow-hidden ${
                   isTablet ? 'lg:col-span-1 lg:col-start-1' : 'lg:col-span-2 lg:col-start-1'
                 }`}>
@@ -210,12 +197,10 @@ export default function FeaturedWork() {
                 onMouseLeave={() => setIsHoveringImage(null)}
                 onClick={() => handleCaseStudyClick('gaplens')}
               >
-                {/* Curtain Reveal */}
                 <div className={`absolute inset-0 bg-pink z-10 transition-transform duration-400 ${
                   showProject2 ? 'translate-x-full' : 'translate-x-0'
                 }`}></div>
                 
-                {/* Image */}
                 <div className="aspect-[4/3] relative">
                   <Image
                     src="/assets/images/projects/gaplens/featured.png"
@@ -231,7 +216,6 @@ export default function FeaturedWork() {
               </div>
             </div>
 
-                {/* Text - Right */}
                 <div className={`flex flex-col justify-center ${
                   isTablet ? 'lg:col-span-1 lg:col-start-2' : 'lg:col-span-2 lg:col-start-3'
                 }`}>
@@ -275,7 +259,6 @@ export default function FeaturedWork() {
             </div>
           </div>
 
-          {/* Section CTA */}
           <div className="text-center">
                   <button 
                     onClick={() => window.location.href = '/work'}
@@ -289,12 +272,9 @@ export default function FeaturedWork() {
             </>
           )}
 
-          {/* Mobile Layout - Single Column Stack */}
           {isMobile && (
             <div className="space-y-16">
-              {/* Project One: iPower */}
               <div className="space-y-6">
-                {/* Image - Top */}
                 <div className="relative overflow-hidden">
                   <div 
                     className="relative cursor-pointer"
@@ -305,12 +285,10 @@ export default function FeaturedWork() {
                     }}
                     onClick={() => handleCaseStudyClick('ipower')}
                   >
-                    {/* Curtain Reveal */}
                     <div className={`absolute inset-0 bg-pink z-10 transition-transform duration-400 ${
                       showProject1 ? '-translate-x-full' : 'translate-x-0'
                     }`}></div>
                     
-                    {/* Image */}
                     <div className="aspect-[3/4] relative">
                       <Image
                         src="/assets/images/projects/ipower/featured.png"
@@ -323,7 +301,6 @@ export default function FeaturedWork() {
                   </div>
                 </div>
 
-                {/* Text Block - Bottom */}
                 <div className={`transition-all duration-500 ${
                   showProject1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
@@ -361,9 +338,7 @@ export default function FeaturedWork() {
                 </div>
               </div>
 
-              {/* Project Two: GapLens */}
               <div className="space-y-6">
-                {/* Image - Top */}
                 <div className="relative overflow-hidden">
                   <div 
                     className="relative cursor-pointer"
@@ -374,12 +349,10 @@ export default function FeaturedWork() {
                     }}
                     onClick={() => handleCaseStudyClick('gaplens')}
                   >
-                    {/* Curtain Reveal */}
                     <div className={`absolute inset-0 bg-pink z-10 transition-transform duration-400 ${
                       showProject2 ? 'translate-x-full' : 'translate-x-0'
                     }`}></div>
                     
-                    {/* Image */}
                     <div className="aspect-[4/3] relative">
                       <Image
                         src="/assets/images/projects/gaplens/featured.png"
@@ -391,7 +364,6 @@ export default function FeaturedWork() {
                   </div>
                 </div>
 
-                {/* Text Block - Bottom */}
                 <div className={`transition-all duration-500 ${
                   showProject2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
@@ -429,7 +401,6 @@ export default function FeaturedWork() {
                 </div>
               </div>
 
-              {/* Section CTA - Mobile */}
               <div className="text-center">
                 <button 
                   onClick={() => {

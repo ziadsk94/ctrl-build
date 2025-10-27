@@ -18,17 +18,15 @@ export default function FinalCTA() {
         setIsVisible(isInView);
         
         if (isInView) {
-          // Mirror hero's reveal sequence
           setTimeout(() => setShowHeadline(true), 200);
-          setTimeout(() => setShowPeriod(true), 400); // 0.2s after headline
-          setTimeout(() => setShowButton(true), 500); // 0.1s after period
+          setTimeout(() => setShowPeriod(true), 400);
+          setTimeout(() => setShowButton(true), 500);
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     
-    // Initial check
     handleScroll();
 
     return () => {
@@ -37,7 +35,6 @@ export default function FinalCTA() {
   }, []);
 
   const handleProjectStart = () => {
-    // Create expanding green transition
     const transition = document.createElement('div');
     transition.style.cssText = `
       position: fixed;
@@ -58,7 +55,7 @@ export default function FinalCTA() {
     });
     
     setTimeout(() => {
-      trackProjectStart(); // Track the project start conversion
+      trackProjectStart();
       window.location.href = '/contact';
       document.body.removeChild(transition);
     }, 300);
@@ -68,7 +65,6 @@ export default function FinalCTA() {
     <section ref={sectionRef} className="bg-cream py-32 px-6 md:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center">
-          {/* Headline */}
           <div className="mb-12">
             <h2 
               className={`font-syne font-bold text-black transition-all duration-500 ${
@@ -90,7 +86,6 @@ export default function FinalCTA() {
             </h2>
           </div>
 
-          {/* Primary CTA Button */}
           <div>
             <button 
               onClick={handleProjectStart}

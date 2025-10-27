@@ -9,22 +9,18 @@ export default function CookieConsent() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Check if user has already made a choice
     const cookieConsent = localStorage.getItem('cookieConsent');
     if (cookieConsent) {
-      return; // Don't show banner if user already made a choice
+      return;
     }
 
-    // Check viewport size
     const handleResize = () => {
       const width = window.innerWidth;
       setIsMobile(width <= 600);
     };
 
-    // Initial checks
     handleResize();
     
-    // Show banner after delay
     setTimeout(() => {
       setIsLoaded(true);
       setTimeout(() => setIsVisible(true), 100);
@@ -65,10 +61,8 @@ export default function CookieConsent() {
       }}
     >
       <div className="h-full px-6 md:px-16 flex items-center">
-        {/* Desktop/Tablet: 2-Column Layout */}
         {!isMobile && (
           <>
-            {/* Column 1 (70%): Text Content */}
             <div className="flex-1 pr-8" style={{ flex: '0 0 70%' }}>
               <h4 className="font-syne font-bold text-black text-lg mb-2">
                 OUR USE OF COOKIES
@@ -82,7 +76,6 @@ export default function CookieConsent() {
               </p>
             </div>
 
-            {/* Column 2 (30%): Action Buttons */}
             <div className="flex gap-4" style={{ flex: '0 0 30%' }}>
               <button
                 onClick={handleDecline}
@@ -100,10 +93,8 @@ export default function CookieConsent() {
           </>
         )}
 
-        {/* Mobile: 2-Row Stack */}
         {isMobile && (
           <div className="w-full">
-            {/* Row 1: Text Content */}
             <div className="mb-4">
               <h4 className="font-syne font-bold text-black text-base mb-2">
                 OUR USE OF COOKIES
@@ -117,7 +108,6 @@ export default function CookieConsent() {
               </p>
             </div>
 
-            {/* Row 2: Action Buttons */}
             <div className="flex gap-3">
               <button
                 onClick={handleDecline}
